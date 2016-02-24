@@ -1,0 +1,79 @@
+<!-- ---  -->
+<!-- THANKS TO http://tobiasahlin.com/spinkit/  -->
+<!-- ---  -->
+<!-- LoadMovie default skin-->
+<!-- Even if images urls look like stupid,
+<!--    leave ././ even if you must change by a relative url -->
+<!-- or -->
+<!--    replace it by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+<style>
+	 .apixChasingDotSpinner {
+		  width: 40px;
+		  height: 40px;
+		  position: relative;
+		  text-align: center;		  
+		  -webkit-animation: rotate 2.0s infinite linear;
+		  animation: rotate 2.0s infinite linear;
+	}
+
+	.apixChasingDotSpinner .dot1, .apixChasingDotSpinner .dot2 {
+	  width: 60%;
+	  height: 60%;
+	  display: inline-block;
+	  position: absolute;
+	  background-color: #39d;
+	  border-radius: 100%;
+	  
+	  -webkit-animation: bounce 2.0s infinite ease-in-out;
+	  animation: bounce 2.0s infinite ease-in-out;
+	}
+
+	.apixChasingDotSpinner .dot2 {
+	  bottom: 0px;
+	  -webkit-animation-delay: -1.0s;
+	  animation-delay: -1.0s;
+	}
+
+	@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
+	@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+	@-webkit-keyframes bounce {
+	  0%, 100% { -webkit-transform: scale(0.0) }
+	  50% { -webkit-transform: scale(1.0) }
+	}
+
+	@keyframes bounce {
+	  0%, 100% { 
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	  } 50% { 
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	  }
+	}
+}
+
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" >
+	<div class="apixChasingDotSpinner">
+	  <div class="dot1"></div>
+	  <div class="dot2"></div>
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

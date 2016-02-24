@@ -1,0 +1,8 @@
+joint
+joint/*
+*.webapp
+*.bat
+thumbs.db
+ehthumbs.db
+bin/web-app-manifest.json
+*.htaccess

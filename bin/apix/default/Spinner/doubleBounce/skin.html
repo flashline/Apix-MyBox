@@ -1,0 +1,74 @@
+<!-- ---  -->
+<!-- THANKS TO http://tobiasahlin.com/spinkit/  -->
+<!-- ---  -->
+<!-- LoadMovie default skin-->
+<!-- Even if images urls look like stupid,
+<!--    leave ././ even if you must change by a relative url -->
+<!-- or -->
+<!--    replace it by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+<style>
+	.apixDoubleBounceSpinner .spinner {
+		width: 40px;
+		height: 40px;
+		position: relative;
+		margin:auto;
+	}
+
+	.apixDoubleBounceSpinner .spinner .double-bounce1, .apixDoubleBounceSpinner .spinner .double-bounce2 {
+	  width: 100%;
+	  height: 100%;
+	  border-radius: 50%;
+	  background-color: #333;
+	  opacity: 0.6;
+	  position: absolute;
+	  
+	  -webkit-animation: bounce 2.0s infinite ease-in-out;
+	  animation: bounce 2.0s infinite ease-in-out;
+	}
+
+	.apixDoubleBounceSpinner .spinner .double-bounce2 {
+	  -webkit-animation-delay: -1.0s;
+	  animation-delay: -1.0s;
+	}
+
+	@-webkit-keyframes bounce {
+	  0%, 100% { -webkit-transform: scale(0.0) }
+	  50% { -webkit-transform: scale(1.0) }
+	}
+
+	@keyframes bounce {
+	  0%, 100% { 
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	  } 50% { 
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	  }
+	}
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- --- -->
+<div class="apix_loader_ctnr" >
+	<div class="apixDoubleBounceSpinner">
+		<div  class="spinner" >
+			<div class="apix_colored double-bounce1"></div>
+			<div class="apix_colored double-bounce2"></div>
+		</div>
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

@@ -1,0 +1,16 @@
+{
+	"pwdMinLen":"6",
+	"folderColor":"#ffac22",
+	"formColor":"#ade",
+	"fieldColor":"#bcd",
+	"recordColor":"#def",	
+	"bottomMrg":"10",
+	"bottomAddMrg":"10",
+	"rigthAddMrg":"20",	
+	"black":"#444",
+	"bAddFolderColor":"#ea1",
+	"bAddFormColor":"#5de",
+	"bAddFieldColor":"#abc",
+	"bAddRecordColor":"#c0d7de",	
+	"":""
+}

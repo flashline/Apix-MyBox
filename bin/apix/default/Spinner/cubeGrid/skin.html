@@ -1,0 +1,115 @@
+<!-- ---  -->
+<!-- THANKS TO http://tobiasahlin.com/spinkit/  -->
+<!-- ---  -->
+<!-- LoadMovie default skin-->
+<!-- Even if images urls look like stupid,
+<!--    leave ././ even if you must change by a relative url -->
+<!-- or -->
+<!--    replace it by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+<style>	
+	.apixCubeGridSpinner .sk-spinner-cube-grid {
+	  /*
+	   * Spinner positions
+	   * 1 2 3
+	   * 4 5 6
+	   * 7 8 9
+	*/ 
+   }
+  .apixCubeGridSpinner .sk-spinner-cube-grid.sk-spinner {
+		width: 4em;
+		height: 4em;
+		margin: 0 auto; 
+	}
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube {
+		width: 33%;
+		height: 33%;
+		background-color: #39d;
+		
+		float: left;
+		-webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+				animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+	}
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(1) {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(2) {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(3) {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(4) {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(5) {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(6) {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(7) {
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(8) {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .apixCubeGridSpinner .sk-spinner-cube-grid .sk-cube:nth-child(9) {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+	@-webkit-keyframes sk-cubeGridScaleDelay {
+		  0%, 70%, 100% {
+			-webkit-transform: scale3D(1, 1, 1);
+					transform: scale3D(1, 1, 1); }
+		  35% {
+			-webkit-transform: scale3D(0, 0, 1);
+					transform: scale3D(0, 0, 1); } 
+	}
+	@keyframes sk-cubeGridScaleDelay {
+		  0%, 70%, 100% {
+			-webkit-transform: scale3D(1, 1, 1);
+					transform: scale3D(1, 1, 1); }
+		  35% {
+			-webkit-transform: scale3D(0, 0, 1);
+					transform: scale3D(0, 0, 1); } 
+	}
+
+
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<body>
+	<div class="apix_loader_ctnr" >
+
+	<!-- ---  -->
+	<div class="apixCubeGridSpinner" >	
+		 <div class="sk-spinner sk-spinner-cube-grid">
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+			  <div class="apix_colored sk-cube"></div>
+		</div>
+	</div>
+	
+	<!-- ---  -->
+</div>
+</body>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

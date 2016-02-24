@@ -55,8 +55,8 @@ This app is designed to run on a valid HTML5 browser.
 [Haxe](http://haxe.org/). 
 
 ##Dependency :  
-[Apix api](https://github.com/flashline/Apix) has to be installed :
-- in src/  
+[Apix api](https://github.com/flashline/Apix) has to be installed :  
+ - in src/  
  - or as haxe lib  
  - or everywhere, adding  -cp everywhere/ in build.xml.
 

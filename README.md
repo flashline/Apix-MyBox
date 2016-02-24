@@ -18,20 +18,17 @@ That allows you to enter your various data, organized as you wish, and find your
 - [GooglePlay](https://play.google.com/store/apps/details?id=net.apixline.mybox&hl=fr) for Android 
 
 ##Features: 
+- MyBox doesn't use a meta-data system to store the records but generates conventional
+mySql tables which can be read easily by other applications.
+- All platforms (Android or Firefox-OS mobiles ; Web on PC / Mac) access the same database.
+Synchronization is not necessary.
+- The layout adapts itself to any screen size or ratio -the app is responsive.
+- The changes made in the management mode (create/update/delete files, forms or fields)
+are immediately reflected in the operating mode (data entry/view). 
 - The fields' value may be visible or hidden (eg 'password').  
 If a field is hidden, a click on a button makes it visible temporarily.  
 Each field can be copied to the clipboard by clicking on a button. 
 
-- MyBox doesn't use a meta-data system to store the records but generates conventional
-mySql tables which can be read easily by other applications.
-
-- All platforms (Android or Firefox-OS mobiles ; Web on PC / Mac) access the same database.
-Synchronization is not necessary.
-
-- The layout adapts itself to any screen size or ratio -the app is responsive.
-
-- The changes made in the management mode (create/update/delete files, forms or fields)
-are immediately reflected in the operating mode (data entry/view). 
 
 
 ##Licence 
@@ -66,3 +63,6 @@ This app is designed to run on a valid HTML5 browser.
 Please inform me of any errors;  
 If this application please to you , talk about it around you... 
 
+
+ 
+ 

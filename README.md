@@ -51,7 +51,8 @@ This app is designed to run on a valid HTML5 browser.
 - Color parameters in **bin/custom/default/model.xml**  
 - Pathnames in **bin/js/en.baseUrl.js** or **bin/js/fr.baseUrl.js** or  **bin/js/es.baseUrl.js**  
 
-##Language:  [Haxe](http://haxe.org/). 
+##Language:  
+[Haxe](http://haxe.org/). 
 
 ##Dependency :  
 [Apix api](https://github.com/flashline/Apix) has to be installed :

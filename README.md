@@ -61,7 +61,10 @@ This app is designed to run on a valid HTML5 browser.
  - or everywhere, adding  -cp everywhere/ in build.xml.
 
 ##Contact  
-Please inform me of any errors;  
+Please inform me of any errors:  
+[info@pixaline.net](mailto:info@pixaline.net?subject=Apix-MyBox)  
+[twitter](https://twitter.com/intent/tweet?screen_name=flashline_net)
+
 If this application please to you , talk about it around you... 
 
 

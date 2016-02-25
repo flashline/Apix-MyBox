@@ -6,6 +6,7 @@ package safebox.models;
 import apix.common.display.Common ;
 import apix.common.event.StandardEvent;
 import apix.common.util.Global ;
+import js.html.InputElement;
 import safebox.Model;
 import safebox.View;
 //
@@ -115,7 +116,6 @@ class FieldData extends SubModel  {
 	function setupEvent () {
 		if (!copyPictoElem.hasLst(StandardEvent.CLICK) ) copyPictoElem.on(StandardEvent.CLICK, onCopyClick);
 		if (!showPictoElem.hasLst(StandardEvent.CLICK) ) showPictoElem.on(StandardEvent.CLICK, onShowClick);
-		
 	}
 	function removeEvent () {	
 		if (copyPictoElem==null) trace("f:: debug test : label="+label+" index="+index);
@@ -125,7 +125,8 @@ class FieldData extends SubModel  {
 		var visibleBefore:Bool = visible;
 		if (field.isHidden && !visibleBefore) makeVisible();
 		valueElem.pick();
-		Common.toClipBoard();
+		if (!Common.toClipBoard()) g.alert(lang.clipBoardCopyError);
+		
 		if (field.isHidden && !visibleBefore) makeHidden();
 	}
 	function onShowClick (e:ElemEvent) {

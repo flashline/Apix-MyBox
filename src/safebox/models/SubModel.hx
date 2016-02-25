@@ -61,6 +61,11 @@ class SubModel  {
 	public var bUpdate(get, null):Elem; function get_bUpdate() :Elem { return ("#" + vId + " .apix_pictoCtnr .updatePicto").get();}
 	public var bRemove(get, null):Elem; function get_bRemove() :Elem { return ("#" + vId + " .apix_pictoCtnr .removePicto").get();}
 	
+	
+	
+	public function is (v:String) :Bool  return what==v ;
+	public function whatIs (v:Dynamic) :String  return g.className(v) ;
+	public var what(get, null):String; function get_what () :String return g.className(this) ;
 	/*
 	 * constructor
 	 */

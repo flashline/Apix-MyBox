@@ -3,7 +3,7 @@
   "langApp2": "Español",
   "langApp1Src": "./en.html",
   "langApp2Src": "./es.html",
-  
+  "clipBoardCopyError":"Votre navigateur n'est pas Html5 ou votre machine n'autorise pas la copie automatique vers le presse-papier.<br> Faites la copie vous même.",
    "signInIdHolder": "Entrer votre email",
    "signUpIdHolder": "Entrer un email valide",
   "signUpPwdHolder": "Entrer un mot de passe d'au moins 6 caractères.",
@@ -54,11 +54,11 @@
     "<div style='text-align:center;font-weight:bold;'>Apix MyBox</div>",
     "<br/>Disponible sur :<br/>",
     "<div style='padding:1rem;border:1px solid #999;font-size:.7rem;' >",
-    "<a href='#' target='blank'>Firefox-marketplace</a> pour Firefox-OS. <br/>",
-    "<a href='#' target='blank'>Google Play</a> pour Android. <br/>",
+    "<a href='https://marketplace.firefox.com/app/Apix-MyBox' target='blank'>Firefox-marketplace</a> pour Firefox-OS. <br/>",
+    "<a href='https://play.google.com/store/apps/details?id=org.apixline.mybox' target='blank'>Google Play</a> pour Android. <br/>",
     "<a href='http://www.apixline.org/pm/app/web/myBox/' target='blank'>Internet</a> pour tous les autres.",
     "</div>",
-    "<br/><a href='#' target='blank'>Github</a> téléchargement exécutable et source. <br/><br/>",
+    "<br/><a href='https://github.com/flashline/Apix-MyBox' target='blank'>Github</a> téléchargement exécutable et source. <br/><br/>",
     "<br/><div style='text-align:center;font-size:.7rem;'><a href='mailto:jm.delettre@pixaline.net?subject=Au sujet de MyBox'>Jean-michel Delettre</a> - <a href='http://www.pixaline.net/' target='blank'>www.pixaline.net</a></div>",
     "<div style='text-align:center;font-size:.5rem;'><a href='mailto:info@pixaline.net?subject=MyBox Traduction anglaise de la doc'>Traduction anglaise de la documentation</a><br/></div>",
     ""

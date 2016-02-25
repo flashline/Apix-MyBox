@@ -15,7 +15,7 @@ That allows you to enter your various data, organized as you wish, and find your
 
 ##install from:  
 - [Firefox-marketplace](https://marketplace.firefox.com/app/Apix-MyBox) for Firefox-OS
-- [GooglePlay](https://play.google.com/store/apps/details?id=net.apixline.mybox&hl=fr) for Android 
+- [GooglePlay](https://play.google.com/store/apps/details?id=org.apixline.mybox&hl=fr) for Android 
 
 ##Features: 
 - MyBox doesn't use a meta-data system to store the records but generates conventional

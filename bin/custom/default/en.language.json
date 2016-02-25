@@ -3,6 +3,7 @@
   "langApp2": "Español",
   "langApp1Src": "./",
   "langApp2Src": "./es.html",
+   "clipBoardCopyError":"Your browser isn't Html5 ou your machine doesn't accept automatic copy to the clipboard !<br> Do it your self.",
   
   "signInIdHolder": "Enter your email",
   "signUpIdHolder": "Enter a valid email",
@@ -54,11 +55,11 @@
     "<div style='text-align:center;font-weight:bold;'>Apix MyBox</div>",
     "<br/>Available on :<br/>",
     "<div style='padding:1rem;border:1px solid #999;font-size:.7rem;' >",
-    "<a href='#' target='blank'>Firefox-marketplace</a> for Firefox-OS. <br/>",
-    "<a href='#' target='blank'>Google Play</a> for Android. <br/>",
+    "<a href='https://marketplace.firefox.com/app/Apix-MyBox' target='blank'>Firefox-marketplace</a> for Firefox-OS. <br/>",
+    "<a href='https://play.google.com/store/apps/details?id=org.apixline.mybox' target='blank'>Google Play</a> for Android. <br/>",
     "<a href='http://www.apixline.org/pm/app/web/myBox/en.html' target='blank'>Internet</a> for other platforms.",
     "</div>",
-    "<br/><a href='#' target='blank'>Github</a> download exe &amp; source. <br/><br/>",
+    "<br/><a href='https://github.com/flashline/Apix-MyBox' target='blank'>Github</a> download exe &amp; source. <br/><br/>",
     "<br/><div style='text-align:center;font-size:.7rem;'><a href='mailto:jm.delettre@pixaline.net?subject=About MyBox'>Jean-michel Delettre</a> - <a href='http://www.pixaline.net/' target='blank'>www.pixaline.net</a>(fr)</div>",
     "<div style='text-align:center;font-size:.5rem;'><a href='mailto:info@pixaline.net?subject=MyBox English translation of doc'>English translation of documentation</a><br/></div>",
     ""

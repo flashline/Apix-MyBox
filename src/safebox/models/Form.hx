@@ -136,7 +136,6 @@ class Form extends SubModel  {
 		else if (this != model.root) return cast(parent, Folder);
 		else return null ;
 	}
-	public function is (v:String) :Bool  return g.className(this)==v ;
 	//
 	public function init (ri:Int,l:String) {	
 		recId = ri;

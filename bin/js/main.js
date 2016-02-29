@@ -1604,13 +1604,6 @@ apix.ui.tools.Spinner.prototype = {
 	}
 	,__class__: apix.ui.tools.Spinner
 };
-var cordovax = {};
-cordovax.CordovaEvent = function() { };
-cordovax.CordovaEvent.__name__ = ["cordovax","CordovaEvent"];
-cordovax.CordovaEvent.__super__ = Event;
-cordovax.CordovaEvent.prototype = $extend(Event.prototype,{
-	__class__: cordovax.CordovaEvent
-});
 var haxe = {};
 haxe.Http = function(url) {
 	this.url = url;
@@ -2189,13 +2182,12 @@ safebox.Controler = function(m,v) {
 	this.model = m;
 	this.lang = this.model.lang;
 	this.server = this.model.server;
-	this.model.version = "v 1.0.3";
+	this.model.version = "v 1.0.3 r 2";
 	safebox.Controler.g = apix.common.util.Global.get();
 };
 safebox.Controler.__name__ = ["safebox","Controler"];
 safebox.Controler.prototype = {
 	initEvent: function() {
-		apix.common.display.ElementExtender.on(window.document,"backbutton",$bind(this,this.onCloseApp));
 		apix.common.display.ElementExtender.on(window,"resize",$bind(this,this.onResize));
 		this.view.resize();
 	}
@@ -2518,9 +2510,6 @@ safebox.Controler.prototype = {
 	,onAddRecordClick: function(e) {
 		var fo = this.model.selectedFormOrFolder;
 		fo.insertNewRecord();
-	}
-	,onCloseApp: function(e) {
-		navigator.app.exitApp();
 	}
 	,onWindowClick: function(e) {
 		apix.common.display.ElementExtender.hide(this.view.get_menu());

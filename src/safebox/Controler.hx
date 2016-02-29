@@ -7,8 +7,6 @@ import apix.common.event.timing.Delay;
 import apix.common.util.Global ;
 import apix.common.util.Object;
 import apix.common.util.xml.XmlParser;
-import cordovax.CordovaEvent;
-import cordovax.navigator.App;
 import safebox.models.Folder;
 import safebox.models.Form;
 /**
@@ -39,12 +37,11 @@ class Controler {
 		view = v;
 		model = m; lang = model.lang;
 		server = model.server; 
-		model.version = "v 1.0.3 r 1";
+		model.version = "v 1.0.3 r 2";
 		//
 		g = Global.get();
 	}
 	public function initEvent () {	
-		Common.document.on(CordovaEvent.BACK_BUTTON, onCloseApp) ;  
 		Common.window.on("resize", onResize);
 		view.resize();
 	}
@@ -461,11 +458,7 @@ class Controler {
 	function onAddRecordClick  (e:ElemEvent) {	
 		var fo:Form = model.selectedFormOrFolder ;
 		fo.insertNewRecord();
-	}	
-	
-	function  onCloseApp  (e:CordovaEvent) {
-		 App.exitApp();
-	}
+	}		
 	//
 	function  onWindowClick  (e:ElemEvent) {
 		view.menu.hide();

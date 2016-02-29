@@ -65,6 +65,32 @@
     "<div style='text-align:center;font-size:.5rem;'><a href='mailto:info@pixaline.net?subject=MyBox Traducción inglés de la doc'>Traducción inglés de la documentation</a><br/></div>",
     ""
   ],
+
+
+   "warningTitle":"IMPORTANTE !",
+  "warningValidText":"comprendí",
+  "warning": [ 
+    "<div style='font-size:1.1rem;'>",
+    "MyBox se proporciona tal cual, sin garantía de ningún tipo ni responsabilidad contractual.<br/>",
+	"</div>",
+	"<br/>",	
+    "Esta versión en línea, debe ser usada para probar la aplicación.<br/>",
+	"<br/>",
+	"<div style='font-size:1rem;'>",
+    "El servidor utilizado no garantiza que los problemas de seguridad, de copia o de confidencialidad ",
+	"son tratados como lo serían si usted mismo, elige el servidor (basado en la importancia de sus datos).<br/>",
+	"</div>",
+	"<br/>",
+	"Para tener un control total, es necesario descargar una versión (libre) de lo ejecutable o fuente ",
+	"y instalarla en un servidor de su elección.<br/>",
+	"<br/>",
+	"Para el procedimiento, <br/>consulte la <a href='http://www.apixline.org/pm/app/web/myBox/doc/help.en.html#install' target='blank'>documentación (en o fr) </a> ",
+	"y ir a <a href='https://github.com/flashline/Apix-MyBox' target='blank'>github.com</a> .<br/>",
+	"o<br/>",
+	"Contácteme a <a href='mailto:info@pixaline.net?subject=Ayuda para instalación MyBox'>info@pixaline.net</a>, si piensa que no sabe hacerlo usted mismo.<br/>",
+	
+	"<br/>"
+  ], 
   "alertBeforeFolderCreation": [
 	"Usted no ha creado todavía, archivo o formulario.<br/>",
     "Clic en el menú (arriba-derecha) y en 'Gestión de archivos y formularios'...<br/>",

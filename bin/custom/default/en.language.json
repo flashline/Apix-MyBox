@@ -65,6 +65,30 @@
     "<div style='text-align:center;font-size:.5rem;'><a href='mailto:info@pixaline.net?subject=MyBox English translation of doc'>English translation of documentation</a><br/></div>",
     ""
   ],
+   "warningTitle":"IMPORTANT !",
+  "warningValidText":"I understand...",
+  "warning": [ 
+    "<div style='font-size:1.1rem;'>",
+    "MyBox is provided as-is without warranty of any kind or contractual liability.<br/>",
+	"</div>",
+	"<br/>",	
+    "This online version should be used to test the application.<br/>",
+	"<br/>",
+	"<div style='font-size:1rem;'>",
+    "The used hosting server does not guarantee you that the security issues, backup or confidentiality are treated ",
+	"as they would be if you choosed yourself the server (based on the importance of the data entered).<br/>",
+	"</div>",
+	"<br/>",
+	"To have total control, you need to download (free) source or executable version ",
+	"and install it on an host server of your choice. <br/>",
+	"<br/>",
+	"For the procedure,<br/>see the <a href='http://www.apixline.org/pm/app/web/myBox/doc/help.en.html#install' target='blank'>documentation</a> ",
+	"and go to <a href='https://github.com/flashline/Apix-MyBox' target='blank'>github.com</a> .<br/>",
+	"or<br/>",
+	"contact me at <a href='mailto:info@pixaline.net?subject=help for installation MyBox'>info@pixaline.net</a>, if you don't know to do it yourself.<br/>",
+	
+	"<br/>" 
+  ], 
   "alertBeforeFolderCreation": [
 	"You don't have yet created folder, nor form. <br/>",
     "Click on up-right menu , then on 'Folders and forms management'.<br/>",

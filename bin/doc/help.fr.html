@@ -136,7 +136,7 @@
 		</div>
 			
 		<div class="hline"></div>
-		 <h2>Mode d'emploi</h2>
+		  <h2>Mode d'emploi</h2>
 		 <div class="hline"></div>
 		<div class="bloc" id="section_5" onclick="javascript:wm_toggle_section(5);">
 			<div class="left"><span>Par l'exemple</span></div>
@@ -147,7 +147,7 @@
 		</div>
 		<div class="content_block" id="content_5">
 			<br/><br/>
-			Suivez exactement cet exemple et vous aurez tout compris.	
+			<div id="manual">Suivez exactement cet exemple et vous aurez tout compris.</div>
 			<div class="paraph" >	
 				<h3>Etape I</h3>
 				Au premier lancement, 
@@ -332,13 +332,13 @@
 		<div class="content_block" id="content_4">
 			<div class="paraph" >
 				<h3>Noter que</h3>
-				<div>
+				<div id="install">
 					la version en ligne vous permet de tester cette application 
 					mais ne vous donne pas de garantie, ni la maitrise des processus de sécurité. <br/>
 					(sauvegardes, confidentialité des données, etc) <br/>	
 					Pour avoir le contrôle total vous devez :
 					<ul>
-						<li>Télécharger la version sur  <a href="https://github.com/flashline/Apix-MyBox" >github.com</a>.</li>
+						<li>Télécharger l'archive ZIP sur  <a href="https://github.com/flashline/Apix-MyBox" >github.com</a>.</li>
 						<li>Installer au moins le répertoire bin/ sur un serveur avec PHP et MySql. </li>
 						<li>Lancer le programme ./php/db.create.php pour créer la base de données et les tables.<br/>	
 							<br/>	
@@ -354,7 +354,7 @@
 		<!--  -->
 		<h2>Liens</h2>
 		<div class="link">
-			<a href="../" >Retour à l'application</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="javascript:window.location.replace('../');" >Retour à l'application</a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="help.en.html" >Doc (en) </a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="help.fr.html" >Doc (fr) </a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="http://www.apixline.org/" >Autres projets open-source.</a>&nbsp;&nbsp;&nbsp;&nbsp;

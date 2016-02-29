@@ -2,5 +2,5 @@
 	$myHost= "localhost" ; 
 	$myId="root";	
 	$myPwd="";
-	$myDb = "mybox_db";	
+	$myDb = "safe_db";	
 ?>

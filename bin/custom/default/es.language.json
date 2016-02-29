@@ -1,8 +1,9 @@
 {
+  "language":"es",
   "langApp1": "Français",
   "langApp2": "English",
-  "langApp1Src": "./",
-  "langApp2Src": "./en.html",
+  "langApp1Src": "fr",
+  "langApp2Src": "en",
   "clipBoardCopyError":"Su navegador no es HTML5 o su máquina no permite la copia automática en el portapapeles. Hágalo usted mismo",
   
    "signInIdHolder": "Entrar su correo electrónico",
@@ -54,8 +55,8 @@
   "about": [
     "<div style='text-align:center;font-weight:bold;'>Apix MyBox</div>",
     "<br/>Está disponible sobre :<br/>",
-    "<div style='padding:1rem;border:1px solid #999;font-size:.7rem;' >",
-    "<a href='https://marketplace.firefox.com/app/Apix-MyBox' target='blank'>Firefox-marketplace</a> para Firefox-OS. <br/>",
+    "<div style='padding:1rem;border:1px solid #999;font-size:1rem;' >",
+    "<a href='https://marketplace.firefox.com/app/apix-myBox' target='blank'>Firefox-marketplace</a> para Firefox-OS. <br/>",
     "<a href='https://play.google.com/store/apps/details?id=org.apixline.mybox' target='blank'>Google Play</a> para Android. <br/>",
     "<a href='http://www.apixline.org/pm/app/web/myBox/' target='blank'>Internet</a> para otras plataformas.",
     "</div>",

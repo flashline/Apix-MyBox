@@ -121,7 +121,7 @@ List.prototype = {
 	,__class__: List
 };
 var Main = function() {
-	apix.common.event.EventTargetExtender.on(window,"load",$bind(this,this.startSpinner));
+	apix.common.event.EventTargetExtender.on(window,"load",$bind(this,this.chooseLanguage));
 };
 Main.__name__ = ["Main"];
 Main.main = function() {
@@ -130,13 +130,39 @@ Main.main = function() {
 	new Main();
 };
 Main.prototype = {
-	startSpinner: function() {
+	chooseLanguage: function() {
+		if(js.Cookie.exists("safeboxLanguage")) {
+			this.lg = js.Cookie.get("safeboxLanguage");
+			if(this.lg != "fr" && this.lg != "en" && this.lg != "es") {
+				js.Cookie.remove("safeboxLanguage");
+				this.chooseLanguage();
+			} else {
+				apix.common.display.ElementExtender["delete"](apix.common.util.StringExtender.get("#safeBox #apix_chooseLangBox"));
+				this.firstLaunch = false;
+				this.startSpinner();
+			}
+		} else {
+			apix.common.display.ElementExtender.show(apix.common.util.StringExtender.get("#safeBox #apix_chooseLangBox"));
+			apix.common.display.ElementExtender.visible(apix.common.util.StringExtender.get("#safeBox #apix_chooseLangBox"),true);
+			apix.common.event.EventTargetExtender.on(apix.common.util.StringExtender.get("#safeBox #apix_enLang"),"click",$bind(this,this.onLangChoosen),false,{ lg : "en"});
+			apix.common.event.EventTargetExtender.on(apix.common.util.StringExtender.get("#safeBox #apix_frLang"),"click",$bind(this,this.onLangChoosen),false,{ lg : "fr"});
+			apix.common.event.EventTargetExtender.on(apix.common.util.StringExtender.get("#safeBox #apix_esLang"),"click",$bind(this,this.onLangChoosen),false,{ lg : "es"});
+			this.firstLaunch = true;
+		}
+	}
+	,onLangChoosen: function(e,p) {
+		this.lg = p.lg;
+		var del = 31536000 * 1000;
+		js.Cookie.set("safeboxLanguage",this.lg,del);
+		this.startSpinner();
+	}
+	,startSpinner: function() {
 		this.spinner = apix.ui.tools.Spinner.get({ callBack : $bind(this,this.readLanguage)});
 	}
 	,readLanguage: function() {
 		var ll = new apix.common.io.JsonLoader();
 		ll.read.on($bind(this,this.readParam));
-		ll.load(cst.BASE_URL + cst.LANGUAGE_SRC);
+		ll.load(cst.BASE_URL + cst.LANGUAGE_PATH + this.lg + cst.LANGUAGE_FILE);
 	}
 	,readParam: function(e) {
 		e.target.read.off($bind(this,this.readParam));
@@ -148,7 +174,7 @@ Main.prototype = {
 	,start: function(e) {
 		e.target.read.off($bind(this,this.start));
 		this.param = e.tree;
-		new safebox.SafeBox(cst.BASE_URL,cst.SERVER_URL,this.lang,this.param);
+		new safebox.SafeBox(cst.BASE_URL,cst.SERVER_URL,this.lang,this.param,this.firstLaunch);
 	}
 	,__class__: Main
 };
@@ -625,7 +651,7 @@ apix.common.display.ElementExtender.hide = function(el) {
 };
 apix.common.display.ElementExtender.show = function(el,v) {
 	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 416, className : "apix.common.display.ElementExtender", methodName : "show"});
-	if(!(apix.common.util.Global.get().strVal(el.style.display,"block") != "none")) {
+	if(!(!(apix.common.util.Global.get().strVal(el.style.display,"none") == "none"))) {
 		if(v == null) {
 			v=el.style.apix_save_display;
 		}
@@ -634,7 +660,7 @@ apix.common.display.ElementExtender.show = function(el,v) {
 	}
 };
 apix.common.display.ElementExtender.isDisplay = function(el) {
-	return apix.common.util.Global.get().strVal(el.style.display,"block") != "none";
+	return !(apix.common.util.Global.get().strVal(el.style.display,"none") == "none");
 };
 apix.common.display.ElementExtender.setDisplay = function(el,v) {
 	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 431, className : "apix.common.display.ElementExtender", methodName : "setDisplay"});
@@ -1058,8 +1084,8 @@ apix.common.util.Global.prototype = {
 		if(v.length == 0) return true;
 		return false;
 	}
-	,alert: function(v,cb,title) {
-		if(apix.common.util.Global.alertFunction != null) apix.common.util.Global.alertFunction(v,cb,title); else {
+	,alert: function(v,cb,title,validLabel) {
+		if(apix.common.util.Global.alertFunction != null) apix.common.util.Global.alertFunction(v,cb,title,validLabel); else {
 			if(this.strVal(title,"") != "") v = title + "\n" + Std.string(v);
 			alert(js.Boot.__string_rec(v,""));
 			if(cb != null) cb();
@@ -1084,6 +1110,9 @@ apix.common.util.Global.prototype = {
 	,open: function(url,lab,opt) {
 		if(lab == null) lab = "";
 		apix.common.display.Common.open(url,lab,opt);
+	}
+	,replace: function(url) {
+		window.location.replace(url);
 	}
 	,getNextZindex: function() {
 		var highestZ = null;
@@ -1575,6 +1604,13 @@ apix.ui.tools.Spinner.prototype = {
 	}
 	,__class__: apix.ui.tools.Spinner
 };
+var cordovax = {};
+cordovax.CordovaEvent = function() { };
+cordovax.CordovaEvent.__name__ = ["cordovax","CordovaEvent"];
+cordovax.CordovaEvent.__super__ = Event;
+cordovax.CordovaEvent.prototype = $extend(Event.prototype,{
+	__class__: cordovax.CordovaEvent
+});
 var haxe = {};
 haxe.Http = function(url) {
 	this.url = url;
@@ -2153,18 +2189,23 @@ safebox.Controler = function(m,v) {
 	this.model = m;
 	this.lang = this.model.lang;
 	this.server = this.model.server;
-	this.model.version = "v 1.0.2";
+	this.model.version = "v 1.0.3";
 	safebox.Controler.g = apix.common.util.Global.get();
 };
 safebox.Controler.__name__ = ["safebox","Controler"];
 safebox.Controler.prototype = {
 	initEvent: function() {
+		apix.common.display.ElementExtender.on(window.document,"backbutton",$bind(this,this.onCloseApp));
 		apix.common.display.ElementExtender.on(window,"resize",$bind(this,this.onResize));
 		this.view.resize();
 	}
-	,start: function() {
+	,start: function(fl) {
+		if(fl == null) fl = false;
 		this.cb = apix.common.display.Confirm.get();
-		this.askConnectInfo();
+		if(fl) this.showWarning(); else this.askConnectInfo();
+	}
+	,showWarning: function() {
+		safebox.Controler.g.alert(this.lang.warning,$bind(this,this.askConnectInfo),this.lang.warningTitle,this.lang.warningValidText);
 	}
 	,askConnectInfo: function() {
 		this.server.serverEvent.off();
@@ -2300,18 +2341,24 @@ safebox.Controler.prototype = {
 		if(apix.common.display.ElementExtender.hasLst(this.view.get_bBackSignIn(),"click")) apix.common.display.ElementExtender.off(this.view.get_bBackSignIn(),"click",$bind(this,this.onBackSignInClick));
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bConnect(),"click")) apix.common.display.ElementExtender.on(this.view.get_bConnect(),"click",$bind(this,this.onSignInClick));
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bGoSignUp(),"click")) apix.common.display.ElementExtender.on(this.view.get_bGoSignUp(),"click",$bind(this,this.onGoSignUpClick));
+		this.setupLangEvent();
 	}
 	,setupSignUpEvent: function() {
 		if(apix.common.display.ElementExtender.hasLst(this.view.get_bConnect(),"click")) apix.common.display.ElementExtender.off(this.view.get_bConnect(),"click",$bind(this,this.onSignInClick));
 		if(apix.common.display.ElementExtender.hasLst(this.view.get_bGoSignUp(),"click")) apix.common.display.ElementExtender.off(this.view.get_bGoSignUp(),"click",$bind(this,this.onGoSignUpClick));
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bConnect(),"click")) apix.common.display.ElementExtender.on(this.view.get_bConnect(),"click",$bind(this,this.onSignUpClick));
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bBackSignIn(),"click")) apix.common.display.ElementExtender.on(this.view.get_bBackSignIn(),"click",$bind(this,this.onBackSignInClick));
+		this.setupLangEvent();
+	}
+	,setupLangEvent: function() {
+		if(!apix.common.display.ElementExtender.hasLst(this.view.get_linkLang1(),"click")) apix.common.display.ElementExtender.on(this.view.get_linkLang1(),"click",$bind(this,this.onChangeLang),false,{ lg : this.lang.langApp1Src});
+		if(!apix.common.display.ElementExtender.hasLst(this.view.get_linkLang2(),"click")) apix.common.display.ElementExtender.on(this.view.get_linkLang2(),"click",$bind(this,this.onChangeLang),false,{ lg : this.lang.langApp2Src});
 	}
 	,setupStdViewEvent: function() {
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bAdmin(),"click")) apix.common.display.ElementExtender.on(this.view.get_bAdmin(),"click",$bind(this,this.onAdminClick));
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bDoc(),"click")) apix.common.display.ElementExtender.on(this.view.get_bDoc(),"click",$bind(this,this.onDocClick));
-		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bLang1(),"click")) apix.common.display.ElementExtender.on(this.view.get_bLang1(),"click",$bind(this,this.onChangeLang1));
-		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bLang2(),"click")) apix.common.display.ElementExtender.on(this.view.get_bLang2(),"click",$bind(this,this.onChangeLang2));
+		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bLang1(),"click")) apix.common.display.ElementExtender.on(this.view.get_bLang1(),"click",$bind(this,this.onChangeLang),false,{ lg : this.lang.langApp1Src});
+		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bLang2(),"click")) apix.common.display.ElementExtender.on(this.view.get_bLang2(),"click",$bind(this,this.onChangeLang),false,{ lg : this.lang.langApp2Src});
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bOpenMenu(),"click")) apix.common.display.ElementExtender.on(this.view.get_bOpenMenu(),"click",$bind(this,this.onOpenMenuClick));
 		apix.common.display.ElementExtender.off(this.view.get_bGoPrevious());
 		apix.common.display.ElementExtender.on(this.view.get_bGoPrevious(),"click",$bind(this,this.onLogOffClick));
@@ -2386,13 +2433,11 @@ safebox.Controler.prototype = {
 		this.setupAdminMode();
 	}
 	,onDocClick: function(e) {
-		safebox.Controler.g.open(this.lang.menuDocSrc,"_blank");
+		safebox.Controler.g.open(this.lang.menuDocSrc,"_self");
 	}
-	,onChangeLang1: function(e) {
-		safebox.Controler.g.open(this.lang.langApp1Src,"_self");
-	}
-	,onChangeLang2: function(e) {
-		safebox.Controler.g.open(this.lang.langApp2Src,"_self");
+	,onChangeLang: function(e,p) {
+		this.model.set_language(p.lg);
+		safebox.Controler.g.replace("./index.html");
 	}
 	,onChangeSafeModeClick: function(e) {
 		if(this.model.get_isSafeMode()) this.cb.show(this.lang.goToNoSafeMode,$bind(this,this.onChangeSafeMode)); else this.cb.show(this.lang.goToSafeMode,$bind(this,this.onChangeSafeMode));
@@ -2474,6 +2519,9 @@ safebox.Controler.prototype = {
 		var fo = this.model.selectedFormOrFolder;
 		fo.insertNewRecord();
 	}
+	,onCloseApp: function(e) {
+		navigator.app.exitApp();
+	}
 	,onWindowClick: function(e) {
 		apix.common.display.ElementExtender.hide(this.view.get_menu());
 	}
@@ -2500,6 +2548,11 @@ safebox.Model.prototype = {
 	}
 	,get_currUserId: function() {
 		return this._currUserId;
+	}
+	,set_language: function(v) {
+		var del = 31536000 * 1000;
+		js.Cookie.set("safeboxLanguage",v,del);
+		return v;
 	}
 	,get_isSafeMode: function() {
 		return !js.Cookie.exists("safeboxUnsafe");
@@ -2643,10 +2696,12 @@ safebox.Model.prototype = {
 	}
 	,__class__: safebox.Model
 };
-safebox.SafeBox = function(bu,su,l,p) {
+safebox.SafeBox = function(bu,su,l,p,fl) {
+	if(fl == null) fl = false;
 	this.model = new safebox.Model(bu,su,l,p);
 	this.view = new safebox.View(this.model);
 	this.controler = new safebox.Controler(this.model,this.view);
+	this.firstLaunch = fl;
 	this.start();
 };
 safebox.SafeBox.__name__ = ["safebox","SafeBox"];
@@ -2658,7 +2713,7 @@ safebox.SafeBox.prototype = {
 		this.view.initConfirm();
 		this.model.createRootFolder(this.view);
 		this.controler.initEvent();
-		this.controler.start();
+		this.controler.start(this.firstLaunch);
 	}
 	,__class__: safebox.SafeBox
 };
@@ -2865,8 +2920,6 @@ safebox.View.prototype = {
 		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_validPicto"),function(c2) {
 			apix.common.display.ElementExtender.tip(c2,_g.lang.validPictoTitle);
 		});
-		apix.common.display.ElementExtender.link(this.get_linkLang1(),this.lang.langApp1Src);
-		apix.common.display.ElementExtender.link(this.get_linkLang2(),this.lang.langApp2Src);
 		apix.common.display.ElementExtender.text(this.get_linkLang1(),this.lang.langApp1);
 		apix.common.display.ElementExtender.text(this.get_linkLang2(),this.lang.langApp2);
 		apix.common.display.ElementExtender.link(this.get_linkDoc(),this.lang.menuDocSrc);

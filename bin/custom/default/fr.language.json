@@ -1,8 +1,9 @@
 {
+  "language":"fr",
   "langApp1": "English",
   "langApp2": "Español",
-  "langApp1Src": "./en.html",
-  "langApp2Src": "./es.html",
+  "langApp1Src": "en",
+  "langApp2Src": "es",
   "clipBoardCopyError":"Votre navigateur n'est pas Html5 ou votre machine n'autorise pas la copie automatique vers le presse-papier.<br> Faites la copie vous même.",
    "signInIdHolder": "Entrer votre email",
    "signUpIdHolder": "Entrer un email valide",
@@ -50,11 +51,11 @@
   "deleteConfirm": "Voulez-vous vraiment supprimer l'élément ",
   "startAlertTitle": "Conseils de démarrage:",
   "aboutTitle": "A propos",
-  "about": [
+  "about": [ 
     "<div style='text-align:center;font-weight:bold;'>Apix MyBox</div>",
     "<br/>Disponible sur :<br/>",
-    "<div style='padding:1rem;border:1px solid #999;font-size:.7rem;' >",
-    "<a href='https://marketplace.firefox.com/app/Apix-MyBox' target='blank'>Firefox-marketplace</a> pour Firefox-OS. <br/>",
+    "<div style='padding:1rem;border:1px solid #999;font-size:1rem;' >",
+    "<a href='https://marketplace.firefox.com/app/apix-myBox' target='blank'>Firefox-marketplace</a> pour Firefox-OS. <br/>",
     "<a href='https://play.google.com/store/apps/details?id=org.apixline.mybox' target='blank'>Google Play</a> pour Android. <br/>",
     "<a href='http://www.apixline.org/pm/app/web/myBox/' target='blank'>Internet</a> pour tous les autres.",
     "</div>",
@@ -63,6 +64,31 @@
     "<div style='text-align:center;font-size:.5rem;'><a href='mailto:info@pixaline.net?subject=MyBox Traduction anglaise de la doc'>Traduction anglaise de la documentation</a><br/></div>",
     ""
   ],
+  "warningTitle":"IMPORTANT !",
+  "warningValidText":"J'ai compris.",
+  "warning": [ 
+    "<div style='font-size:1.1rem;'>",
+    "MyBox est fournie telle-quelle, sans garantie d'aucune sorte ni responsabilité contractuelle.<br/>",
+	"</div>",
+	"<br/>",	
+    "Cette version en ligne doit être utilisée pour tester l'application.<br/>",
+	"<br/>",
+	"<div style='font-size:1rem;'>",
+    "Le serveur utilisé ne vous garanti pas que les problèmes de sécurité, sauvegarde ou de confidentialité sont traités ",
+	"comme ils le seraient si vous aviez vous-même choisi le serveur en fonction de l'importance des données saisies.<br/>",
+	"</div>",
+	"<br/>",
+	"Pour avoir le contrôle total, vous devez télécharger (gratuitement) une version exécutable ou source ",
+	"et l'installer sur un serveur de votre choix.<br/>",
+	"<br/>",
+	"Pour connaître la procédure, <br/>voir la <a href='http://www.apixline.org/pm/app/web/myBox/doc/help.fr.html#install' target='blank'>documentation</a> ",
+	"puis allez sur <a href='https://github.com/flashline/Apix-MyBox' target='blank'>github.com</a> .<br/>",
+	"ou<br/>",
+	"contactez-moi à <a href='mailto:info@pixaline.net?subject=Aide pour installation MyBox'>info@pixaline.net</a>, si vous pensez ne pas savoir le faire vous-même.<br/>",
+	
+	"<br/>"
+  ],
+ 
   "alertBeforeFolderCreation": [
     "Vous n'avez pas encore créez de dossier, ni de formulaire. <br/>",
     "Cliquer sur le menu en haut à droite, puis sur 'Gestion dossiers et formulaires'.<br/>",

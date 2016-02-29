@@ -7,6 +7,8 @@ import apix.common.event.timing.Delay;
 import apix.common.util.Global ;
 import apix.common.util.Object;
 import apix.common.util.xml.XmlParser;
+import cordovax.CordovaEvent;
+import cordovax.navigator.App;
 import safebox.models.Folder;
 import safebox.models.Form;
 /**
@@ -37,26 +39,31 @@ class Controler {
 		view = v;
 		model = m; lang = model.lang;
 		server = model.server; 
-		model.version = "v 1.0.2";
+		model.version = "v 1.0.3 r 1";
 		//
 		g = Global.get();
 	}
 	public function initEvent () {	
+		Common.document.on(CordovaEvent.BACK_BUTTON, onCloseApp) ;  
 		Common.window.on("resize", onResize);
 		view.resize();
 	}
-	public function start () { 	
-		cb = Confirm.get();		
-		askConnectInfo ();	
+	public function start (?fl:Bool = false) { 		
+		cb = Confirm.get();			
+		if (fl) showWarning();
+		else askConnectInfo ();	
     }
 	/**
 	 * @private
 	 */
-		//
+	//
 	//
 	// server ask/answers
 	//
 	//
+	 function showWarning () { 			 
+		g.alert(lang.warning,askConnectInfo,lang.warningTitle,lang.warningValidText);		
+    }	
 	function askConnectInfo () {
 		server.serverEvent.off(); 
 		server.serverEvent.on(onAnswerConnectInfo); 
@@ -122,7 +129,6 @@ class Controler {
 				model.data = null;
 			}
 			else {				
-				//trace("onAnswerSignIn");trace("result=\n" + model.data.toString());					
 				model.writeUserCookie();
 				doAfterConnection();
 			}			
@@ -158,8 +164,6 @@ class Controler {
 			model.currUserId =  e.result.id;	
 			model.writeUserCookie();
 			goMain () ;	
-			//trace("signUp ok");
-			
 		} else {			
 			g.alert(lang.serverFatalError,onErrorCallBackSignUp);
 		}
@@ -246,19 +250,25 @@ class Controler {
 		if (view.bBackSignIn.hasLst(StandardEvent.CLICK) ) view.bBackSignIn.off(StandardEvent.CLICK, onBackSignInClick);
 		
 		if (!view.bConnect.hasLst(StandardEvent.CLICK) ) view.bConnect.on(StandardEvent.CLICK, onSignInClick);		
-		if (!view.bGoSignUp.hasLst(StandardEvent.CLICK) ) view.bGoSignUp.on(StandardEvent.CLICK, onGoSignUpClick);		
+		if (!view.bGoSignUp.hasLst(StandardEvent.CLICK) ) view.bGoSignUp.on(StandardEvent.CLICK, onGoSignUpClick);	
+		setupLangEvent ();
 	}
 	function setupSignUpEvent () {
 		if (view.bConnect.hasLst(StandardEvent.CLICK) ) view.bConnect.off(StandardEvent.CLICK, onSignInClick);
 		if (view.bGoSignUp.hasLst(StandardEvent.CLICK) ) view.bGoSignUp.off(StandardEvent.CLICK, onGoSignUpClick);
 		if (!view.bConnect.hasLst(StandardEvent.CLICK) ) view.bConnect.on(StandardEvent.CLICK, onSignUpClick);
-		if (!view.bBackSignIn.hasLst(StandardEvent.CLICK) ) view.bBackSignIn.on(StandardEvent.CLICK, onBackSignInClick);		
+		if (!view.bBackSignIn.hasLst(StandardEvent.CLICK) ) view.bBackSignIn.on(StandardEvent.CLICK, onBackSignInClick);
+		setupLangEvent ();
+	}
+	function setupLangEvent () {
+		if (!view.linkLang1.hasLst(StandardEvent.CLICK) ) view.linkLang1.on(StandardEvent.CLICK, onChangeLang,false,{lg:lang.langApp1Src});
+		if (!view.linkLang2.hasLst(StandardEvent.CLICK) ) view.linkLang2.on(StandardEvent.CLICK, onChangeLang,false,{lg:lang.langApp2Src});		
 	}
 	function setupStdViewEvent () {
 		if (!view.bAdmin.hasLst(StandardEvent.CLICK) ) view.bAdmin.on(StandardEvent.CLICK, onAdminClick);
 		if (!view.bDoc.hasLst(StandardEvent.CLICK) ) view.bDoc.on(StandardEvent.CLICK, onDocClick);
-		if (!view.bLang1.hasLst(StandardEvent.CLICK) ) view.bLang1.on(StandardEvent.CLICK, onChangeLang1);
-		if (!view.bLang2.hasLst(StandardEvent.CLICK) ) view.bLang2.on(StandardEvent.CLICK, onChangeLang2);		
+		if (!view.bLang1.hasLst(StandardEvent.CLICK) ) view.bLang1.on(StandardEvent.CLICK, onChangeLang,false,{lg:lang.langApp1Src});
+		if (!view.bLang2.hasLst(StandardEvent.CLICK) ) view.bLang2.on(StandardEvent.CLICK, onChangeLang,false,{lg:lang.langApp2Src});	
 		if (!view.bOpenMenu.hasLst(StandardEvent.CLICK) ) view.bOpenMenu.on(StandardEvent.CLICK, onOpenMenuClick);
 		view.bGoPrevious.off() ; view.bGoPrevious.on(StandardEvent.CLICK, onLogOffClick);
 		if (!Common.window.hasLst(StandardEvent.CLICK) ) Common.window.on(StandardEvent.CLICK, onWindowClick);
@@ -348,13 +358,13 @@ class Controler {
 		setupAdminMode();
 	}
 	function onDocClick  (e:ElemEvent) {	
-		g.open(lang.menuDocSrc,"_blank");
+		//g.replace(lang.menuDocSrc);
+		g.open(lang.menuDocSrc,"_self");
 	}
-	function onChangeLang1  (e:ElemEvent) {	
-		g.open(lang.langApp1Src,"_self");
-	}
-	function onChangeLang2  (e:ElemEvent) {	
-		g.open(lang.langApp2Src,"_self");
+	function onChangeLang  (e:ElemEvent, ?p:Dynamic) { 	
+		model.language = p.lg;
+		g.replace("./index.html");
+		//g.open("./", "_self");
 	}
 	function onChangeSafeModeClick  (e:ElemEvent) {	
 		if (model.isSafeMode) cb.show(lang.goToNoSafeMode,onChangeSafeMode);
@@ -453,7 +463,9 @@ class Controler {
 		fo.insertNewRecord();
 	}	
 	
-	
+	function  onCloseApp  (e:CordovaEvent) {
+		 App.exitApp();
+	}
 	//
 	function  onWindowClick  (e:ElemEvent) {
 		view.menu.hide();

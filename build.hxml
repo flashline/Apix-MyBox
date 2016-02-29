@@ -1,6 +1,7 @@
 -cp src
 #modify if apix/ is in an other directory
 -cp ../classes/Apix/
+-cp ../classes/Cordova/
 #
 -js bin/js/main.js
 -dce full

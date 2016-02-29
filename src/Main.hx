@@ -47,27 +47,56 @@ using apix.common.event.EventTargetExtender;
 class Main  {
 	static var g:Global;	
 	var lang:Object;
+	var lg:String;
 	var param:Object; 
 	var spinner:Spinner; 
-	static inline var version:String="1.0.0";
+	var firstLaunch:Bool; 
+	static inline var version:String="1.0.1";
 	/**
 	 * constructor
 	 */
 	public function new () {
-		Common.window.on("load",startSpinner) ;
+		Common.window.on("load",chooseLanguage) ;
 	}
 
 	/**
 	 * @private
 	 */
-	
+	function chooseLanguage () {
+		if (LocalShared.exists("safeboxLanguage")) {
+			lg = LocalShared.get("safeboxLanguage");
+			if (lg != "fr" && lg != "en" && lg != "es") {
+				LocalShared.remove("safeboxLanguage");
+				chooseLanguage();
+			}
+			else {
+				"#safeBox #apix_chooseLangBox".get().delete();
+				firstLaunch = false;
+				startSpinner ();
+			}
+		}
+		else {
+			"#safeBox #apix_chooseLangBox".get().show();	
+			"#safeBox #apix_chooseLangBox".get().visible(true);
+			"#safeBox #apix_enLang".get().on(StandardEvent.CLICK, onLangChoosen, false, { lg:"en" } );	
+			"#safeBox #apix_frLang".get().on(StandardEvent.CLICK, onLangChoosen, false, { lg:"fr" } );	
+			"#safeBox #apix_esLang".get().on(StandardEvent.CLICK, onLangChoosen, false, { lg:"es" } );	
+			firstLaunch = true;
+		}
+	}
+	function onLangChoosen (e:ElemEvent, ?p:Dynamic) {  
+		lg = p.lg;
+		var del = 365 * 24 * 60 * 60 * 1000;
+		LocalShared.set("safeboxLanguage", lg , del);
+		startSpinner();
+	}
 	function startSpinner () {  	
 		spinner=Spinner.get({callBack:readLanguage}) ; // {skinPath:"apix/default/Spinner/mobile/"}
 	}
 	function readLanguage () {  
 		var ll = new JsonLoader();
 		ll.read.on(readParam);
-		ll.load(Cst.BASE_URL + Cst.LANGUAGE_SRC);		
+		ll.load(Cst.BASE_URL + Cst.LANGUAGE_PATH+lg+Cst.LANGUAGE_FILE);		
 	}
 	function readParam (e:JsonLoaderEvent) {  
 		e.target.read.off(readParam);
@@ -81,7 +110,7 @@ class Main  {
 		e.target.read.off(start);
 		param = e.tree; 
 		//"param".trace(param.toString());
-		new SafeBox(Cst.BASE_URL,Cst.SERVER_URL,lang,param);
+		new SafeBox(Cst.BASE_URL,Cst.SERVER_URL,lang,param,firstLaunch);
 	}
 	
 	// app entry point

@@ -43,7 +43,8 @@ This app is designed to run on a valid HTML5 browser.
 
 ##Installation 
 - Download zip and install the content of **bin/** into local or remote web-server.
-- Launch the program ./php/db.create.php to create the database and tables.  
+- Edit **./php/db_connect.inc.php** to modify the MySql connection -hostname,id,password.
+- Launch the program **./php/db.create.php** to create the database and tables.  
 - PHP and MySql required.  
 
 ##Facultative modifications : 

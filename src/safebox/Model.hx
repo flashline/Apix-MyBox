@@ -38,7 +38,18 @@ class Model {
 	function get_currUserId() :String { 
 		return _currUserId ;
 	}
-	
+	/**
+	 * app curr language
+	 */	
+	public var language(get, set):String;
+	function  set_language (v:String) : String {
+		var del = 365 * 24 * 60 * 60 * 1000;
+		LocalShared.set("safeboxLanguage", v , del);
+		return v;
+	}
+	function get_language() :String { 
+		return lang.language ;
+	}
 	/**
 	 * pwd
 	 */

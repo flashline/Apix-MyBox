@@ -51,14 +51,18 @@ class SafeBox {
 	 * controler related class
 	 */
 	public var controler(default, null):Controler;
+	//
+	//
+	var firstLaunch:Bool; 
 	
 	/**
 	 * constructor
 	 */
-	public function new (bu:String, su:String , l:Object, p:Object) {
+	public function new (bu:String, su:String , l:Object, p:Object,?fl:Bool=false) {
 		model = new Model(bu,su,l,p) ; 
 		view = new View(model);
-		controler = new Controler(model, view);			
+		controler = new Controler(model, view);	
+		firstLaunch = fl;
 		start();
     	//
 		
@@ -73,7 +77,7 @@ class SafeBox {
 		view.initConfirm();	
 		model.createRootFolder(view);
     	controler.initEvent();	
-		controler.start();	
+		controler.start(firstLaunch);	
     }
 	
 	

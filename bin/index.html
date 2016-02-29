@@ -9,9 +9,9 @@
 		<meta name="author" content="Delettre jean-michel" />	
 		<meta name="description" content="Web/Mobile App to store secure data" />
 		<meta name="keywords" content="safe, safe-form, forms safe, safe-box, web-app,application web,pc,mac,mobile,smartphone,grand écran,large screen,html5,haxe,js,php" />
-		<link rel="shortcut icon" type="image/x-icon" sizes="128x128" href="img/icon.128.ico" />
+		<link rel="shortcut icon" type="image/x-icon" sizes="64x64" href="img/icon.64.ico" />
 		<!-- haxe vars and css api -->
-		<script type="text/javascript" src="js/fr.baseUrl.js"></script> 
+		<script type="text/javascript" src="js/baseUrl.js"></script> 
 		<link href="css/style.css" rel="stylesheet" type="text/css"/>		
 	</head>
 	<body>
@@ -55,10 +55,10 @@
 					
 				</div>	
 				<div class="apix_links links">						
-					<a class="apix_linkDoc" 	href="doc/help.fr.html" target="_blank">Documentation</a><span></span>
-					<a class="apix_linkLang1" 	href="en.html"  >english app</a><span></span>
-					<a class="apix_linkLang2" 	href="es.html" >español app</a><span></span>
-					<a class="apix_linkGit" 	href="#" target="_blank">github.com</a><span></span>
+					<a class="apix_linkDoc" 	href="doc/help.fr.html" target="_self" >Documentation</a><span></span>
+					<a class="apix_linkLang1" 	  >english app</a><span></span>
+					<a class="apix_linkLang2" 	 >español app</a><span></span>
+					<a class="apix_linkGit" 	href="https://github.com/flashline/Apix-MyBox" target="_blank">github.com</a><span></span>
 				</div>
 				
 			</div>
@@ -168,6 +168,24 @@
 				<span class="vBar"></span>
 				<span class="hBar"></span>						
 			</div>					
+			<!-- choose lang popup -->
+			<div id="apix_chooseLangBox" class="alertBox apix_initHidden">
+				<div  class="alertInner" >
+					<div class="alertLabel"><span class="apix_label">Wellcome ! Bienvenue ! Bienvenida !</span></div>
+					<div class="apix_content alertContent">		
+						<ul>
+							<li>Choose your language please.<br/><br/></li>
+							<li>Choisissez votre langue svp.<br/><br/></li>
+							<li>Elija su idioma por favor.<br/><br/></li>							
+						</ul>
+					</div>
+					<div class="buttonRow">				
+						<button id="apix_enLang" class="small" >English</button>	
+						<button id="apix_frLang" class="small" >Français</button>	
+						<button id="apix_esLang" class="small" >Español</button>	
+					</div>
+				</div>
+			</div>
 			<!-- alert popup -->
 			<div id="apix_alertBox" class="alertBox apix_initHidden">
 				<div  class="alertInner" >

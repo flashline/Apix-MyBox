@@ -110,8 +110,6 @@ class View {
 		"#safeBox .apix_cancelPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.cancelPictoTitle); } );
 		"#safeBox .apix_validPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.validPictoTitle); } );
 		
-		linkLang1.link(lang.langApp1Src);
-		linkLang2.link(lang.langApp2Src);
 		linkLang1.text(lang.langApp1);
 		linkLang2.text(lang.langApp2);
 		linkDoc.link(lang.menuDocSrc);

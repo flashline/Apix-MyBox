@@ -17,6 +17,7 @@
   <classpaths>
     <class path="src" />
     <class path="D:\www\__HAXE\classes\Apix\" />
+    <class path="D:\www\__HAXE\classes\Cordova\" />
     <class path="D:\www\__HAXE\classes\html\apix\" />
     <class path="D:\www\cordova\uicompo" />
     <class path="C:\Program Files (x86)\Haxe\haxe313\std" />

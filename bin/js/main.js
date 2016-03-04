@@ -414,8 +414,8 @@ apix.common.display.Alert = function(el,txElem,bElem,tEl,tTx,vTx) {
 	this.titleElem = tEl;
 	this.textElem = txElem;
 	this.validElem = bElem;
-	apix.common.display.ElementExtender.inner(this.titleElem,tTx);
-	apix.common.display.ElementExtender.inner(this.validElem,vTx);
+	this.defTitleLabel = tTx;
+	this.defValidLabel = vTx;
 	this.enable();
 };
 apix.common.display.Alert.__name__ = ["apix","common","display","Alert"];
@@ -447,8 +447,8 @@ apix.common.display.Alert.prototype = {
 			}
 		}
 		if(apix.common.util.Global.get().strVal(v,"") == "") v = "Alert.display() : Programming error in assign message ! May be dont use 'lang' object";
-		if(titleLabel != null) apix.common.display.ElementExtender.inner(this.titleElem,titleLabel);
-		if(validLabel != null) apix.common.display.ElementExtender.inner(this.validElem,validLabel);
+		if(titleLabel != null) apix.common.display.ElementExtender.inner(this.titleElem,titleLabel); else apix.common.display.ElementExtender.inner(this.titleElem,this.defTitleLabel);
+		if(validLabel != null) apix.common.display.ElementExtender.inner(this.validElem,validLabel); else apix.common.display.ElementExtender.inner(this.validElem,this.defValidLabel);
 		this.callBack = cb;
 		apix.common.display.ElementExtender.show(this.ctnrElem);
 		apix.common.display.ElementExtender.visible(this.ctnrElem,true);
@@ -519,13 +519,13 @@ apix.common.display.Confirm = function(el,txElem,bvElem,bcElem,tEl,tTx,vTx,cTx) 
 	if(vTx == null) vTx = "Yes";
 	if(tTx == null) tTx = "Confirm ?";
 	this.cancelElem = bcElem;
-	apix.common.display.ElementExtender.inner(this.cancelElem,cTx);
+	this.defCancelLabel = cTx;
 	apix.common.display.Alert.call(this,el,txElem,bvElem,tEl,tTx,vTx);
 	apix.common.display.Confirm._instance = this;
 };
 apix.common.display.Confirm.__name__ = ["apix","common","display","Confirm"];
 apix.common.display.Confirm.get = function() {
-	if(apix.common.display.Confirm._instance == null) haxe.Log.trace("f:: new Confirm() not executed !",{ fileName : "Confirm.hx", lineNumber : 33, className : "apix.common.display.Confirm", methodName : "get"});
+	if(apix.common.display.Confirm._instance == null) haxe.Log.trace("f:: new Confirm() not executed !",{ fileName : "Confirm.hx", lineNumber : 36, className : "apix.common.display.Confirm", methodName : "get"});
 	return apix.common.display.Confirm._instance;
 };
 apix.common.display.Confirm.__super__ = apix.common.display.Alert;
@@ -541,9 +541,9 @@ apix.common.display.Confirm.prototype = $extend(apix.common.display.Alert.protot
 				v += arr[i];
 			}
 		}
-		if(titleLabel != null) apix.common.display.ElementExtender.inner(this.titleElem,titleLabel);
-		if(validLabel != null) apix.common.display.ElementExtender.inner(this.validElem,validLabel);
-		if(cancelLabel != null) apix.common.display.ElementExtender.inner(this.cancelElem,cancelLabel);
+		if(titleLabel != null) apix.common.display.ElementExtender.inner(this.titleElem,titleLabel); else apix.common.display.ElementExtender.inner(this.titleElem,this.defTitleLabel);
+		if(validLabel != null) apix.common.display.ElementExtender.inner(this.validElem,validLabel); else apix.common.display.ElementExtender.inner(this.validElem,this.defValidLabel);
+		if(cancelLabel != null) apix.common.display.ElementExtender.inner(this.cancelElem,cancelLabel); else apix.common.display.ElementExtender.inner(this.cancelElem,this.defCancelLabel);
 		this.confirmCallBack = cb;
 		apix.common.display.ElementExtender.show(this.ctnrElem);
 		apix.common.display.ElementExtender.visible(this.ctnrElem,true);
@@ -2182,7 +2182,7 @@ safebox.Controler = function(m,v) {
 	this.model = m;
 	this.lang = this.model.lang;
 	this.server = this.model.server;
-	this.model.version = "v 1.0.3 r 2";
+	this.model.version = "v 1.0.3 - r 4";
 	safebox.Controler.g = apix.common.util.Global.get();
 };
 safebox.Controler.__name__ = ["safebox","Controler"];
@@ -3409,11 +3409,45 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 		apix.common.display.ElementExtender.on(this.get_bCancelRecordInsert(),"click",$bind(this,this.onCancelRecordInsert));
 		apix.common.display.ElementExtender.on(this.get_bValidRecordInsert(),"click",$bind(this,this.onValidRecordInsert));
 		apix.common.display.ElementExtender.joinEnterKeyToClick(this.get_bValidRecordInsert(),null,this.recordFrameFieldElems[0].valueElem);
+		this.setupTextAreaEvent();
+	}
+	,setupTextAreaEvent: function() {
+		var _g = 0;
+		var _g1 = this.fields;
+		while(_g < _g1.length) {
+			var fi = _g1[_g];
+			++_g;
+			var el = this.recordFrameFieldElems[fi.index].valueElem;
+			if(apix.common.display.ElementExtender.hasLst(el)) apix.common.display.ElementExtender.off(el);
+			if(fi.get_isMultiLines()) {
+				apix.common.display.ElementExtender.on(el,"focus",$bind(this,this.onTextAreaFocus));
+				apix.common.display.ElementExtender.on(el,"blur",$bind(this,this.onTextAreaBlur));
+			}
+		}
+	}
+	,removeTextAreaEvent: function() {
+		var _g = 0;
+		var _g1 = this.fields;
+		while(_g < _g1.length) {
+			var fi = _g1[_g];
+			++_g;
+			if(fi.get_isMultiLines()) {
+				var el = this.recordFrameFieldElems[fi.index].valueElem;
+				if(el != null && apix.common.display.ElementExtender.hasLst(el)) apix.common.display.ElementExtender.off(el);
+			}
+		}
+	}
+	,onTextAreaFocus: function(e,p) {
+		if(this.get_bValidRecordInsert() != null) apix.common.display.ElementExtender.clearEnterKeyToClick(this.get_bValidRecordInsert());
+	}
+	,onTextAreaBlur: function(e,p) {
+		if(this.get_bValidRecordInsert() != null) apix.common.display.ElementExtender.joinEnterKeyToClick(this.get_bValidRecordInsert());
 	}
 	,removeInsertRecordEvent: function() {
 		if(apix.common.display.ElementExtender.hasLst(this.get_bCancelRecordInsert(),"click")) apix.common.display.ElementExtender.off(this.get_bCancelRecordInsert(),"click",$bind(this,this.onCancelRecordInsert));
 		if(apix.common.display.ElementExtender.hasLst(this.get_bValidRecordInsert(),"click")) apix.common.display.ElementExtender.off(this.get_bValidRecordInsert(),"click",$bind(this,this.onValidRecordInsert));
 		apix.common.display.ElementExtender.clearEnterKeyToClick(this.get_bValidRecordInsert());
+		this.removeTextAreaEvent();
 	}
 	,onCancelRecordInsert: function(e) {
 		this.removeInsertRecordEvent();
@@ -3560,7 +3594,7 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 		} else {
 			tl = null;
 			hd = null;
-			haxe.Log.trace("f:: Form. insertNewElement() type error",{ fileName : "Form.hx", lineNumber : 439, className : "safebox.models.Form", methodName : "insertNewElement"});
+			haxe.Log.trace("f:: Form. insertNewElement() type error",{ fileName : "Form.hx", lineNumber : 465, className : "safebox.models.Form", methodName : "insertNewElement"});
 		}
 		this.showNameFrame(tl,na,hd,type);
 		apix.common.display.ElementExtender.off(this.get_bNameFrameCancel());
@@ -3917,6 +3951,9 @@ safebox.models.Field.prototype = $extend(safebox.models.Folder.prototype,{
 	,get_inputFieldString: function() {
 		if(this.rowNumber > 1) return "apix_textArea"; else return "apix_textInput";
 	}
+	,get_isMultiLines: function() {
+		return this.rowNumber > 1;
+	}
 	,get_inputFieldToHideString: function() {
 		if(this.rowNumber > 1) return "apix_textInput"; else return "apix_textArea";
 	}
@@ -3944,10 +3981,10 @@ safebox.models.Field.prototype = $extend(safebox.models.Folder.prototype,{
 		safebox.models.Folder.prototype.removeEvent.call(this);
 	}
 	,open: function() {
-		haxe.Log.trace("f:: not possible to use Field.open() !!",{ fileName : "Field.hx", lineNumber : 96, className : "safebox.models.Field", methodName : "open"});
+		haxe.Log.trace("f:: not possible to use Field.open() !!",{ fileName : "Field.hx", lineNumber : 99, className : "safebox.models.Field", methodName : "open"});
 	}
 	,close: function() {
-		haxe.Log.trace("f:: not possible to use Field.close() !!",{ fileName : "Field.hx", lineNumber : 100, className : "safebox.models.Field", methodName : "close"});
+		haxe.Log.trace("f:: not possible to use Field.close() !!",{ fileName : "Field.hx", lineNumber : 103, className : "safebox.models.Field", methodName : "close"});
 	}
 	,setupAdminMode: function() {
 		apix.common.display.ElementExtender.show(this.get_pictoCtnr(),"inline-block");
@@ -4238,11 +4275,45 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 		apix.common.display.ElementExtender.on(this.get_bFrameCancel(),"click",$bind(this,this.onFrameCancel));
 		apix.common.display.ElementExtender.on(this.get_bFrameValid(),"click",$bind(this,this.onFrameValidUpdate));
 		apix.common.display.ElementExtender.joinEnterKeyToClick(this.get_bFrameValid(),null,this.frameFieldElems[0].valueElem);
+		this.setupTextAreaEvent();
+	}
+	,setupTextAreaEvent: function() {
+		var _g = 0;
+		var _g1 = this.fields;
+		while(_g < _g1.length) {
+			var fi = _g1[_g];
+			++_g;
+			var el = this.frameFieldElems[fi.index].valueElem;
+			if(apix.common.display.ElementExtender.hasLst(el)) apix.common.display.ElementExtender.off(el);
+			if(fi.get_isMultiLines()) {
+				apix.common.display.ElementExtender.on(el,"focus",$bind(this,this.onTextAreaFocus));
+				apix.common.display.ElementExtender.on(el,"blur",$bind(this,this.onTextAreaBlur));
+			}
+		}
+	}
+	,removeTextAreaEvent: function() {
+		var _g = 0;
+		var _g1 = this.fields;
+		while(_g < _g1.length) {
+			var fi = _g1[_g];
+			++_g;
+			if(fi.get_isMultiLines()) {
+				var el = this.frameFieldElems[fi.index].valueElem;
+				if(el != null && apix.common.display.ElementExtender.hasLst(el)) apix.common.display.ElementExtender.off(el);
+			}
+		}
+	}
+	,onTextAreaFocus: function(e) {
+		if(this.get_bFrameValid() != null) apix.common.display.ElementExtender.clearEnterKeyToClick(this.get_bFrameValid());
+	}
+	,onTextAreaBlur: function(e) {
+		if(this.get_bFrameValid() != null) apix.common.display.ElementExtender.joinEnterKeyToClick(this.get_bFrameValid());
 	}
 	,removeUpdateFrameEvent: function() {
 		if(apix.common.display.ElementExtender.hasLst(this.get_bFrameCancel(),"click")) apix.common.display.ElementExtender.off(this.get_bFrameCancel(),"click",$bind(this,this.onFrameCancel));
 		if(apix.common.display.ElementExtender.hasLst(this.get_bFrameValid(),"click")) apix.common.display.ElementExtender.off(this.get_bFrameValid(),"click",$bind(this,this.onFrameValidUpdate));
 		apix.common.display.ElementExtender.clearEnterKeyToClick(this.get_bFrameValid());
+		this.removeTextAreaEvent();
 	}
 	,onFrameCancel: function(e) {
 		this.removeUpdateFrameEvent();
@@ -4312,7 +4383,7 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 	}
 	,remove: function() {
 		this.clear();
-		if(this.elem == null) haxe.Log.trace("Erreur in Record.remove(). Instance : label=" + this.label + " recId=" + this.recId,{ fileName : "Record.hx", lineNumber : 256, className : "safebox.models.Record", methodName : "remove"}); else apix.common.display.ElementExtender["delete"](this.elem);
+		if(this.elem == null) haxe.Log.trace("Erreur in Record.remove(). Instance : label=" + this.label + " recId=" + this.recId,{ fileName : "Record.hx", lineNumber : 282, className : "safebox.models.Record", methodName : "remove"}); else apix.common.display.ElementExtender["delete"](this.elem);
 		this.getParent().records.splice(this.index,1);
 	}
 	,showUpdateRecordFrame: function(frameTitle) {

@@ -26,6 +26,10 @@ body {
 #safeBox .tab {
 	display:table;
 }
+#safeBox textarea {
+	line-height:1rem;
+}
+
 #safeBox .col {
 	display:table-cell;
 	vertical-align: top;
@@ -235,6 +239,7 @@ body {
 	overflow-x:hidden;
 	background-color:#f4f9ff;
 	border-left:1px dotted #aaa;
+	padding-bottom:60px; /* used because add button over the last field of the scrollCtnr */
 }
 #safeBox .viewBody .subCtnr {
 	padding-left:0px;
@@ -312,8 +317,6 @@ body {
 }
 
 #safeBox .txtField input {
-	/*ici height:45px;*/
-	/*delete if not used */
 	margin-top: 0px;
 	margin-left: 0px;
 	margin-right: 0px;
@@ -655,6 +658,7 @@ body {
 		overflow:auto;
 	
 	}
+	
 #safeBox .alertInner .buttonRow  {
 		text-align:center;
 		padding-top:1rem;
@@ -752,25 +756,12 @@ body {
 }
 
 @media only screen and (min-width:639px)   {
-	/* folder tree buttons */
-	
-	#safeBox .titleCtnr {
-		/*ici width:500px; */
-	}
-	
-	#safeBox .txtField  {
-		/* max-width:400px;	*/
-	}
 	
 
 }
 
 @media only screen and (min-width:800px)   {
 	/* folder tree buttons */
-	
-	#safeBox .titleCtnr {
-		/*width:650px; */
-	}
 	
 	#safeBox .folderButton {
 		max-width:795px;

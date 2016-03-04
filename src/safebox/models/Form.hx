@@ -288,12 +288,38 @@ class Form extends SubModel  {
 		if (bValidRecordInsert.hasLst()) bValidRecordInsert.off(StandardEvent.CLICK);
 		bCancelRecordInsert.on(StandardEvent.CLICK, onCancelRecordInsert);
 		bValidRecordInsert.on(StandardEvent.CLICK, onValidRecordInsert);	
-		bValidRecordInsert.joinEnterKeyToClick(null,recordFrameFieldElems[0].valueElem);
+		bValidRecordInsert.joinEnterKeyToClick(null, recordFrameFieldElems[0].valueElem);
+		setupTextAreaEvent () ;
+	}
+	function setupTextAreaEvent () {			
+		for (fi in fields) {
+			var el = recordFrameFieldElems[fi.index].valueElem; 
+			if (el.hasLst()) el.off();
+			if (fi.isMultiLines) {				
+				el.on(StandardEvent.FOCUS, onTextAreaFocus);
+				el.on(StandardEvent.BLUR, onTextAreaBlur);			
+			}
+		}
+	}
+	function removeTextAreaEvent () {			
+		for (fi in fields) {
+			if (fi.isMultiLines) {
+				var el = recordFrameFieldElems[fi.index].valueElem; 
+				if (el != null && el.hasLst()) el.off();
+			}
+		}
+	}
+	function onTextAreaFocus (e:ElemEvent,p:Dynamic) {			
+		if (bValidRecordInsert!=null) bValidRecordInsert.clearEnterKeyToClick();
+	}
+	function onTextAreaBlur (e:ElemEvent,p:Dynamic) {			
+		if (bValidRecordInsert!=null) bValidRecordInsert.joinEnterKeyToClick();
 	}
 	function removeInsertRecordEvent () {			
 		if (bCancelRecordInsert.hasLst(StandardEvent.CLICK) ) bCancelRecordInsert.off(StandardEvent.CLICK,onCancelRecordInsert);
 		if (bValidRecordInsert.hasLst(StandardEvent.CLICK) ) bValidRecordInsert.off(StandardEvent.CLICK, onValidRecordInsert);			
 		bValidRecordInsert.clearEnterKeyToClick();
+		removeTextAreaEvent ();
 	}
 	function onCancelRecordInsert (e:ElemEvent) {	
 		removeInsertRecordEvent();
@@ -310,7 +336,7 @@ class Form extends SubModel  {
 			pfx = "`~¤";
 		}			
 		askRecordInsert (fkList,fvList);		
-	}	 
+	}	
 	function askRecordInsert (fkList:String,fvList:String) {			
 		server.serverEvent.off(); 
 		server.serverEvent.on(onAnswerRecordInsert);		

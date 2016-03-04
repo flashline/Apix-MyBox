@@ -66,7 +66,7 @@
     ""
   ],
    "warningTitle":"IMPORTANT !",
-  "warningValidText":"I understand...",
+  "warningValidText":"I understood...",
   "warning": [ 
     "<div style='font-size:1.1rem;'>",
     "MyBox is provided as-is without warranty of any kind or contractual liability.<br/>",

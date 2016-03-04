@@ -61,6 +61,9 @@ class Field extends Folder {
 		if (rowNumber > 1) return "apix_textArea" ;
 		else return  "apix_textInput" ;
 	}	
+	public var isMultiLines (get, null):Bool ; function get_isMultiLines() :Bool { 
+		return (rowNumber > 1)  ;
+	}	
 	public var inputFieldToHideString (get, null):String ; function get_inputFieldToHideString() :String { 
 		if (rowNumber > 1) return "apix_textInput" ;
 		else return  "apix_textArea" ;
@@ -115,7 +118,7 @@ class Field extends Folder {
 		el.elemByClass(inputFieldString).show();
 		var valEl = el.elemByClass(inputFieldString).elemByClass("apix_value");
 		if (inputFieldHeight > 0) valEl.height(inputFieldHeight);
-		valEl.value(valInit) ; valEl.placeHolder(placeHolder+" "+label); valEl.name(dbColName);
+		valEl.value(valInit) ; valEl.placeHolder(placeHolder + " " + label); valEl.name(dbColName);		
 		return {elem:el,labelElem:labEl,valueElem:valEl} ;
 	}
 	

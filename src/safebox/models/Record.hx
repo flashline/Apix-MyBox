@@ -175,12 +175,38 @@ class Record extends SubModel  {
 		bFrameValid.off(StandardEvent.CLICK);
 		bFrameCancel.on(StandardEvent.CLICK, onFrameCancel);
 		bFrameValid.on(StandardEvent.CLICK, onFrameValidUpdate);	
-		bFrameValid.joinEnterKeyToClick(null,frameFieldElems[0].valueElem);
+		bFrameValid.joinEnterKeyToClick(null, frameFieldElems[0].valueElem);
+		setupTextAreaEvent () ;
+	}
+	function setupTextAreaEvent () {			
+		for (fi in fields) {
+			var el = frameFieldElems[fi.index].valueElem; 
+			if (el.hasLst()) el.off();				
+			if (fi.isMultiLines) {
+				el.on(StandardEvent.FOCUS, onTextAreaFocus);
+				el.on(StandardEvent.BLUR, onTextAreaBlur);
+			}
+		}
+	}
+	function removeTextAreaEvent () {			
+		for (fi in fields) {
+			if (fi.isMultiLines) {
+				var el = frameFieldElems[fi.index].valueElem; 
+				if (el != null && el.hasLst()) el.off();
+			}
+		}
+	}
+	function onTextAreaFocus (e:ElemEvent) {	
+		if (bFrameValid!=null) bFrameValid.clearEnterKeyToClick();
+	}
+	function onTextAreaBlur (e:ElemEvent) {			
+		if (bFrameValid!=null) bFrameValid.joinEnterKeyToClick();
 	}
 	function removeUpdateFrameEvent () {			
 		if (bFrameCancel.hasLst(StandardEvent.CLICK) ) bFrameCancel.off(StandardEvent.CLICK, onFrameCancel);
 		if (bFrameValid.hasLst(StandardEvent.CLICK) ) bFrameValid.off(StandardEvent.CLICK, onFrameValidUpdate);			
 		bFrameValid.clearEnterKeyToClick();
+		removeTextAreaEvent ();
 	}
 	function onFrameCancel (e:ElemEvent) {
 		removeUpdateFrameEvent ();

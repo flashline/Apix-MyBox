@@ -18,12 +18,17 @@ using apix.common.display.ElementExtender;
 class View {
 	var g:Global;
 	var tipBoxElem:Elem;
+	var lang:Object;
+	var param:Object;
+	
 	/**
 	 * model related class
 	 */
 	public var model(default, null):Model ;
-	var lang:Object;
-	var param:Object;
+	/**
+	 * tip array set by Controler
+	 */
+	public var tipArray:Array<Array<String>>;
 	/**
 	 * display elements
 	 */
@@ -57,6 +62,7 @@ class View {
 	public var bLogOff(get, null):Elem; function get_bLogOff() :Elem { return "#safeBox #apix_bLogOff".get(); }
 	public var bAdmin(get, null):Elem; function get_bAdmin() :Elem { return "#safeBox #apix_bAdmin".get(); }
 	public var bDoc(get, null):Elem; function get_bDoc() :Elem { return "#safeBox #apix_bDoc".get(); }
+	public var bTip(get, null):Elem; function get_bTip() :Elem { return "#safeBox #apix_bTip".get(); }
 	public var bQuitAdmin(get, null):Elem; function get_bQuitAdmin() :Elem { return "#safeBox #apix_bQuitAdmin".get(); }
 	public var bSafeMode(get, null):Elem; function get_bSafeMode() :Elem { return "#safeBox #apix_bSafeMode".get(); }
 	public var bAbout(get, null):Elem; function get_bAbout() :Elem { return "#safeBox #apix_bAbout".get(); }
@@ -105,8 +111,8 @@ class View {
 		"#safeBox .removePicto".get().tip(lang.removePictoTitle );
 		"#safeBox .updatePicto".get().tip(lang.updatePictoTitle );
 		"#safeBox .showPicto".get().tip(lang.showPictoTitle );
-		"#safeBox .copyPicto".get().tip(lang.copyPictoTitle );	
 		
+		"#safeBox .copyPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.copyPictoTitle); } );
 		"#safeBox .apix_cancelPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.cancelPictoTitle); } );
 		"#safeBox .apix_validPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.validPictoTitle); } );
 		
@@ -122,6 +128,7 @@ class View {
 		
 		bAdmin.tip(lang.menuAdminTitle);
 		bDoc.tip(lang.menuDocTitle);
+		bTip.tip(lang.menuTipTitle);
 		bQuitAdmin.tip(lang.menuQuitAdminTitle);
 		bSafeMode.tip(lang.menuSafeModeTitle); 
 		bLogOff.tip(lang.menuLogOffTitle);		
@@ -131,6 +138,7 @@ class View {
 		//
 		bAdmin.elemByClass("apix_label").text(lang.menuAdmin);
 		bDoc.elemByClass("apix_label").text(lang.menuDoc);
+		bTip.elemByClass("apix_label").text(lang.menuTip);
 		bQuitAdmin.elemByClass("apix_label").text(lang.menuQuitAdmin);
 		bLogOff.elemByClass("apix_label").text(lang.menuLogOff);		
 		bAbout.elemByClass("apix_label").text(lang.menuAbout);
@@ -275,7 +283,13 @@ class View {
 		bAddField.hide();
 		//resize();
 	}
-	
+	public function showTips () {
+		var txt:Array<String> = tipArray.pop();
+		if (txt != null) {
+			if (tipArray.length==0) g.alert(txt,showTips,lang.menuTip,lang.endValidLabel);
+			else g.alert(txt,showTips,lang.menuTip,lang.nextValidLabel);
+		}
+	}
 	
 	public function showTipBox (str:String,ctnr:Elem,?vx:Float=0,?vy:Float=0,?d:Float=2) {		
 		ctnr.addChild(tipBoxElem);

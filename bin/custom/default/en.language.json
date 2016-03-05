@@ -21,6 +21,7 @@
   "menuSafeModeOff": "Switch to NO secure mode (normal) ",
   "menuAbout": "About ",
   "menuDoc": "Documentation",
+  "menuTip": "Tips and tricks",
   "menuDocSrc": "./doc/help.en.html",
   "menuAdminTitle": "Folders and forms management",
   "menuQuitAdminTitle": "Quit folders and forms management",
@@ -29,6 +30,7 @@
   "menuAboutTitle": "About MyBox",
   "menuUserIdTitle": "Current user display",
   "menuVersionTitle": "Current app version",
+  "menuTipTitle": "Tips and tricks ",
   "menuDocTitle": "App documentation",
   "goPreviousTitle": "Return",
   "topTextTitle": "Folders and forms path",
@@ -46,6 +48,8 @@
   "addRecordTitle": "Create a new record",
   "alertTitle": "Alert",
   "alertValidLabel": "Continue",
+  "nextValidLabel": "Next",
+  "endValidLabel": "End",
   "confirmTitle": "Warning !",
   "confirmValidLabel": "Yes",
   "confirmCancelLabel": "No",
@@ -118,9 +122,33 @@
 		"username and password are saved locally.<br/>",
 		"<h2 style='text-align:center;'>Do you confirm the switch to NO secure mode</h2>"
   ],
-  
-  
-  
+   "tipArray": [
+	  [
+		"When you click on a folder (orange) or a form (blue), <br/>",
+		"The 'path' of the tree appears at the top of the app. <br/>",
+		"To return to the 'root' of the tree <br/>",
+		"Click the up arrow at the top left of the screen. <br/>"	,	
+		""
+	  ]
+	  ,
+	  [
+		"Instead of opening the menu, <br/>",
+		"use the left arrow at the top left to go back.<br/>",
+		"<br/>",
+		"If you are in 'administration' you'll return to 'normal' mode. <br/>",
+		"If you are in 'normal' mode you'll back to the login page. <br/>",
+		""
+	  ]
+	  ,
+	  [
+		"MyBox is frequently updated online. <br/>",
+		"To be sure you always have the latest version and consistency of all files :<br/> <br/>",
+		"Clear occasionally the ''cache'', <br/>",
+		"either in the settings of your mobile ",
+		"or in the browser history of your PC/Mac. <br>",
+	  ""
+	  ]
+  ],  
   "alertEmptyCtnr": "Empty folder or form.",
   "updateOk": "Update is well done...",
   "createOk": "Creation is well done...",

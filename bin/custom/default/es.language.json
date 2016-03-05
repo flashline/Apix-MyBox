@@ -14,16 +14,18 @@
   "bConnectLabel": "Iniciar la sesión",
   "bGoSignupLabel": "Crear una nueva cuenta",
   "headInfo": "PC/MAC &amp; Móvil.",
-  "menuAdmin": "Gestión de archivos y formularios",
-  "menuQuitAdmin": "Dejar gestión de archivos...",
+  "menuAdmin": "Gestión de carpetas y formularios",
+  "menuQuitAdmin": "Dejar gestión de carpetas...",
   "menuLogOff": "Desconectarse / conect.",
   "menuSafeModeOn": "Cambiar al modo seguro",
   "menuSafeModeOff": "Cambiar al modo NO seguro",
   "menuAbout": "Acerca de ",
   "menuDoc": "Documentación (en)",
   "menuDocSrc": "./doc/help.en.html",
-  "menuAdminTitle": "Administration de archivos y formularios",
-  "menuQuitAdminTitle": "Dejar administration de archivos y formularios",
+  "menuTipTitle": "Trucos y astucias", 
+  "menuTip": "Trucos y astucias",
+  "menuAdminTitle": "Administration de carpetas y formularios",
+  "menuQuitAdminTitle": "Dejar administration de carpetas y formularios",
   "menuLogOffTitle": "Cerrar sesión",
   "menuSafeModeTitle": "Cambiar de modo",
   "menuAboutTitle": "Sobre la aplicación MyBox",
@@ -31,8 +33,8 @@
   "menuVersionTitle": "Visualización de la versión del software",
   "menuDocTitle": "Documentación del software",
   "goPreviousTitle": "Volver",
-  "topTextTitle": "Camino de los archivos y formularios",
-  "goUpTitle": "Subir a la raíz de los archivos",
+  "topTextTitle": "Camino de los carpetas y formularios",
+  "goUpTitle": "Subir a la raíz de los carpetas",
   "openMenuTitle": "Abrir el menú",
   "cancelPictoTitle": "Cancelar",
   "validPictoTitle": "Validar",
@@ -40,12 +42,14 @@
   "updatePictoTitle": "Editar elemento a la izquierda",
   "showPictoTitle": "Ver el contenido del campo",
   "copyPictoTitle": "Copiar",
-  "addFolderTitle": "Crear un nuevo archivo",
+  "addFolderTitle": "Crear una nueva carpeta",
   "addFormTitle": "Crear un nuevo formulario",
   "addFieldTitle": "Crear un nuevo campo",
   "addRecordTitle": "Crear un nuevo registro",
   "alertTitle": "Alerta",
   "alertValidLabel": "Continuar",
+  "nextValidLabel": "Siguiente",
+  "endValidLabel": "Terminado",
   "confirmTitle": "Aviso !",
   "confirmValidLabel": "Si",
   "confirmCancelLabel": "No",
@@ -92,15 +96,15 @@
 	"<br/>"
   ], 
   "alertBeforeFolderCreation": [
-	"Usted no ha creado todavía, archivo o formulario.<br/>",
-    "Clic en el menú (arriba-derecha) y en 'Gestión de archivos y formularios'...<br/>",
+	"Usted no ha creado todavía, carpeta o formulario.<br/>",
+    "Clic en el menú (arriba-derecha) y en 'Gestión de carpetas y formularios'...<br/>",
     "<br/>",
-    "Después, puede crear un archivo (botón naranja) y dentro ello, un formulario (botón azul). <br/>"    
+    "Después, puede crear una carpeta (botón naranja) y dentro ello, un formulario (botón azul). <br/>"    
   ],
   "alertBeforeFormCreation": [
-    "Usted ha ya creado archivo(s) pero ningún formulario.<br/>",
+    "Usted ha ya creado carpeta(s) pero ningún formulario.<br/>",
     "Puede crear su primero formulario :  <br/>",
-	"menú => 'Gestión de archivos y formularios' => botón azul a bajo.<br/>"
+	"menú => 'Gestión de carpetas y formularios' => botón azul a bajo.<br/>"
   ],
   "goToSafeMode": [
     "En 'modo seguro', la contraseña no se guarda.<br/>",
@@ -114,7 +118,34 @@
     "el contraseña y email se guardan localmente.<br/>",
     "<h2 style='text-align:center;'>¿Confirma el cambio para el 'modo NO seguro'? </h2>"
   ],
-  "alertEmptyCtnr": "Archivos o formulario vacía.",
+   "tipArray": [
+	  [
+		"Al hacer clic en una carpeta (naranja) o un formulario (azul), <br/>",
+		"el 'camino' del árbol aparece en la parte superior de la aplicación. <br/>",
+		"Para volver a la 'raíz' de la árbol : <br/>",
+		"Haga clic en la flecha arriba en la parte superior izquierda de la pantalla. <br/>",
+		""
+	  ]
+	  ,
+	  [
+		"En lugar de abrir el menú, <br/>",
+		"utilice la flecha izquierda en la parte superior izquierda para ir hacia atrás. <br/>",
+		"<br/>",
+		"Si está en el modo 'administración', regresará al modo 'normal' . <br/>",
+		"Si está en el modo 'normal' regresará al la página de inicio de sesión. <br/>",
+		""
+	  ]
+	  ,
+	  [
+		"MyBox se actualiza con frecuencia en línea. <br/>",
+		"Para asegurarse de que siempre tiene la última versión y la coherencia de todas los archivos : <br/><br/>",
+		"Vacía de vez en cuando, el ''cache'', <br/>",
+		"ya sea en la configuración de su móvil, ",
+		"o en el historial de navegación en PC/Mac. <br>",
+	  ""
+	  ]
+  ],  
+  "alertEmptyCtnr": "Carpetas o formulario vacía.",
   "updateOk": "La actualización se realizó con éxito...",
   "createOk": "La creation se realizó con éxito...",
   "deleteOk": "La supresión se realizó con éxito...",
@@ -132,16 +163,16 @@
   "connectAlreadyExists": "Una conexión ya existe  <br/> reiniciar la aplicación !<br/>",
   "connectionHasBeenClosed": "Usted ha sido desconectado por el servidor. <br/>Debe de nuevo, iniciar la sesión  :<br/>  menú y desconexión/conexión .. .",
   "connectionIsNotValid": "La conexión ya no esta valida. Hay que se conectar de nuevo ! <br/>",
-  "emptyFieldDescription": "No han definido de campo para esto formulario ! <br/>Ir a la 'Gestión de archivos y formularios' para definir campos para esto formulario.",
+  "emptyFieldDescription": "No han definido de campo para esto formulario ! <br/>Ir a la 'Gestión de carpetas y formularios' para definir campos para esto formulario.",
   "name": "Nombre : ",
   "fiName": "Nombre del campo : ",
-  "fdNameHolder": "Entrar el nombre del archivo",
+  "fdNameHolder": "Entrar el nombre del carpeta",
   "foNameHolder": "Entrar el nombre del formulario",
   "fiNameHolder": "Entrar el nombre del campo",
-  "fdCreateTitle": "Creation de un archivo",
+  "fdCreateTitle": "Creation de un carpeta",
   "foCreateTitle": "Creation de un formulario",
   "fiCreateTitle": "Creation de un campo",
-  "fdUpdateTitle": "Cambiar el nombre del archivo",
+  "fdUpdateTitle": "Cambiar el nombre del carpeta",
   "foUpdateTitle": "Editar el campo",
   "fieldDataHolder": "Entrar un valor para ",
   "recUpdateTitle": "Editar un registro",

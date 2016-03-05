@@ -20,6 +20,7 @@
   "menuSafeModeOff": "Passer en mode NON sécurisé",
   "menuAbout": "A propos ",
   "menuDoc": "Documentation",
+  "menuTip": "Trucs et astuces",
   "menuDocSrc": "./doc/help.fr.html",
   "menuAdminTitle": "Administration des dossiers et formulaires",
   "menuQuitAdminTitle": "Sortir de l'administration",
@@ -29,6 +30,7 @@
   "menuUserIdTitle": "Affichage de l'utilisateur courrant",
   "menuVersionTitle": "Affichage de la version du logiciel",
   "menuDocTitle": "Documentation de l'app.",
+  "menuTipTitle": "Trucs et astuces",
   "goPreviousTitle": "Retour",
   "topTextTitle": "Arborescence des dossiers",
   "goUpTitle": "Remonter au dossier racine",
@@ -45,6 +47,8 @@
   "addRecordTitle": "Créer un nouvel Enregistrement",
   "alertTitle": "Alerte",
   "alertValidLabel": "Continuer",
+  "nextValidLabel": "Suivant",
+  "endValidLabel": "Terminé",
   "confirmTitle": "Attention !",
   "confirmValidLabel": "Oui",
   "confirmCancelLabel": "Non",
@@ -115,17 +119,32 @@
     "l'ID et le mot de passe sont sauvegardés localement.<br/>",
     "<h2 style='text-align:center;'> Confirmez-vous le passage en mode NON sécurisé</h2>"
   ],
-  "tip1": [
-	"MyBox est très souvent mise à jour en ligne.<br/>",
-	"Pour être sûr d'avoir toujours la dernière version et la cohérence de tous les fichiers,<br/>",
-	"vider de temps en temps le ''cache''. <br/>",
-	"   Depuis l'écran d'accueil de votre mobile Android : Paramètres>Applications>MyBox>Vider le cache<br/>",
-	"   Sur PC/Mac, depuis les navigateurs <br>   ",
-	"    Firefox : Menu>Historique>Supprimer l'historique...>cocher cache>Effacer...  <br/>",
-	"    Chrome : Menu>Historique>Effacer données de navigation>cocher images et fichiers en cache>Effacer...  <br/>",
-	"    Safari: Menu>Historique>Effacer l'historique...>Effacer...  <br/>",
-	"    Edge/IE8+ : Menu>Sécurité>Supprimer l'historique...>cocher Fichiers Internet...>Supprimer...  <br/>",	
-  ""
+  "tipArray": [
+	  [
+		"Quand vous cliquez sur un dossier (orange) ou un formulaire (bleu),<br/>",
+		"le 'chemin' dans l'arborescence s'affiche en haut de l'appli. <br/>",
+		"Pour revenir à la 'racine' de cette arborescence :<br/>",
+		"Cliquez sur la flèche haut située en haut et à gauche de l'écran.<br/>",		
+		""
+	  ]
+	  ,
+	  [
+		"Au lieu de passer par le menu,<br/>",
+		"utilisez plutôt la flèche gauche située en haut à gauche, pour revenir en arrière.<br/>",
+		"<br/>",
+		"Si vous êtes en mode 'administration' vous reviendrez en mode 'normal'.<br/>",
+		"Si vous êtes en mode 'normal' vous reviendrez à la page d'identification/inscription.<br/>",		
+		""
+	  ]
+	  ,
+	  [
+		"MyBox est très souvent mise à jour en ligne.<br/>",
+		"Pour être sûr d'avoir toujours la dernière version et la cohérence de tous les fichiers :<br/><br/>",
+		"Videz de temps en temps le ''cache'', <br/>",
+		"   soit dans les paramètres de votre mobile",
+		"   ou dans l'historique de votre navigateur PC/Mac.<br>   ",
+	  ""
+	  ]
   ],
   "alertEmptyCtnr": "Dossier ou formulaire vide.",
   "updateOk": "La mise à jour s'est bien effectuée...",

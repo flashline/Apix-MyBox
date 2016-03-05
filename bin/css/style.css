@@ -146,7 +146,7 @@ body {
 #safeBox .topText {
 	vertical-align:bottom;
 	margin-left:37px;
-	height:1.5rem;
+	height:2rem;
 	font-size:.98rem;
 	display:inline-block;
 	text-align:left;
@@ -228,7 +228,7 @@ body {
 
 /* Body of app */
 #safeBox .viewBody {
-	padding:.5em;
+	padding:.5rem;
 }
 
 /* folderButton ctnr */
@@ -747,6 +747,11 @@ body {
 	#safeBox .topText {
 		font-size:3vw;
 		font-weight:bold;
+		height:8.5vw;
+	
+	}
+	#safeBox .viewTop {
+		height:8vw;
 	}
 	#safeBox .tipBox {
 		width:300px;

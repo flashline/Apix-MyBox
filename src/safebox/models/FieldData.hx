@@ -110,7 +110,7 @@ class FieldData extends SubModel  {
 		valueElem.value(hideChars(l));
 	}
 	function hideChars (l:Int) : String {
-		var str = ""; for (i in 0...l - 1) str += "*" ;
+		var str = ""; for (i in 0...l ) str += "*" ;
 		return str;
 	}
 	function setupEvent () {

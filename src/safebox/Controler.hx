@@ -264,6 +264,7 @@ class Controler {
 	function setupStdViewEvent () {
 		if (!view.bAdmin.hasLst(StandardEvent.CLICK) ) view.bAdmin.on(StandardEvent.CLICK, onAdminClick);
 		if (!view.bDoc.hasLst(StandardEvent.CLICK) ) view.bDoc.on(StandardEvent.CLICK, onDocClick);
+		if (!view.bTip.hasLst(StandardEvent.CLICK) ) view.bTip.on(StandardEvent.CLICK, onTipClick);
 		if (!view.bLang1.hasLst(StandardEvent.CLICK) ) view.bLang1.on(StandardEvent.CLICK, onChangeLang,false,{lg:lang.langApp1Src});
 		if (!view.bLang2.hasLst(StandardEvent.CLICK) ) view.bLang2.on(StandardEvent.CLICK, onChangeLang,false,{lg:lang.langApp2Src});	
 		if (!view.bOpenMenu.hasLst(StandardEvent.CLICK) ) view.bOpenMenu.on(StandardEvent.CLICK, onOpenMenuClick);
@@ -357,6 +358,11 @@ class Controler {
 	function onDocClick  (e:ElemEvent) {	
 		//g.replace(lang.menuDocSrc);
 		g.open(lang.menuDocSrc,"_self");
+	}
+	function onTipClick  (e:ElemEvent) {
+		var arr:Array<Array<String>> = lang.tipArray;
+		view.tipArray = arr.copy();
+		view.showTips();
 	}
 	function onChangeLang  (e:ElemEvent, ?p:Dynamic) { 	
 		model.language = p.lg;

@@ -429,10 +429,7 @@ apix.common.display.Alert.prototype = {
 	,onValid: function(e) {
 		apix.common.display.ElementExtender.clearEnterKeyToClick(this.validElem);
 		apix.common.display.ElementExtender.hide(this.ctnrElem);
-		if(this.callBack != null) {
-			this.callBack();
-			this.callBack = null;
-		}
+		if(this.callBack != null) this.callBack();
 	}
 	,display: function(v,cb,titleLabel,validLabel) {
 		if(v == null) v = "";
@@ -2349,6 +2346,7 @@ safebox.Controler.prototype = {
 	,setupStdViewEvent: function() {
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bAdmin(),"click")) apix.common.display.ElementExtender.on(this.view.get_bAdmin(),"click",$bind(this,this.onAdminClick));
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bDoc(),"click")) apix.common.display.ElementExtender.on(this.view.get_bDoc(),"click",$bind(this,this.onDocClick));
+		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bTip(),"click")) apix.common.display.ElementExtender.on(this.view.get_bTip(),"click",$bind(this,this.onTipClick));
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bLang1(),"click")) apix.common.display.ElementExtender.on(this.view.get_bLang1(),"click",$bind(this,this.onChangeLang),false,{ lg : this.lang.langApp1Src});
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bLang2(),"click")) apix.common.display.ElementExtender.on(this.view.get_bLang2(),"click",$bind(this,this.onChangeLang),false,{ lg : this.lang.langApp2Src});
 		if(!apix.common.display.ElementExtender.hasLst(this.view.get_bOpenMenu(),"click")) apix.common.display.ElementExtender.on(this.view.get_bOpenMenu(),"click",$bind(this,this.onOpenMenuClick));
@@ -2426,6 +2424,11 @@ safebox.Controler.prototype = {
 	}
 	,onDocClick: function(e) {
 		safebox.Controler.g.open(this.lang.menuDocSrc,"_self");
+	}
+	,onTipClick: function(e) {
+		var arr = this.lang.tipArray;
+		this.view.tipArray = arr.slice();
+		this.view.showTips();
 	}
 	,onChangeLang: function(e,p) {
 		this.model.set_language(p.lg);
@@ -2847,6 +2850,9 @@ safebox.View.prototype = {
 	,get_bDoc: function() {
 		return apix.common.util.StringExtender.get("#safeBox #apix_bDoc");
 	}
+	,get_bTip: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_bTip");
+	}
 	,get_bQuitAdmin: function() {
 		return apix.common.util.StringExtender.get("#safeBox #apix_bQuitAdmin");
 	}
@@ -2902,12 +2908,14 @@ safebox.View.prototype = {
 		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .removePicto"),this.lang.removePictoTitle);
 		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .updatePicto"),this.lang.updatePictoTitle);
 		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .showPicto"),this.lang.showPictoTitle);
-		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .copyPicto"),this.lang.copyPictoTitle);
-		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_cancelPicto"),function(c1) {
-			apix.common.display.ElementExtender.tip(c1,_g.lang.cancelPictoTitle);
+		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .copyPicto"),function(c1) {
+			apix.common.display.ElementExtender.tip(c1,_g.lang.copyPictoTitle);
 		});
-		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_validPicto"),function(c2) {
-			apix.common.display.ElementExtender.tip(c2,_g.lang.validPictoTitle);
+		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_cancelPicto"),function(c2) {
+			apix.common.display.ElementExtender.tip(c2,_g.lang.cancelPictoTitle);
+		});
+		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_validPicto"),function(c3) {
+			apix.common.display.ElementExtender.tip(c3,_g.lang.validPictoTitle);
 		});
 		apix.common.display.ElementExtender.text(this.get_linkLang1(),this.lang.langApp1);
 		apix.common.display.ElementExtender.text(this.get_linkLang2(),this.lang.langApp2);
@@ -2917,6 +2925,7 @@ safebox.View.prototype = {
 		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(this.get_bLang2(),"apix_label"),this.lang.langApp2);
 		apix.common.display.ElementExtender.tip(this.get_bAdmin(),this.lang.menuAdminTitle);
 		apix.common.display.ElementExtender.tip(this.get_bDoc(),this.lang.menuDocTitle);
+		apix.common.display.ElementExtender.tip(this.get_bTip(),this.lang.menuTipTitle);
 		apix.common.display.ElementExtender.tip(this.get_bQuitAdmin(),this.lang.menuQuitAdminTitle);
 		apix.common.display.ElementExtender.tip(this.get_bSafeMode(),this.lang.menuSafeModeTitle);
 		apix.common.display.ElementExtender.tip(this.get_bLogOff(),this.lang.menuLogOffTitle);
@@ -2925,6 +2934,7 @@ safebox.View.prototype = {
 		apix.common.display.ElementExtender.tip(apix.common.display.ElementExtender.elemByClass(this.get_bLogOff(),"apix_userId"),this.lang.menuUserIdTitle);
 		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(this.get_bAdmin(),"apix_label"),this.lang.menuAdmin);
 		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(this.get_bDoc(),"apix_label"),this.lang.menuDoc);
+		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(this.get_bTip(),"apix_label"),this.lang.menuTip);
 		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(this.get_bQuitAdmin(),"apix_label"),this.lang.menuQuitAdmin);
 		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(this.get_bLogOff(),"apix_label"),this.lang.menuLogOff);
 		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(this.get_bAbout(),"apix_label"),this.lang.menuAbout);
@@ -3033,6 +3043,12 @@ safebox.View.prototype = {
 		apix.common.display.ElementExtender.hide(this.get_bAddFolder());
 		apix.common.display.ElementExtender.hide(this.get_bAddForm());
 		apix.common.display.ElementExtender.hide(this.get_bAddField());
+	}
+	,showTips: function() {
+		var txt = this.tipArray.pop();
+		if(txt != null) {
+			if(this.tipArray.length == 0) this.g.alert(txt,$bind(this,this.showTips),this.lang.menuTip,this.lang.endValidLabel); else this.g.alert(txt,$bind(this,this.showTips),this.lang.menuTip,this.lang.nextValidLabel);
+		}
 	}
 	,showTipBox: function(str,ctnr,vx,vy,d) {
 		if(d == null) d = 2;
@@ -4113,10 +4129,9 @@ safebox.models.FieldData.prototype = $extend(safebox.models.SubModel.prototype,{
 	}
 	,hideChars: function(l) {
 		var str = "";
-		var _g1 = 0;
-		var _g = l - 1;
-		while(_g1 < _g) {
-			var i = _g1++;
+		var _g = 0;
+		while(_g < l) {
+			var i = _g++;
 			str += "*";
 		}
 		return str;

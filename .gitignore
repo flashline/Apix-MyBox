@@ -1,4 +1,7 @@
 joint
+bin/php/online*
+bin/php/x.php
+db.save
 joint/*
 *.webapp
 *.bat

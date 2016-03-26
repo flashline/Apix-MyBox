@@ -38,6 +38,8 @@
 		row_number tinyint(4) DEFAULT  '1'  NOT NULL , 
 		copy_enable tinyint(4) DEFAULT  '1'  NOT NULL , 
 		is_hidden tinyint(4) NOT NULL , 
+		is_secure tinyint(4) NOT NULL , 
+		secure_code VARCHAR(32) NOT NULL , 
 		is_unique tinyint(4) NOT NULL , 
 		is_primary tinyint(4) NOT NULL , 
 		PRIMARY KEY ( id) , 
@@ -65,7 +67,7 @@
 	$qry = "
 		CREATE TABLE login ( 
 		id varchar(255) NOT NULL , 
-		pwd varchar(255) NOT NULL , 
+		pwd varchar(32) NOT NULL , 
 		PRIMARY KEY ( id)
 		)  ; 
 	";

@@ -42,6 +42,8 @@
   "updatePictoTitle": "Editar elemento a la izquierda",
   "showPictoTitle": "Ver el contenido del campo",
   "copyPictoTitle": "Copiar",
+  "rubPictoTitle":"Borrar todos los dígitos",
+  "codePictoTitle":"Haga clic en dígitos",
   "addFolderTitle": "Crear una nueva carpeta",
   "addFormTitle": "Crear un nuevo formulario",
   "addFieldTitle": "Crear un nuevo campo",
@@ -71,16 +73,14 @@
   ],
 
 
-   "warningTitle":"IMPORTANTE !",
+  "warningTitle":"IMPORTANTE !",
   "warningValidText":"Entendí",
   "warning": [ 
     "<div style='font-size:1.1rem;'>",
     "MyBox se proporciona tal cual, sin garantía de ningún tipo ni responsabilidad contractual.<br/>",
 	"</div>",
 	"<br/>",	
-    "Esta versión en línea, debe ser usada para probar la aplicación.<br/>",
-	"<br/>",
-	"<div style='font-size:1rem;'>",
+    "<div style='font-size:1rem;'>",
     "El servidor utilizado no garantiza que los problemas de seguridad, de copia o de confidencialidad ",
 	"son tratados como lo serían si usted mismo, elige el servidor (basado en la importancia de sus datos).<br/>",
 	"</div>",
@@ -91,7 +91,7 @@
 	"Para el procedimiento, <br/>consulte la <a href='http://www.apixline.org/pm/app/web/myBox/doc/help.en.html#install' target='blank'>documentación (en o fr) </a> ",
 	"y ir a <a href='https://github.com/flashline/Apix-MyBox' target='blank'>github.com</a> .<br/>",
 	"o<br/>",
-	"Contácteme a <a href='mailto:info@pixaline.net?subject=Ayuda para instalación MyBox'>info@pixaline.net</a>, si piensa que no sabe hacerlo usted mismo.<br/>",
+	"Contácteme a <a href='mailto:info@pixaline.net?subject=Ayuda para instalación MyBox'>info@pixaline.net</a>, si desea confiarme la instalación 'llave en mano'<br/>",
 	
 	"<br/>"
   ], 
@@ -173,13 +173,75 @@
   "foCreateTitle": "Creation de un formulario",
   "fiCreateTitle": "Creation de un campo",
   "fdUpdateTitle": "Cambiar el nombre del carpeta",
-  "foUpdateTitle": "Editar el campo",
+  "foUpdateTitle": "Cambiar el nombre del formulario",
+  "fiUpdateTitle": "Editar el campo",
   "fieldDataHolder": "Entrar un valor para ",
   "recUpdateTitle": "Editar un registro",
   "recInsertTitle": "Crear un nuevo registro",
   "fiRowNumberLabel": "número de líneas :",
   "ficopyEnableLabel": "Campo invisible :",
+  "fiHiddenLabel": "Campo occulto :",
   "fiPrimaryLabel": "Campo primario :",
+  
+  
+  
+  
+  
+  
+  
+  
+  "invalidSecureCode": "Código secreto no válido !",    
+  "fiSecureLabel": "Campo seguro :",  
+  "secureCreateTitle":"Creación de un código secreto",
+  "secureCreateComment":"Haga clic en 4 dígitos o dejar en blanco y haga clic en OK.",
+  "secureCode":"Recuerde bien este número que será encriptado.",  
+  "secureEnterTitle":"Introducir el código secreto",
+  "secureToClipBoard":"El valor se ha leído. Confirmar la copia.",
+  "secureCopyConfirm":"Copiar al portapapeles",
+  "securefieldDataHolder":"Este campo es seguro : ",
+  "primaryMustBeCreated":"El formulario debe tener un campo de primario !",
+  "primaryMissing":
+	[
+		"Esta forma no tiene campo primario.<br/>",
+		"Es embarazoso porque el campo utilizado para el título de los registros y orden se elige al azar.<br/>",
+		"<br/>",
+		"Tienes que ir al menú luego 'Gestión de carpetas y formularios' para crear un campo primario<br/>",
+		" o elegir uno entre campos no-seguros y no-ocultos.<br/>",
+		"<br/>"
+		
+	]
+	,
+  "firstFieldIsSecure":
+	[
+		"¡Atención! <br/>",
+		"Esta formulario no tiene campo primario.<br/>",
+		"Es malo porque el campo utilizado para el título de los registros es un campo 'seguro' o 'oculto' <br/>",
+		"y se puede perder datos.<br/>",
+		"<br/>",
+		"Tienes que ir al menú luego 'Gestión de carpetas y formularios' para crear un campo primario<br/>",
+		" o elegir uno entre campos no-seguros y no-ocultos.<br/>",
+		"<br/>"
+		
+	]
+	,
+    "primaryFieldIsSecure":
+	[
+		"¡Atención! <br/>",
+		"El campo primario de este formulario es un campo 'seguro' o 'oculto'.<br/>",
+		"Es malo y se puede perder datos.<br/>",
+		"<br/>",
+		"Tienes que ir al menú luego 'Gestión de carpetas y formularios' para crear un campo primario<br/>",
+		" o elegir uno entre campos no-seguros y no-ocultos.<br/>",
+		"<br/>"
+		
+	]
+	,
+	
+	
+	
+	
+	
+	
   "formHaventData": "Esto formulario esta vacío ! Agregar registros (botón azul a bajo).<br/>  ",
   "formTableDontExists": "Esto formulario esta vacío ! Agregar registros (botón azul a bajo).<br/> ",
   "": ""

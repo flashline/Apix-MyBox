@@ -508,7 +508,7 @@ apix.common.display.Common.get_userAgent = function() {
 apix.common.display.Common.get_newSingleId = function() {
 	apix.common.display.Common.__nextSingleId++;
 	var id = "apix_instance_" + apix.common.display.Common.__nextSingleId;
-	if(window.document.getElementById(id) != null) haxe.Log.trace("f::Id " + id + " already exists ! ",{ fileName : "Common.hx", lineNumber : 240, className : "apix.common.display.Common", methodName : "get_newSingleId"});
+	if(window.document.getElementById(id) != null) haxe.Log.trace("f::Id " + id + " already exists ! ",{ fileName : "Common.hx", lineNumber : 236, className : "apix.common.display.Common", methodName : "get_newSingleId"});
 	return id;
 };
 apix.common.display.Confirm = function(el,txElem,bvElem,bcElem,tEl,tTx,vTx,cTx) {
@@ -583,16 +583,16 @@ apix.common.display.ElementExtender.getElemsByTag = function(el,v) {
 };
 apix.common.display.ElementExtender.elemByClass = function(el,v) {
 	var arr = apix.common.display.ElementExtender.getElemsByClass(el,v);
-	if(arr.length == 0) haxe.Log.trace("f:: class '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 200, className : "apix.common.display.ElementExtender", methodName : "elemByClass"});
+	if(arr.length == 0) haxe.Log.trace("f:: class '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 202, className : "apix.common.display.ElementExtender", methodName : "elemByClass"});
 	return arr[0];
 };
 apix.common.display.ElementExtender.elemByTag = function(el,v) {
 	var arr = apix.common.display.ElementExtender.getElemsByTag(el,v);
-	if(arr.length == 0) haxe.Log.trace("f:: tag '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 205, className : "apix.common.display.ElementExtender", methodName : "elemByTag"});
+	if(arr.length == 0) haxe.Log.trace("f:: tag '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 207, className : "apix.common.display.ElementExtender", methodName : "elemByTag"});
 	return arr[0];
 };
 apix.common.display.ElementExtender.objClsName = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 240, className : "apix.common.display.ElementExtender", methodName : "objClsName"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 251, className : "apix.common.display.ElementExtender", methodName : "objClsName"});
 	var v = "";
 	v=el.constructor.name;
 	if(v == null) {
@@ -627,10 +627,10 @@ apix.common.display.ElementExtender.handCursor = function(el,v) {
 	if(el.style != null && el.style.cursor != null) el.style.cursor = str;
 };
 apix.common.display.ElementExtender.visible = function(el,b) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 391, className : "apix.common.display.ElementExtender", methodName : "visible"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 402, className : "apix.common.display.ElementExtender", methodName : "visible"});
 	if(b == null) {
 		if(el.style.visibility == "hidden") b = false; else b = true;
-		if(b == null) haxe.Log.trace("f::Element " + el.id + " has not valid visibility !",{ fileName : "ElementExtender.hx", lineNumber : 394, className : "apix.common.display.ElementExtender", methodName : "visible"});
+		if(b == null) haxe.Log.trace("f::Element " + el.id + " has not valid visibility !",{ fileName : "ElementExtender.hx", lineNumber : 405, className : "apix.common.display.ElementExtender", methodName : "visible"});
 	} else {
 		b = apix.common.display.ElementExtender.boolVal(b);
 		if(b) el.style.visibility = "visible"; else el.style.visibility = "hidden";
@@ -638,7 +638,7 @@ apix.common.display.ElementExtender.visible = function(el,b) {
 	return b;
 };
 apix.common.display.ElementExtender.hide = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 406, className : "apix.common.display.ElementExtender", methodName : "hide"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 417, className : "apix.common.display.ElementExtender", methodName : "hide"});
 	var before = el.style.display;
 	if(before != "none" && before != "" && before != null) {
 		if (el.style.apix_save_display==null) el.style.apix_save_display=before;
@@ -647,7 +647,7 @@ apix.common.display.ElementExtender.hide = function(el) {
 	return before;
 };
 apix.common.display.ElementExtender.show = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 416, className : "apix.common.display.ElementExtender", methodName : "show"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 427, className : "apix.common.display.ElementExtender", methodName : "show"});
 	if(!(!(apix.common.util.Global.get().strVal(el.style.display,"none") == "none"))) {
 		if(v == null) {
 			v=el.style.apix_save_display;
@@ -660,12 +660,12 @@ apix.common.display.ElementExtender.isDisplay = function(el) {
 	return !(apix.common.util.Global.get().strVal(el.style.display,"none") == "none");
 };
 apix.common.display.ElementExtender.setDisplay = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 431, className : "apix.common.display.ElementExtender", methodName : "setDisplay"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 442, className : "apix.common.display.ElementExtender", methodName : "setDisplay"});
 	el.style.display = v;
 };
 apix.common.display.ElementExtender.pick = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 435, className : "apix.common.display.ElementExtender", methodName : "pick"});
-	if(!apix.common.display.ElementExtender.isInputField(el)) haxe.Log.trace("f::Element isn't an input field !",{ fileName : "ElementExtender.hx", lineNumber : 436, className : "apix.common.display.ElementExtender", methodName : "pick"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 446, className : "apix.common.display.ElementExtender", methodName : "pick"});
+	if(!apix.common.display.ElementExtender.isInputField(el)) haxe.Log.trace("f::Element isn't an input field !",{ fileName : "ElementExtender.hx", lineNumber : 447, className : "apix.common.display.ElementExtender", methodName : "pick"});
 	el.select();
 };
 apix.common.display.ElementExtender.isInputField = function(el) {
@@ -675,7 +675,7 @@ apix.common.display.ElementExtender.posx = function(el,v,bounds) {
 	var vx = apix.common.display.ElementExtender.numVal(v,null);
 	if(vx == null) {
 		if(el.offsetLeft != null) vx = el.offsetLeft; else if(el.clientLeft != null) vx = el.clientLeft; else if(el.scrollLeft != null) vx = el.scrollLeft; else vx = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.left),null);
-		if(vx == null) haxe.Log.trace("f::Element " + el.id + " has not valid left position !",{ fileName : "ElementExtender.hx", lineNumber : 516, className : "apix.common.display.ElementExtender", methodName : "posx"});
+		if(vx == null) haxe.Log.trace("f::Element " + el.id + " has not valid left position !",{ fileName : "ElementExtender.hx", lineNumber : 527, className : "apix.common.display.ElementExtender", methodName : "posx"});
 	} else {
 		if(bounds != null) {
 			if(vx < bounds.get_x()) vx = bounds.get_x(); else if(vx > bounds.get_x() + bounds.get_width()) vx = bounds.get_x() + bounds.get_width();
@@ -688,7 +688,7 @@ apix.common.display.ElementExtender.posy = function(el,v,bounds) {
 	var vy = apix.common.display.ElementExtender.numVal(v,null);
 	if(vy == null) {
 		if(el.offsetTop != null) vy = el.offsetTop; else if(el.clientTop != null) vy = el.clientTop; else if(el.scrollTop != null) vy = el.scrollTop; else vy = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.top),null);
-		if(vy == null) haxe.Log.trace("f::Element " + el.id + " has not valid top position !",{ fileName : "ElementExtender.hx", lineNumber : 537, className : "apix.common.display.ElementExtender", methodName : "posy"});
+		if(vy == null) haxe.Log.trace("f::Element " + el.id + " has not valid top position !",{ fileName : "ElementExtender.hx", lineNumber : 548, className : "apix.common.display.ElementExtender", methodName : "posy"});
 	} else {
 		if(bounds != null) {
 			if(vy < bounds.get_y()) vy = bounds.get_y(); else if(vy > bounds.get_y() + bounds.get_height()) vy = bounds.get_y() + bounds.get_height();
@@ -698,31 +698,31 @@ apix.common.display.ElementExtender.posy = function(el,v,bounds) {
 	return vy;
 };
 apix.common.display.ElementExtender.width = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 552, className : "apix.common.display.ElementExtender", methodName : "width"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 563, className : "apix.common.display.ElementExtender", methodName : "width"});
 	var w = apix.common.display.ElementExtender.numVal(v,null);
 	if(w == null) {
 		if(el.clientWidth != null) w = el.clientWidth; else w = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.width),null);
 		if(w == null) {
 			if(el.offsetWidth != null) w = el.offsetWidth; else if(el.scrollWidth != null) w = el.scrollWidth;
 		}
-		if(w == null) haxe.Log.trace("f::Element " + el.id + " has not valid width !",{ fileName : "ElementExtender.hx", lineNumber : 561, className : "apix.common.display.ElementExtender", methodName : "width"});
+		if(w == null) haxe.Log.trace("f::Element " + el.id + " has not valid width !",{ fileName : "ElementExtender.hx", lineNumber : 572, className : "apix.common.display.ElementExtender", methodName : "width"});
 	} else el.style.width = (w == null?"null":"" + w) + "px";
 	return w;
 };
 apix.common.display.ElementExtender.height = function(el,v,forceCss) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 570, className : "apix.common.display.ElementExtender", methodName : "height"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 581, className : "apix.common.display.ElementExtender", methodName : "height"});
 	var h = apix.common.display.ElementExtender.numVal(v,null);
 	if(h == null) {
 		if(el.clientHeight != null && (!forceCss || el.clientHeight != 0)) h = el.clientHeight; else h = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.height),null);
 		if(h == null) {
 			if(el.offsetHeight != null) h = el.offsetHeight; else if(el.scrollHeight != null) h = el.scrollHeight;
 		}
-		if(h == null) haxe.Log.trace("f::Element " + el.id + " has not valid height !",{ fileName : "ElementExtender.hx", lineNumber : 579, className : "apix.common.display.ElementExtender", methodName : "height"});
+		if(h == null) haxe.Log.trace("f::Element " + el.id + " has not valid height !",{ fileName : "ElementExtender.hx", lineNumber : 590, className : "apix.common.display.ElementExtender", methodName : "height"});
 	} else el.style.height = (h == null?"null":"" + h) + "px";
 	return h;
 };
 apix.common.display.ElementExtender.parent = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 588, className : "apix.common.display.ElementExtender", methodName : "parent"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 599, className : "apix.common.display.ElementExtender", methodName : "parent"});
 	return el.parentElement;
 };
 apix.common.display.ElementExtender.link = function(el,v,verify) {
@@ -731,22 +731,22 @@ apix.common.display.ElementExtender.link = function(el,v,verify) {
 };
 apix.common.display.ElementExtender.attr = function(el,k,v,verify) {
 	if(verify == null) verify = false;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 601, className : "apix.common.display.ElementExtender", methodName : "attr"});
-	if(verify && el.getAttribute(k) == null && el[k]==null) haxe.Log.trace("f::Element " + el.id + " has not '" + k + "' attribute !",{ fileName : "ElementExtender.hx", lineNumber : 602, className : "apix.common.display.ElementExtender", methodName : "attr"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 612, className : "apix.common.display.ElementExtender", methodName : "attr"});
+	if(verify && el.getAttribute(k) == null && el[k]==null) haxe.Log.trace("f::Element " + el.id + " has not '" + k + "' attribute !",{ fileName : "ElementExtender.hx", lineNumber : 613, className : "apix.common.display.ElementExtender", methodName : "attr"});
 	if(v == null) v = el.getAttribute(k); else el.setAttribute(k,v);
 	return v;
 };
 apix.common.display.ElementExtender.css = function(el,k,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 631, className : "apix.common.display.ElementExtender", methodName : "css"});
-	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + k + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 632, className : "apix.common.display.ElementExtender", methodName : "css"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 642, className : "apix.common.display.ElementExtender", methodName : "css"});
+	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + k + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 643, className : "apix.common.display.ElementExtender", methodName : "css"});
 	if(v == null) v = el.style[k]; else {
 		el.style[k]=v;
 	}
 	return v;
 };
 apix.common.display.ElementExtender.cssStyle = function(el,k,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 639, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
-	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + Std.string(k) + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 640, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 650, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
+	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + Std.string(k) + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 651, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
 	if(v == null) v = el.style[k]; else {
 		el.style[k]=v;
 	}
@@ -755,7 +755,7 @@ apix.common.display.ElementExtender.cssStyle = function(el,k,v) {
 apix.common.display.ElementExtender.enable = function(el,v,useDisabled) {
 	if(useDisabled == null) useDisabled = false;
 	var e = el;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 648, className : "apix.common.display.ElementExtender", methodName : "enable"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 659, className : "apix.common.display.ElementExtender", methodName : "enable"});
 	if(v == null) {
 		if(useDisabled) v = !e.disabled; else v = !e.readOnly;
 	} else if(useDisabled) e.disabled = !v; else e.readOnly = !v;
@@ -763,11 +763,11 @@ apix.common.display.ElementExtender.enable = function(el,v,useDisabled) {
 };
 apix.common.display.ElementExtender.selected = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 727, className : "apix.common.display.ElementExtender", methodName : "selected"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 738, className : "apix.common.display.ElementExtender", methodName : "selected"});
 	var prop1 = "selected";
 	var prop2 = "checked";
 	var prop = "selected or checked";
-	if(el[prop1]==null && el[prop2]==null ) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' properties !",{ fileName : "ElementExtender.hx", lineNumber : 729, className : "apix.common.display.ElementExtender", methodName : "selected"});
+	if(el[prop1]==null && el[prop2]==null ) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' properties !",{ fileName : "ElementExtender.hx", lineNumber : 740, className : "apix.common.display.ElementExtender", methodName : "selected"});
 	var b = el[prop1]==null;
 	if(v == null) {
 		if(b) v = el.checked; else v = el.selected;
@@ -776,17 +776,17 @@ apix.common.display.ElementExtender.selected = function(e,v) {
 };
 apix.common.display.ElementExtender.value = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 747, className : "apix.common.display.ElementExtender", methodName : "value"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 758, className : "apix.common.display.ElementExtender", methodName : "value"});
 	var prop = "value";
-	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 748, className : "apix.common.display.ElementExtender", methodName : "value"});
+	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 759, className : "apix.common.display.ElementExtender", methodName : "value"});
 	if(v == null) v = el.value; else el.value = v;
 	return v;
 };
 apix.common.display.ElementExtender.$name = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 758, className : "apix.common.display.ElementExtender", methodName : "name"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 769, className : "apix.common.display.ElementExtender", methodName : "name"});
 	var p = "name";
-	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 759, className : "apix.common.display.ElementExtender", methodName : "name"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 770, className : "apix.common.display.ElementExtender", methodName : "name"});
 	if(v == null) v = el.name; else el.name = v;
 	return v;
 };
@@ -794,23 +794,23 @@ apix.common.display.ElementExtender.tip = function(e,v) {
 	return apix.common.display.ElementExtender.attr(e,"title",v);
 };
 apix.common.display.ElementExtender.inner = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 774, className : "apix.common.display.ElementExtender", methodName : "inner"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 785, className : "apix.common.display.ElementExtender", methodName : "inner"});
 	if(v == null) v = el.innerHTML; else el.innerHTML = v;
 	return v;
 };
 apix.common.display.ElementExtender.text = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 789, className : "apix.common.display.ElementExtender", methodName : "text"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 800, className : "apix.common.display.ElementExtender", methodName : "text"});
 	if(v == null) {
-		if(el.value != null) v = el.value; else if(el.textContent != null) v = el.textContent; else if(el.text != null) v = el.text; else if(el.nodeValue != null) v = el.nodeValue; else if(el.innerHTML != null) v = el.innerHTML; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 796, className : "apix.common.display.ElementExtender", methodName : "text"});
-	} else if(el.value != null) el.value = v; else if(el.textContent != null) el.textContent = v; else if(el.text != null) el.text = v; else if(el.nodeValue != null) el.nodeValue = v; else if(el.innerHTML != null) el.innerHTML = v; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 804, className : "apix.common.display.ElementExtender", methodName : "text"});
+		if(el.value != null) v = el.value; else if(el.textContent != null) v = el.textContent; else if(el.text != null) v = el.text; else if(el.nodeValue != null) v = el.nodeValue; else if(el.innerHTML != null) v = el.innerHTML; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 807, className : "apix.common.display.ElementExtender", methodName : "text"});
+	} else if(el.value != null) el.value = v; else if(el.textContent != null) el.textContent = v; else if(el.text != null) el.text = v; else if(el.nodeValue != null) el.nodeValue = v; else if(el.innerHTML != null) el.innerHTML = v; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 815, className : "apix.common.display.ElementExtender", methodName : "text"});
 	return v;
 };
 apix.common.display.ElementExtender.placeHolder = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 841, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 852, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
 	var p = "placeholder";
-	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 842, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 853, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
 	if(v == null) v = el.placeholder; else el.placeholder = v;
 	return v;
 };
@@ -1233,6 +1233,25 @@ apix.common.io.JsonLoader.prototype = {
 };
 apix.common.tools = {};
 apix.common.tools.math = {};
+apix.common.tools.math.MathX = function() { };
+apix.common.tools.math.MathX.__name__ = ["apix","common","tools","math","MathX"];
+apix.common.tools.math.MathX.randomExclusiveList = function(len,arr) {
+	if(arr == null) arr = [];
+	var r = Math.floor(Math.random() * (len + 1 - 1)) + 1;
+	var ok = true;
+	var _g = 0;
+	while(_g < arr.length) {
+		var i = arr[_g];
+		++_g;
+		if(r == i) {
+			ok = false;
+			break;
+		}
+	}
+	if(ok) arr.push(r);
+	if(arr.length < len) arr = apix.common.tools.math.MathX.randomExclusiveList(len,arr);
+	return arr;
+};
 apix.common.tools.math.Vector = function() { };
 apix.common.tools.math.Vector.__name__ = ["apix","common","tools","math","Vector"];
 apix.common.tools.math.Vector.prototype = {
@@ -1256,16 +1275,6 @@ apix.common.tools.math.Rectangle.prototype = $extend(apix.common.tools.math.Vect
 	}
 	,__class__: apix.common.tools.math.Rectangle
 });
-apix.common.util.ArrayExtender = function() { };
-apix.common.util.ArrayExtender.__name__ = ["apix","common","util","ArrayExtender"];
-apix.common.util.ArrayExtender.forEach = function(array,f,dataParams) {
-	var _g = 0;
-	while(_g < array.length) {
-		var o = array[_g];
-		++_g;
-		f(o,dataParams);
-	}
-};
 apix.common.util.Object = function(o) {
 	if(o != null) {
 		var arr = Reflect.fields(o);
@@ -1309,6 +1318,28 @@ apix.common.util.Object.prototype = {
 };
 apix.common.util.StringExtender = function() { };
 apix.common.util.StringExtender.__name__ = ["apix","common","util","StringExtender"];
+apix.common.util.StringExtender.on = function(v,type,listenerFunction,b,data,parent) {
+	if(b == null) b = false;
+	var arr;
+	arr = apix.common.util.StringExtender.all(v,parent);
+	var _g = 0;
+	while(_g < arr.length) {
+		var el = arr[_g];
+		++_g;
+		apix.common.display.ElementExtender.on(el,type,listenerFunction,b,data);
+	}
+};
+apix.common.util.StringExtender.off = function(v,type,listenerFunction,b,parent) {
+	if(b == null) b = false;
+	var arr;
+	arr = apix.common.util.StringExtender.all(v,parent);
+	var _g = 0;
+	while(_g < arr.length) {
+		var el = arr[_g];
+		++_g;
+		apix.common.display.ElementExtender.off(el,type,listenerFunction,b);
+	}
+};
 apix.common.util.StringExtender.each = function(v,f,parent) {
 	var arr = apix.common.util.StringExtender.all(v,parent);
 	var _g = 0;
@@ -2642,6 +2673,7 @@ safebox.Model.prototype = {
 					of.row_number = safebox.Model.g.intVal(of.row_number.value,1);
 					of.copy_enable = safebox.Model.g.boolVal(of.copy_enable.value,true);
 					of.is_hidden = safebox.Model.g.boolVal(of.is_hidden.value,false);
+					of.is_secure = safebox.Model.g.boolVal(of.is_secure.value,false);
 					of.is_primary = safebox.Model.g.boolVal(of.is_primary.value,false);
 				}
 			}
@@ -2893,9 +2925,7 @@ safebox.View.prototype = {
 		var _g = this;
 		apix.common.display.ElementExtender.hide(apix.common.util.StringExtender.get("#safeBox #loginView"));
 		apix.common.display.ElementExtender.hide(apix.common.util.StringExtender.get("#safeBox #stdView"));
-		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_initHidden"),function(c) {
-			apix.common.display.ElementExtender.hide(c);
-		});
+		apix.common.util.StringExtender.each("#safeBox .apix_initHidden",apix.common.display.ElementExtender.hide);
 		apix.common.display.ElementExtender.show(this.get_rootElemsCtnr());
 		apix.common.display.ElementExtender.inner(apix.common.util.StringExtender.get("#safeBox .headInfo"),this.lang.headInfo);
 		apix.common.display.ElementExtender.text(apix.common.util.StringExtender.get("#safeBox #bConnect .apix_label"),this.lang.bConnectLabel);
@@ -2908,14 +2938,18 @@ safebox.View.prototype = {
 		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .removePicto"),this.lang.removePictoTitle);
 		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .updatePicto"),this.lang.updatePictoTitle);
 		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .showPicto"),this.lang.showPictoTitle);
-		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .copyPicto"),function(c1) {
-			apix.common.display.ElementExtender.tip(c1,_g.lang.copyPictoTitle);
+		apix.common.display.ElementExtender.tip(apix.common.util.StringExtender.get("#safeBox .rubPicto"),this.lang.rubPictoTitle);
+		apix.common.util.StringExtender.each("#safeBox .copyPicto",function(c) {
+			apix.common.display.ElementExtender.tip(c,_g.lang.copyPictoTitle);
 		});
-		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_cancelPicto"),function(c2) {
-			apix.common.display.ElementExtender.tip(c2,_g.lang.cancelPictoTitle);
+		apix.common.util.StringExtender.each("#safeBox .apix_cancelPicto",function(c1) {
+			apix.common.display.ElementExtender.tip(c1,_g.lang.cancelPictoTitle);
 		});
-		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .apix_validPicto"),function(c3) {
-			apix.common.display.ElementExtender.tip(c3,_g.lang.validPictoTitle);
+		apix.common.util.StringExtender.each("#safeBox .apix_validPicto",function(c2) {
+			apix.common.display.ElementExtender.tip(c2,_g.lang.validPictoTitle);
+		});
+		apix.common.util.StringExtender.each("#safeBox .apix_codePicto",function(c3) {
+			apix.common.display.ElementExtender.tip(c3,_g.lang.codePictoTitle);
 		});
 		apix.common.display.ElementExtender.text(this.get_linkLang1(),this.lang.langApp1);
 		apix.common.display.ElementExtender.text(this.get_linkLang2(),this.lang.langApp2);
@@ -3006,7 +3040,7 @@ safebox.View.prototype = {
 		if(mode == null) mode = "signIn";
 		apix.common.display.ElementExtender.show(apix.common.util.StringExtender.get("#safeBox #loginView"));
 		apix.common.display.ElementExtender.hide(apix.common.util.StringExtender.get("#safeBox #stdView"));
-		apix.common.util.ArrayExtender.forEach(apix.common.util.StringExtender.all("#safeBox .addPicto"),apix.common.display.ElementExtender.hide);
+		apix.common.util.StringExtender.each("#safeBox .addPicto",apix.common.display.ElementExtender.hide);
 		if(mode == "signIn") {
 			apix.common.display.ElementExtender.hide(apix.common.util.StringExtender.get("#safeBox #confirm"));
 			apix.common.display.ElementExtender.hide(apix.common.util.StringExtender.get("#safeBox .connectForm .apix_goPrevious"));
@@ -3133,6 +3167,11 @@ safebox.models.SubModel.prototype = {
 	}
 	,__class__: safebox.models.SubModel
 };
+safebox.models.IContent = function() { };
+safebox.models.IContent.__name__ = ["safebox","models","IContent"];
+safebox.models.IContent.prototype = {
+	__class__: safebox.models.IContent
+};
 safebox.models.Form = function(m,v) {
 	safebox.models.SubModel.call(this,m,v);
 	this.fields = [];
@@ -3143,6 +3182,7 @@ safebox.models.Form = function(m,v) {
 	this.isClosed = true;
 };
 safebox.models.Form.__name__ = ["safebox","models","Form"];
+safebox.models.Form.__interfaces__ = [safebox.models.IContent];
 safebox.models.Form.__super__ = safebox.models.SubModel;
 safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 	get_level: function() {
@@ -3213,6 +3253,9 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 	,get_isHiddenLabel: function() {
 		return apix.common.util.StringExtender.get("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_isHidden .apix_label");
 	}
+	,get_isSecureLabel: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_isSecure .apix_label");
+	}
 	,get_isPrimaryLabel: function() {
 		return apix.common.util.StringExtender.get("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_isPrimary .apix_label");
 	}
@@ -3224,6 +3267,9 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 	}
 	,get_isHiddenInput: function() {
 		return apix.common.util.StringExtender.get("#safeBox #apix_nameFrame input[name='isHidden']");
+	}
+	,get_isSecureInput: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_nameFrame input[name='isSecure']");
 	}
 	,get_isPrimaryInput: function() {
 		return apix.common.util.StringExtender.get("#safeBox #apix_nameFrame input[name='isPrimary']");
@@ -3262,6 +3308,24 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 	,get_bCancelRecordInsert: function() {
 		return apix.common.util.StringExtender.get("#safeBox #apix_recordFrame .apix_cancelPicto");
 	}
+	,get_secureFrame: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_secureFrame");
+	}
+	,get_secureFrameTitle: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_secureFrame .apix_title");
+	}
+	,get_secureFrameCmt: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_secureFrame .apix_cmt");
+	}
+	,get_secureFrameCode: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_secureFrame .apix_secureCode");
+	}
+	,get_bValidSecureFrame: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_secureFrame .apix_validPicto");
+	}
+	,get_bRubSecureFrame: function() {
+		return apix.common.util.StringExtender.get("#safeBox #apix_secureFrame .apix_rubPicto");
+	}
 	,getParent: function() {
 		if(this["is"]("Field")) return js.Boot.__cast(this.parent , safebox.models.Form); else if(this != this.model.root) return js.Boot.__cast(this.parent , safebox.models.Folder); else return null;
 	}
@@ -3277,7 +3341,7 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 			var o = arr[i];
 			var fi = new safebox.models.Field(this.model,this.view);
 			fi.parent = this;
-			fi.initField(o.id,o.label,o.row_number,o.copy_enable,o.is_hidden,o.is_primary);
+			fi.initField(o.id,o.label,o.row_number,o.copy_enable,o.is_hidden,o.is_secure,o.is_primary);
 			this.fields.push(fi);
 			fi.index = this.fields.length - 1;
 			fi.fields = this.fields;
@@ -3369,11 +3433,27 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 	,remove: function() {
 		this.getParent().selectAndDispatch();
 		this.clear();
-		if(this.elem == null) haxe.Log.trace("Erreur in Form.remove(). Instance : " + this.g.className(this) + " label=" + this.label + " recId=" + this.recId,{ fileName : "Form.hx", lineNumber : 238, className : "safebox.models.Form", methodName : "remove"}); else apix.common.display.ElementExtender["delete"](this.elem);
+		if(this.elem == null) haxe.Log.trace("Erreur in Form.remove(). Instance : " + this.g.className(this) + " label=" + this.label + " recId=" + this.recId,{ fileName : "Form.hx", lineNumber : 252, className : "safebox.models.Form", methodName : "remove"}); else apix.common.display.ElementExtender["delete"](this.elem);
 		this.getParent().removeFromList(this);
 	}
-	,removeFromList: function(f) {
-		if(f["is"]("Field")) this.fields.splice(f.index,1); else if(f["is"]("Folder")) this.children.splice(f.index,1); else if(f["is"]("Form")) this.forms.splice(f.index,1); else haxe.Log.trace("f:: Form.removeFromList() type error",{ fileName : "Form.hx", lineNumber : 246, className : "safebox.models.Form", methodName : "removeFromList"});
+	,removeFromList: function(c) {
+		if(c["is"]("Field")) {
+			this.fields.splice(c.index,1);
+			var _g1 = c.index;
+			var _g = this.fields.length;
+			while(_g1 < _g) {
+				var i = _g1++;
+				this.fields[i].index = i;
+			}
+		} else if(c["is"]("Record")) {
+			this.records.splice(c.index,1);
+			var _g11 = c.index;
+			var _g2 = this.records.length;
+			while(_g11 < _g2) {
+				var i1 = _g11++;
+				this.records[i1].index = i1;
+			}
+		} else haxe.Log.trace("f:: Form.removeFromList() type error",{ fileName : "Form.hx", lineNumber : 269, className : "safebox.models.Form", methodName : "removeFromList"});
 	}
 	,clear: function() {
 		var len = this.fields.length;
@@ -3400,10 +3480,48 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 		this.click.dispatch(ev);
 	}
 	,insertNewField: function() {
+		this.clearSecureCode();
 		this.insertNewElement("field");
 	}
 	,insertNewRecord: function() {
 		if(this.fields.length == 0) this.g.alert(this.lang.emptyFieldDescription); else this.showInsertRecordFrame(this.get_recInsertTitleTxt());
+	}
+	,showSecureFrame: function(tl,cmt,sc) {
+		if(sc == null) sc = "";
+		if(cmt == null) cmt = "";
+		if(tl == null) tl = "";
+		apix.common.display.ElementExtender.text(this.get_secureFrameTitle(),tl);
+		apix.common.display.ElementExtender.text(this.get_secureFrameCmt(),cmt);
+		apix.common.display.ElementExtender.text(this.get_secureFrameCode(),sc);
+		apix.common.display.ElementExtender.show(this.get_secureFrame());
+	}
+	,pushSecureCode: function(el,forWhat) {
+		if(forWhat == null) forWhat = "";
+		apix.common.display.ElementExtender.visible(this.get_bRubSecureFrame(),true);
+		if(this.currSecureCode.length < this.param.secureCodeLen) {
+			this.currSecureCode += apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(el,"apix_num"));
+			apix.common.display.ElementExtender.cssStyle(el,"backgroundColor",this.param.secureCodeClickBgColor);
+			apix.common.display.ElementExtender.cssStyle(apix.common.display.ElementExtender.elemByClass(el,"apix_num"),"color",this.param.secureCodeClickColor);
+			apix.common.display.ElementExtender.visible(this.get_bValidSecureFrame(),false);
+		}
+		if(this.currSecureCode.length == this.param.secureCodeLen) {
+			if(forWhat != "forEnter") apix.common.display.ElementExtender.text(this.get_secureFrameCode(),this.lang.secureCode);
+			apix.common.display.ElementExtender.visible(this.get_bValidSecureFrame(),true);
+		}
+	}
+	,assignSecureCode: function(el) {
+		apix.common.display.ElementExtender.text(apix.common.display.ElementExtender.elemByClass(el,"apix_num"),"" + this.secureCodes.pop());
+	}
+	,clearSecureCode: function() {
+		var _g = this;
+		this.currSecureCode = "";
+		apix.common.display.ElementExtender.text(this.get_secureFrameCode(),"");
+		apix.common.display.ElementExtender.visible(this.get_bRubSecureFrame(),false);
+		apix.common.display.ElementExtender.visible(this.get_bValidSecureFrame(),true);
+		apix.common.util.StringExtender.each("#apix_secureFrame .apix_codePicto",function(el) {
+			apix.common.display.ElementExtender.cssStyle(el,"backgroundColor",_g.param.secureCodeBgColor);
+			apix.common.display.ElementExtender.cssStyle(apix.common.display.ElementExtender.elemByClass(el,"apix_num"),"color",_g.param.secureCodeColor);
+		});
 	}
 	,showInsertRecordFrame: function(frameTitle) {
 		apix.common.display.ElementExtender.text(this.get_recordFrameTitle(),frameTitle);
@@ -3541,11 +3659,43 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 			apix.common.display.ElementExtender.text(this.get_rowNumberLabel(),this.lang.fiRowNumberLabel);
 			apix.common.display.ElementExtender.text(this.get_copyEnableLabel(),this.lang.ficopyEnableLabel);
 			apix.common.display.ElementExtender.text(this.get_isHiddenLabel(),this.lang.fiHiddenLabel);
+			apix.common.display.ElementExtender.text(this.get_isSecureLabel(),this.lang.fiSecureLabel);
 			apix.common.display.ElementExtender.text(this.get_isPrimaryLabel(),this.lang.fiPrimaryLabel);
 			apix.common.display.ElementExtender.show(this.get_nameFramefieldsCtnr());
 		} else apix.common.display.ElementExtender.hide(this.get_nameFramefieldsCtnr());
 		apix.common.display.ElementExtender.show(this.get_nameFrame());
 		apix.common.display.ElementExtender.joinEnterKeyToClick(this.get_bNameFrameValid(),null,this.get_foName());
+	}
+	,createSecureCode: function(forWhat) {
+		if(forWhat == null) forWhat = "";
+		var _g = this;
+		this.showSecureFrame(this.lang.secureCreateTitle,this.lang.secureCreateComment,"");
+		apix.common.display.ElementExtender.off(this.get_bRubSecureFrame());
+		apix.common.display.ElementExtender.on(this.get_bRubSecureFrame(),"click",function(e) {
+			_g.clearSecureCode();
+		});
+		apix.common.display.ElementExtender.off(this.get_bValidSecureFrame());
+		apix.common.display.ElementExtender.on(this.get_bValidSecureFrame(),"click",$bind(this,this.onValidSecureCreate));
+		this.clearSecureCode();
+		this.secureCodes = apix.common.tools.math.MathX.randomExclusiveList(9);
+		apix.common.util.StringExtender.each("#apix_secureFrame .apix_codePicto",$bind(this,this.assignSecureCode));
+		apix.common.util.StringExtender.off("#apix_secureFrame .apix_codePicto");
+		apix.common.util.StringExtender.on("#apix_secureFrame .apix_codePicto","click",$bind(this,this.onClickSecureCode),null,{ forWhat : forWhat});
+	}
+	,onClickSecureCode: function(e,d) {
+		var el;
+		el = js.Boot.__cast(e.currentTarget , Element);
+		this.pushSecureCode(el,d.forWhat);
+	}
+	,onValidSecureCreate: function(e) {
+		if(this.currSecureCode == "") {
+			apix.common.display.ElementExtender.value(this.get_isSecureInput(),"false");
+			apix.common.display.ElementExtender.selected(this.get_isSecureInput(),false);
+		} else {
+			apix.common.display.ElementExtender.selected(this.get_isSecureInput(),true);
+			this.doSecureChange();
+		}
+		apix.common.display.ElementExtender.hide(this.get_secureFrame());
 	}
 	,createOneFolder: function(fd,shift) {
 		if(shift == null) shift = 0;
@@ -3610,7 +3760,7 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 		} else {
 			tl = null;
 			hd = null;
-			haxe.Log.trace("f:: Form. insertNewElement() type error",{ fileName : "Form.hx", lineNumber : 465, className : "safebox.models.Form", methodName : "insertNewElement"});
+			haxe.Log.trace("f:: Form. insertNewElement() type error",{ fileName : "Form.hx", lineNumber : 551, className : "safebox.models.Form", methodName : "insertNewElement"});
 		}
 		this.showNameFrame(tl,na,hd,type);
 		apix.common.display.ElementExtender.off(this.get_bNameFrameCancel());
@@ -3620,30 +3770,75 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 		apix.common.display.ElementExtender.value(this.get_foName(),"");
 		if(type == "field") {
 			apix.common.display.ElementExtender.show(this.get_nameFramefieldsCtnr());
+			this.showAdminFields();
+			this.enableAdminFields();
+			apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),true,true);
 			apix.common.display.ElementExtender.value(this.get_rowNumberInput(),"1");
-			apix.common.display.ElementExtender.value(this.get_copyEnableInput(),"true");
 			apix.common.display.ElementExtender.selected(this.get_copyEnableInput(),true);
-			apix.common.display.ElementExtender.value(this.get_isHiddenInput(),"false");
 			apix.common.display.ElementExtender.selected(this.get_isHiddenInput(),false);
-			this.lockPrimaryInput();
+			apix.common.display.ElementExtender.selected(this.get_isSecureInput(),false);
+			apix.common.display.ElementExtender.off(this.get_isSecureInput());
+			apix.common.display.ElementExtender.on(this.get_isSecureInput(),"change",$bind(this,this.onSecureChange));
+			apix.common.display.ElementExtender.off(this.get_isPrimaryInput());
+			this.setupAdminFieldsInput();
 		}
 	}
-	,lockPrimaryInput: function(fi) {
-		if(this.get_primary() != null && this.get_primary() != fi) {
-			if(fi == null) apix.common.display.ElementExtender.value(this.get_isPrimaryInput(),"false");
-			if(fi == null) apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),false);
+	,setupAdminFieldsInput: function() {
+		if(this.get_primary() != null) {
+			apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),false);
 			apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),false,true);
+			this.enableAdminFields();
 		} else {
-			if(fi == null) apix.common.display.ElementExtender.value(this.get_isPrimaryInput(),"true");
-			if(fi == null) apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),true);
-			apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),true,true);
+			apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),true);
+			apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),false,true);
+			this.hideAdminFields();
+			this.view.showTipBox(this.lang.primaryMustBeCreated,apix.common.display.ElementExtender.parent(this.get_isPrimaryInput()));
+			this.disableAdminFields();
 		}
+	}
+	,showAdminFields: function() {
+		apix.common.display.ElementExtender.show(apix.common.display.ElementExtender.parent(this.get_rowNumberInput()));
+		apix.common.display.ElementExtender.show(apix.common.display.ElementExtender.parent(this.get_isHiddenInput()));
+		apix.common.display.ElementExtender.show(apix.common.display.ElementExtender.parent(this.get_copyEnableInput()));
+		apix.common.display.ElementExtender.show(apix.common.display.ElementExtender.parent(this.get_isSecureInput()));
+	}
+	,hideAdminFields: function() {
+		apix.common.display.ElementExtender.hide(apix.common.display.ElementExtender.parent(this.get_rowNumberInput()));
+		apix.common.display.ElementExtender.hide(apix.common.display.ElementExtender.parent(this.get_isHiddenInput()));
+		apix.common.display.ElementExtender.hide(apix.common.display.ElementExtender.parent(this.get_copyEnableInput()));
+		apix.common.display.ElementExtender.hide(apix.common.display.ElementExtender.parent(this.get_isSecureInput()));
+	}
+	,enableAdminFields: function() {
+		apix.common.display.ElementExtender.enable(this.get_isHiddenInput(),true,true);
+		apix.common.display.ElementExtender.enable(this.get_copyEnableInput(),true,true);
+		apix.common.display.ElementExtender.enable(this.get_isSecureInput(),true,true);
+	}
+	,disableAdminFields: function() {
+		apix.common.display.ElementExtender.selected(this.get_isHiddenInput(),false);
+		apix.common.display.ElementExtender.enable(this.get_isHiddenInput(),false,true);
+		apix.common.display.ElementExtender.selected(this.get_copyEnableInput(),false);
+		apix.common.display.ElementExtender.enable(this.get_copyEnableInput(),false,true);
+		apix.common.display.ElementExtender.selected(this.get_isSecureInput(),false);
+		apix.common.display.ElementExtender.enable(this.get_isSecureInput(),false,true);
+		this.currSecureCode = "";
+	}
+	,onSecureChange: function(e) {
+		if(apix.common.display.ElementExtender.selected(this.get_isSecureInput())) this.createSecureCode(); else this.doSecureChange();
+	}
+	,doSecureChange: function() {
+		if(apix.common.display.ElementExtender.selected(this.get_isSecureInput())) {
+			apix.common.display.ElementExtender.selected(this.get_isHiddenInput(),true);
+			apix.common.display.ElementExtender.enable(this.get_isHiddenInput(),false,true);
+		} else apix.common.display.ElementExtender.enable(this.get_isHiddenInput(),true,true);
+	}
+	,onPrimaryChange: function(e) {
+		if(apix.common.display.ElementExtender.selected(this.get_isPrimaryInput())) this.disableAdminFields(); else this.enableAdminFields();
 	}
 	,onInsertElementValid: function(e,d) {
 		var o = null;
 		this.server.serverEvent.off();
 		this.server.serverEvent.on($bind(this,this.onAnswerInsertElement),{ type : d.type});
-		if(d.type == "field") o = { req : "insert" + this.insertSrvTxtMsg, id : this.model.get_currUserId(), recId : this.recId, label : apix.common.display.ElementExtender.value(this.get_foName()), rowNumber : apix.common.display.ElementExtender.value(this.get_rowNumberInput()), copyEnable : apix.common.display.ElementExtender.selected(this.get_copyEnableInput()), isHidden : apix.common.display.ElementExtender.selected(this.get_isHiddenInput()), isPrimary : apix.common.display.ElementExtender.selected(this.get_isPrimaryInput())}; else o = { req : "insert" + this.insertSrvTxtMsg, id : this.model.get_currUserId(), label : apix.common.display.ElementExtender.value(this.get_foName()), recId : this.recId, type : d.type};
+		if(d.type == "field") o = { req : "insert" + this.insertSrvTxtMsg, id : this.model.get_currUserId(), recId : this.recId, label : apix.common.display.ElementExtender.value(this.get_foName()), rowNumber : apix.common.display.ElementExtender.value(this.get_rowNumberInput()), copyEnable : apix.common.display.ElementExtender.selected(this.get_copyEnableInput()), isHidden : apix.common.display.ElementExtender.selected(this.get_isHiddenInput()), isSecure : apix.common.display.ElementExtender.selected(this.get_isSecureInput()), secureCode : this.currSecureCode, isPrimary : apix.common.display.ElementExtender.selected(this.get_isPrimaryInput())}; else o = { req : "insert" + this.insertSrvTxtMsg, id : this.model.get_currUserId(), label : apix.common.display.ElementExtender.value(this.get_foName()), recId : this.recId, type : d.type};
 		this.server.ask(o);
 	}
 	,onAnswerInsertElement: function(e) {
@@ -3670,7 +3865,7 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 			} else {
 				ff = new safebox.models.Field(this.model,this.view);
 				this.insertElementInit(ff,e);
-				(js.Boot.__cast(ff , safebox.models.Field)).initField(e.result.recId,apix.common.display.ElementExtender.value(this.get_foName()),this.g.intVal(apix.common.display.ElementExtender.value(this.get_rowNumberInput()),1),apix.common.display.ElementExtender.selected(this.get_copyEnableInput()),apix.common.display.ElementExtender.selected(this.get_isHiddenInput()),apix.common.display.ElementExtender.selected(this.get_isPrimaryInput()));
+				(js.Boot.__cast(ff , safebox.models.Field)).initField(e.result.recId,apix.common.display.ElementExtender.value(this.get_foName()),this.g.intVal(apix.common.display.ElementExtender.value(this.get_rowNumberInput()),1),apix.common.display.ElementExtender.selected(this.get_copyEnableInput()),apix.common.display.ElementExtender.selected(this.get_isHiddenInput()),apix.common.display.ElementExtender.selected(this.get_isSecureInput()),apix.common.display.ElementExtender.selected(this.get_isPrimaryInput()));
 				this.fields.push(js.Boot.__cast(ff , safebox.models.Field));
 				ff.index = this.fields.length - 1;
 				this.createOneField(js.Boot.__cast(ff , safebox.models.Field),this.shift);
@@ -3684,6 +3879,7 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 		ff.parent = this;
 	}
 	,onUpdateClick: function(e) {
+		this.clearSecureCode();
 		this.showNameFrame(this.get_updateTitleTxt(),this.get_nameTxt(),this.get_nameHolderTxt());
 		apix.common.display.ElementExtender.off(this.get_bNameFrameCancel());
 		apix.common.display.ElementExtender.on(this.get_bNameFrameCancel(),"click",$bind(this,this.onFrameCancel));
@@ -3707,6 +3903,7 @@ safebox.models.Form.prototype = $extend(safebox.models.SubModel.prototype,{
 		if(answ == "error") {
 			if(e.result.msg == "connectionHasBeenClosed") this.g.alert(this.lang.connectionHasBeenClosed); else if(e.result.msg == "connectionIsNotValid") this.g.alert(this.lang.connectionIsNotValid); else this.g.alert(this.lang.serverReadError + e.result.msg);
 		} else if(answ == "update" + this.srvTxtMsg + "Ok") {
+			if(e.result.debug != null) haxe.Log.trace("debug=" + Std.string(e.result.debug),{ fileName : "Form.hx", lineNumber : 726, className : "safebox.models.Form", methodName : "onAnswerUpdate"});
 			apix.common.display.ElementExtender.hide(this.get_nameFrame());
 			this.view.showTipBox(this.lang.updateOk,apix.common.display.ElementExtender.parent(this.get_bElem()),apix.common.display.ElementExtender.posx(this.get_bElem()),apix.common.display.ElementExtender.posy(this.get_bElem()),2);
 		} else this.g.alert(this.lang.serverFatalError);
@@ -3778,6 +3975,7 @@ safebox.models.Folder = function(m,v) {
 	this.insertSrvTxtMsg = "FormFolder";
 };
 safebox.models.Folder.__name__ = ["safebox","models","Folder"];
+safebox.models.Folder.__interfaces__ = [safebox.models.IContent];
 safebox.models.Folder.__super__ = safebox.models.Form;
 safebox.models.Folder.prototype = $extend(safebox.models.Form.prototype,{
 	get_subCtnr: function() {
@@ -3921,6 +4119,25 @@ safebox.models.Folder.prototype = $extend(safebox.models.Form.prototype,{
 		}
 		if(this.recId != 0) safebox.models.Form.prototype.remove.call(this);
 	}
+	,removeFromList: function(c) {
+		if(c["is"]("Folder")) {
+			this.children.splice(c.index,1);
+			var _g1 = c.index;
+			var _g = this.children.length;
+			while(_g1 < _g) {
+				var i = _g1++;
+				this.children[i].index = i;
+			}
+		} else if(c["is"]("Form")) {
+			this.forms.splice(c.index,1);
+			var _g11 = c.index;
+			var _g2 = this.forms.length;
+			while(_g11 < _g2) {
+				var i1 = _g11++;
+				this.forms[i1].index = i1;
+			}
+		} else haxe.Log.trace("f:: [override] Folder.removeFromList() type error",{ fileName : "Folder.hx", lineNumber : 165, className : "safebox.models.Folder", methodName : "removeFromList"});
+	}
 	,setStateOfAddButtons: function(opacFd,opacFo,opacFi) {
 		if(opacFi == null) opacFi = "0";
 		if(opacFo == null) opacFo = "1";
@@ -3934,6 +4151,7 @@ safebox.models.Field = function(m,v) {
 	this.srvTxtMsg = "Field";
 };
 safebox.models.Field.__name__ = ["safebox","models","Field"];
+safebox.models.Field.__interfaces__ = [safebox.models.IContent];
 safebox.models.Field.__super__ = safebox.models.Folder;
 safebox.models.Field.prototype = $extend(safebox.models.Folder.prototype,{
 	get_dbColName: function() {
@@ -3976,12 +4194,13 @@ safebox.models.Field.prototype = $extend(safebox.models.Folder.prototype,{
 	,get_inputFieldHeight: function() {
 		if(this.rowNumber > 1) return this.rowNumber * 22; else return -1;
 	}
-	,initField: function(ri,l,rn,ce,ih,ip) {
+	,initField: function(ri,l,rn,ce,ih,$is,ip) {
 		this.recId = ri;
 		this.label = l;
 		this.rowNumber = rn;
 		this.copyEnable = ce;
 		this.isHidden = ih;
+		this.isSecure = $is;
 		this.isPrimary = ip;
 	}
 	,clear: function() {
@@ -3997,10 +4216,10 @@ safebox.models.Field.prototype = $extend(safebox.models.Folder.prototype,{
 		safebox.models.Folder.prototype.removeEvent.call(this);
 	}
 	,open: function() {
-		haxe.Log.trace("f:: not possible to use Field.open() !!",{ fileName : "Field.hx", lineNumber : 99, className : "safebox.models.Field", methodName : "open"});
+		haxe.Log.trace("f:: not possible to use Field.open() !!",{ fileName : "Field.hx", lineNumber : 100, className : "safebox.models.Field", methodName : "open"});
 	}
 	,close: function() {
-		haxe.Log.trace("f:: not possible to use Field.close() !!",{ fileName : "Field.hx", lineNumber : 103, className : "safebox.models.Field", methodName : "close"});
+		haxe.Log.trace("f:: not possible to use Field.close() !!",{ fileName : "Field.hx", lineNumber : 104, className : "safebox.models.Field", methodName : "close"});
 	}
 	,setupAdminMode: function() {
 		apix.common.display.ElementExtender.show(this.get_pictoCtnr(),"inline-block");
@@ -4029,30 +4248,112 @@ safebox.models.Field.prototype = $extend(safebox.models.Folder.prototype,{
 		safebox.models.Folder.prototype.onUpdateClick.call(this,e);
 		this.showNameFrame(this.get_updateTitleTxt(),this.get_nameTxt(),this.get_nameHolderTxt(),"field");
 		apix.common.display.ElementExtender.value(this.get_foName(),this.label);
+		this.showAdminFields();
+		this.enableAdminFields();
+		apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),true,true);
 		apix.common.display.ElementExtender.value(this.get_rowNumberInput(),"" + this.rowNumber);
-		apix.common.display.ElementExtender.value(this.get_copyEnableInput(),this.copyEnable?"true":"false");
 		apix.common.display.ElementExtender.selected(this.get_copyEnableInput(),this.copyEnable);
-		apix.common.display.ElementExtender.value(this.get_isHiddenInput(),this.isHidden?"true":"false");
 		apix.common.display.ElementExtender.selected(this.get_isHiddenInput(),this.isHidden);
-		apix.common.display.ElementExtender.value(this.get_isPrimaryInput(),this.isPrimary?"true":"false");
+		apix.common.display.ElementExtender.selected(this.get_isSecureInput(),this.isSecure);
 		apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),this.isPrimary);
-		this.lockPrimaryInput(this);
+		this.setupAdminFieldsInput();
+		apix.common.display.ElementExtender.off(this.get_isSecureInput());
+		apix.common.display.ElementExtender.on(this.get_isSecureInput(),"change",$bind(this,this.onSecureChange));
+		apix.common.display.ElementExtender.off(this.get_isPrimaryInput());
+		apix.common.display.ElementExtender.on(this.get_isPrimaryInput(),"change",$bind(this,this.onPrimaryChange));
+	}
+	,setupAdminFieldsInput: function() {
+		if(this.isPrimary) {
+			this.disableAdminFields();
+			this.hideAdminFields();
+		} else {
+			if(this.get_primary() != null) {
+				apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),false);
+				apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),false,true);
+				apix.common.display.ElementExtender.off(this.get_isPrimaryInput());
+			} else if(!this.isSecure) {
+				apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),true);
+				apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),false,true);
+				apix.common.display.ElementExtender.off(this.get_isPrimaryInput());
+				this.hideAdminFields();
+				this.view.showTipBox(this.lang.primaryMustBeCreated,apix.common.display.ElementExtender.parent(this.get_isPrimaryInput()));
+			}
+			if(this.isSecure) {
+				apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),false);
+				apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),false,true);
+				apix.common.display.ElementExtender.off(this.get_isPrimaryInput());
+				apix.common.display.ElementExtender.enable(this.get_isHiddenInput(),false,true);
+				apix.common.display.ElementExtender.selected(this.get_isHiddenInput(),true);
+			} else apix.common.display.ElementExtender.enable(this.get_isHiddenInput(),true,true);
+		}
 	}
 	,onFrameValid: function(e) {
 		this.rowNumber = this.g.intVal(apix.common.display.ElementExtender.value(this.get_rowNumberInput()),1);
 		this.copyEnable = this.g.boolVal(apix.common.display.ElementExtender.selected(this.get_copyEnableInput()),true);
 		this.isHidden = this.g.boolVal(apix.common.display.ElementExtender.selected(this.get_isHiddenInput()),true);
+		this.isSecure = this.g.boolVal(apix.common.display.ElementExtender.selected(this.get_isSecureInput()),false);
 		this.isPrimary = this.g.boolVal(apix.common.display.ElementExtender.selected(this.get_isPrimaryInput()),true);
 		this.label = apix.common.display.ElementExtender.value(this.get_foName());
 		apix.common.display.ElementExtender.value(this.get_labelElem(),this.label);
 		this.server.serverEvent.off();
 		this.server.serverEvent.on($bind(this,this.onAnswerUpdate));
-		this.server.ask({ req : "updateField", id : this.model.get_currUserId(), recId : this.recId, label : this.label, rowNumber : this.rowNumber, copyEnable : this.copyEnable, isHidden : this.isHidden, isPrimary : this.isPrimary});
+		this.server.ask({ req : "updateField", id : this.model.get_currUserId(), recId : this.recId, label : this.label, rowNumber : this.rowNumber, copyEnable : this.copyEnable, isHidden : this.isHidden, isSecure : this.isSecure, secureCode : this.currSecureCode, isPrimary : this.isPrimary});
+	}
+	,onSecureChange: function(e) {
+		if(apix.common.display.ElementExtender.selected(this.get_isSecureInput())) this.createSecureCodeForUpdate(); else if(this.isSecure) {
+			this.setSecure(true);
+			this.enterSecureCode();
+		} else this.doSecureChange();
+	}
+	,doSecureChange: function() {
+		safebox.models.Folder.prototype.doSecureChange.call(this);
+		if(!apix.common.display.ElementExtender.selected(this.get_isSecureInput()) && this.get_primary() == null) {
+			apix.common.display.ElementExtender.off(this.get_isPrimaryInput());
+			apix.common.display.ElementExtender.on(this.get_isPrimaryInput(),"change",$bind(this,this.onPrimaryChange));
+			apix.common.display.ElementExtender.selected(this.get_isPrimaryInput(),true);
+			apix.common.display.ElementExtender.enable(this.get_isPrimaryInput(),true,true);
+			this.disableAdminFields();
+			this.view.showTipBox(this.lang.primaryMustBeCreated,apix.common.display.ElementExtender.parent(this.get_isPrimaryInput()));
+		}
+	}
+	,setSecure: function(b) {
+		if(b == null) b = true;
+		apix.common.display.ElementExtender.selected(this.get_isSecureInput(),b);
+		if(!b) this.currSecureCode = "";
+	}
+	,createSecureCodeForUpdate: function() {
+		this.createSecureCode();
+	}
+	,enterSecureCode: function() {
+		this.createSecureCode("forEnter");
+		this.showSecureFrame(this.lang.secureEnterTitle,"","");
+		apix.common.display.ElementExtender.off(this.get_bValidSecureFrame());
+		apix.common.display.ElementExtender.on(this.get_bValidSecureFrame(),"click",$bind(this,this.onValidSecureEnter));
+	}
+	,onValidSecureEnter: function(e) {
+		if(this.currSecureCode != "") this.askVerifySecureCode();
+		apix.common.display.ElementExtender.hide(this.get_secureFrame());
+	}
+	,askVerifySecureCode: function() {
+		this.server.serverEvent.off();
+		this.server.serverEvent.on($bind(this,this.onAnswerVerifySecureCode));
+		this.server.ask({ req : "verifySecureCode", id : this.model.get_currUserId(), fieldRecId : this.recId, secureCode : this.currSecureCode});
+	}
+	,onAnswerVerifySecureCode: function(e) {
+		var answ = e.result.answ;
+		if(answ == "error") {
+			if(e.result.msg == "connectionHasBeenClosed") this.g.alert(this.lang.connectionHasBeenClosed); else if(e.result.msg == "connectionIsNotValid") this.g.alert(this.lang.connectionIsNotValid); else if(e.result.msg == "elemDoesntExist") this.g.alert(this.lang.elemDoesntExist); else if(e.result.msg == "invalidSecureCode") this.g.alert(this.lang.invalidSecureCode); else this.g.alert(this.lang.serverReadError + e.result.msg);
+		} else if(answ != "secureCodeOk") this.g.alert(this.lang.serverFatalError); else {
+			this.setSecure(false);
+			this.doSecureChange();
+		}
 	}
 	,__class__: safebox.models.Field
 });
 safebox.models.FieldData = function(m,v) {
 	safebox.models.SubModel.call(this,m,v);
+	this.secureFieldRead = new apix.common.event.EventSource();
+	this.isUpdated = false;
 };
 safebox.models.FieldData.__name__ = ["safebox","models","FieldData"];
 safebox.models.FieldData.__super__ = safebox.models.SubModel;
@@ -4075,8 +4376,24 @@ safebox.models.FieldData.prototype = $extend(safebox.models.SubModel.prototype,{
 	,get_visible: function() {
 		return this.value == apix.common.display.ElementExtender.value(this.get_valueElem());
 	}
+	,get_secureFrame: function() {
+		return this.getFormParent().get_secureFrame();
+	}
+	,get_bValidSecureFrame: function() {
+		return this.getFormParent().get_bValidSecureFrame();
+	}
+	,get_bRubSecureFrame: function() {
+		return this.getFormParent().get_bRubSecureFrame();
+	}
+	,get_secureFrameCode: function() {
+		return this.getFormParent().get_secureFrameCode();
+	}
 	,getParent: function() {
 		if(this.parent != null) return js.Boot.__cast(this.parent , safebox.models.Record); else return null;
+	}
+	,getFormParent: function() {
+		if(this.getParent().getParent() != this.field.getParent()) haxe.Log.trace("f:: error in FieldData.getFormParent ()",{ fileName : "FieldData.hx", lineNumber : 64, className : "safebox.models.FieldData", methodName : "getFormParent"});
+		if(this.getParent() != null) return this.getParent().getParent(); else return null;
 	}
 	,init: function(k,v,fi,idx,par) {
 		if(v == null) v = "";
@@ -4087,6 +4404,8 @@ safebox.models.FieldData.prototype = $extend(safebox.models.SubModel.prototype,{
 		this.label = this.g.strVal(fi.label,"");
 		this.index = idx;
 		this.parent = par;
+		this.length = this.value.length;
+		if(this.field.isHidden) $bind(this,this.makeHidden);
 		return this;
 	}
 	,display: function() {
@@ -4107,25 +4426,40 @@ safebox.models.FieldData.prototype = $extend(safebox.models.SubModel.prototype,{
 		this.setupView();
 		this.setupEvent();
 	}
+	,makeHidden: function() {
+		if(this.field.isSecure) this.value = "";
+		if(this.get_valueElem() != null) apix.common.display.ElementExtender.value(this.get_valueElem(),this.hideChars(this.length));
+	}
+	,enterSecureCode: function(whatFor) {
+		var _g = this;
+		this.getFormParent().showSecureFrame(this.lang.secureEnterTitle,"","");
+		apix.common.display.ElementExtender.off(this.get_bValidSecureFrame());
+		apix.common.display.ElementExtender.on(this.get_bValidSecureFrame(),"click",$bind(this,this.onValidSecureEnter),false,{ whatFor : whatFor});
+		apix.common.display.ElementExtender.off(this.get_bRubSecureFrame());
+		apix.common.display.ElementExtender.on(this.get_bRubSecureFrame(),"click",function(e) {
+			_g.getFormParent().clearSecureCode();
+		});
+		this.getFormParent().clearSecureCode();
+		this.getFormParent().secureCodes = apix.common.tools.math.MathX.randomExclusiveList(9);
+		apix.common.util.StringExtender.each("#apix_secureFrame .apix_codePicto",($_=this.getFormParent(),$bind($_,$_.assignSecureCode)));
+		apix.common.util.StringExtender.off("#apix_secureFrame .apix_codePicto");
+		apix.common.util.StringExtender.on("#apix_secureFrame .apix_codePicto","click",$bind(this,this.onClickSecureCode));
+	}
 	,setupView: function() {
 		apix.common.display.ElementExtender.text(this.get_labelElem(),this.label);
 		apix.common.display.ElementExtender.value(this.get_valueElem(),this.value);
 		if(this.field.get_inputFieldHeight() > 0) apix.common.display.ElementExtender.height(this.get_valueElem(),this.field.get_inputFieldHeight());
-		if(this.field.isHidden) {
+		if(this.field.isHidden && this.length > 0) {
 			apix.common.display.ElementExtender.visible(this.get_showPictoElem(),true);
 			this.makeHidden();
 		} else {
 			apix.common.display.ElementExtender.visible(this.get_showPictoElem(),false);
 			this.makeVisible();
 		}
-		if(this.field.copyEnable) apix.common.display.ElementExtender.visible(this.get_copyPictoElem(),true); else apix.common.display.ElementExtender.visible(this.get_copyPictoElem(),false);
+		if(this.field.copyEnable && this.length > 0) apix.common.display.ElementExtender.visible(this.get_copyPictoElem(),true); else apix.common.display.ElementExtender.visible(this.get_copyPictoElem(),false);
 	}
 	,makeVisible: function() {
 		apix.common.display.ElementExtender.value(this.get_valueElem(),this.value);
-	}
-	,makeHidden: function() {
-		var l = this.value.length;
-		apix.common.display.ElementExtender.value(this.get_valueElem(),this.hideChars(l));
 	}
 	,hideChars: function(l) {
 		var str = "";
@@ -4141,9 +4475,12 @@ safebox.models.FieldData.prototype = $extend(safebox.models.SubModel.prototype,{
 		if(!apix.common.display.ElementExtender.hasLst(this.get_showPictoElem(),"click")) apix.common.display.ElementExtender.on(this.get_showPictoElem(),"click",$bind(this,this.onShowClick));
 	}
 	,removeEvent: function() {
-		if(this.get_copyPictoElem() == null) haxe.Log.trace("f:: debug test : label=" + this.label + " index=" + this.index,{ fileName : "FieldData.hx", lineNumber : 121, className : "safebox.models.FieldData", methodName : "removeEvent"}); else if(apix.common.display.ElementExtender.hasLst(this.get_copyPictoElem(),"click")) apix.common.display.ElementExtender.off(this.get_copyPictoElem(),"click",$bind(this,this.onCopyClick));
+		if(this.get_copyPictoElem() == null) haxe.Log.trace("f:: debug test : label=" + this.label + " index=" + this.index,{ fileName : "FieldData.hx", lineNumber : 155, className : "safebox.models.FieldData", methodName : "removeEvent"}); else if(apix.common.display.ElementExtender.hasLst(this.get_copyPictoElem(),"click")) apix.common.display.ElementExtender.off(this.get_copyPictoElem(),"click",$bind(this,this.onCopyClick));
 	}
 	,onCopyClick: function(e) {
+		if(this.field.isSecure && !this.get_visible()) this.enterSecureCode("forCopy"); else this.doCopyToClipBoard();
+	}
+	,doCopyToClipBoard: function() {
 		var visibleBefore = this.get_visible();
 		if(this.field.isHidden && !visibleBefore) this.makeVisible();
 		apix.common.display.ElementExtender.pick(this.get_valueElem());
@@ -4151,7 +4488,39 @@ safebox.models.FieldData.prototype = $extend(safebox.models.SubModel.prototype,{
 		if(this.field.isHidden && !visibleBefore) this.makeHidden();
 	}
 	,onShowClick: function(e) {
-		if(!this.get_visible()) this.makeVisible(); else this.makeHidden();
+		if(!this.get_visible()) {
+			if(this.field.isSecure) this.enterSecureCode("forShow"); else this.makeVisible();
+		} else this.makeHidden();
+	}
+	,onValidSecureEnter: function(e,d) {
+		if(this.getFormParent().currSecureCode != "") this.askReadFieldData(d);
+		apix.common.display.ElementExtender.hide(this.get_secureFrame());
+	}
+	,onClickSecureCode: function(e) {
+		var el;
+		el = js.Boot.__cast(e.currentTarget , Element);
+		this.getFormParent().pushSecureCode(el);
+		apix.common.display.ElementExtender.text(this.get_secureFrameCode(),"");
+	}
+	,askReadFieldData: function(d) {
+		this.server.serverEvent.off();
+		this.server.serverEvent.on($bind(this,this.onAnswerReadFieldData),d);
+		this.server.ask({ req : "readFieldData", id : this.model.get_currUserId(), formRecId : this.getFormParent().recId, recId : this.getParent().recId, fieldRecId : this.field.recId, secureCode : this.getFormParent().currSecureCode});
+	}
+	,onAnswerReadFieldData: function(e) {
+		var answ = e.result.answ;
+		if(answ == "error") {
+			if(e.result.msg == "connectionHasBeenClosed") this.g.alert(this.lang.connectionHasBeenClosed); else if(e.result.msg == "connectionIsNotValid") this.g.alert(this.lang.connectionIsNotValid); else if(e.result.msg == "elemDoesntExist") this.g.alert(this.lang.elemDoesntExist); else if(e.result.msg == "invalidSecureCode") this.g.alert(this.lang.invalidSecureCode); else this.g.alert(this.lang.serverReadError + e.result.msg);
+		} else if(answ != "readFieldDataOk") this.g.alert(this.lang.serverFatalError); else {
+			this.value = e.result.value;
+			if(e.data.whatFor == "forShow") this.makeVisible(); else if(e.data.whatFor == "forCopy") this.g.alert(this.lang.secureToClipBoard,$bind(this,this.doCopyToClipBoard),null,this.lang.secureCopyConfirm); else if(e.data.whatFor == "forRecordUpdate") {
+				var ev = new apix.common.event.StandardEvent(this);
+				ev.value = this.value;
+				this.value = "";
+				this.secureFieldRead.dispatch(ev);
+				this.isUpdated = true;
+			} else haxe.Log.trace("f::Fatal error in FieldData.onAnswerReadFieldData()",{ fileName : "FieldData.hx", lineNumber : 215, className : "safebox.models.FieldData", methodName : "onAnswerReadFieldData"});
+		}
 	}
 	,__class__: safebox.models.FieldData
 });
@@ -4159,6 +4528,7 @@ safebox.models.Record = function(m,v) {
 	safebox.models.SubModel.call(this,m,v);
 };
 safebox.models.Record.__name__ = ["safebox","models","Record"];
+safebox.models.Record.__interfaces__ = [safebox.models.IContent];
 safebox.models.Record.__super__ = safebox.models.SubModel;
 safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 	get_dbTable: function() {
@@ -4240,12 +4610,29 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 		this.setupEvent();
 	}
 	,open: function() {
+		var str = this.checkIfprimaryExists();
+		if(str != "") this.g.alert(str,null,this.lang.alertTitle);
 		apix.common.display.ElementExtender.show(this.get_elemsCtnr());
 		apix.common.display.ElementExtender.show(this.get_pictoCtnr());
 		apix.common.display.ElementExtender.cssStyle(this.get_labelElem(),"fontSize","1.3rem");
 		this.isClosed = false;
 	}
+	,checkIfprimaryExists: function() {
+		var str = "";
+		var p = this.fields[0];
+		if(p.isSecure || p.isHidden) {
+			if(!p.isPrimary) str = this.lang.firstFieldIsSecure; else str = this.lang.primaryFieldIsSecure;
+		} else if(!p.isPrimary) str = this.lang.primaryMissing;
+		return str;
+	}
 	,close: function() {
+		var _g = 0;
+		var _g1 = this.fieldDatas;
+		while(_g < _g1.length) {
+			var fd = _g1[_g];
+			++_g;
+			if(fd.field.isHidden && fd.field.isSecure) fd.makeHidden();
+		}
 		apix.common.display.ElementExtender.hide(this.get_elemsCtnr());
 		apix.common.display.ElementExtender.hide(this.get_pictoCtnr());
 		apix.common.display.ElementExtender.cssStyle(this.get_labelElem(),"fontSize","1.05rem");
@@ -4281,8 +4668,11 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 		if(apix.common.display.ElementExtender.isDisplay(this.get_elemsCtnr())) this.close(); else this.open();
 	}
 	,onUpdateClick: function(e) {
-		this.showUpdateRecordFrame(this.get_recUpdateTitleTxt());
-		this.setupUpdateFrameEvent();
+		var str = this.checkIfprimaryExists();
+		if(str != "" && str != this.lang.primaryMissing) this.g.alert(str,null,this.lang.warningTitle); else {
+			this.showUpdateRecordFrame(this.get_recUpdateTitleTxt());
+			this.setupUpdateFrameEvent();
+		}
 	}
 	,setupUpdateFrameEvent: function() {
 		apix.common.display.ElementExtender.off(this.get_bFrameCancel(),"click");
@@ -4290,9 +4680,9 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 		apix.common.display.ElementExtender.on(this.get_bFrameCancel(),"click",$bind(this,this.onFrameCancel));
 		apix.common.display.ElementExtender.on(this.get_bFrameValid(),"click",$bind(this,this.onFrameValidUpdate));
 		apix.common.display.ElementExtender.joinEnterKeyToClick(this.get_bFrameValid(),null,this.frameFieldElems[0].valueElem);
-		this.setupTextAreaEvent();
+		this.setupFieldsEvent();
 	}
-	,setupTextAreaEvent: function() {
+	,setupFieldsEvent: function() {
 		var _g = 0;
 		var _g1 = this.fields;
 		while(_g < _g1.length) {
@@ -4303,17 +4693,17 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 			if(fi.get_isMultiLines()) {
 				apix.common.display.ElementExtender.on(el,"focus",$bind(this,this.onTextAreaFocus));
 				apix.common.display.ElementExtender.on(el,"blur",$bind(this,this.onTextAreaBlur));
-			}
+			} else if(fi.isSecure && apix.common.display.ElementExtender.value(el) == "" && this.fieldDatas[fi.index].length > 0) apix.common.display.ElementExtender.on(el,"focus",$bind(this,this.onSecureFieldFocus),false,{ index : fi.index});
 		}
 	}
-	,removeTextAreaEvent: function() {
+	,removeFieldsEvent: function() {
 		var _g = 0;
 		var _g1 = this.fields;
 		while(_g < _g1.length) {
 			var fi = _g1[_g];
 			++_g;
-			if(fi.get_isMultiLines()) {
-				var el = this.frameFieldElems[fi.index].valueElem;
+			var el = this.frameFieldElems[fi.index].valueElem;
+			if(fi.get_isMultiLines() || fi.isSecure) {
 				if(el != null && apix.common.display.ElementExtender.hasLst(el)) apix.common.display.ElementExtender.off(el);
 			}
 		}
@@ -4324,11 +4714,24 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 	,onTextAreaBlur: function(e) {
 		if(this.get_bFrameValid() != null) apix.common.display.ElementExtender.joinEnterKeyToClick(this.get_bFrameValid());
 	}
+	,onSecureFieldFocus: function(e,d) {
+		var fd = this.fieldDatas[d.index];
+		fd.secureFieldRead.on($bind(this,this.onSecureFieldRead),d);
+		fd.enterSecureCode("forRecordUpdate");
+	}
+	,onSecureFieldRead: function(e) {
+		var fd = e.target;
+		fd.secureFieldRead.off($bind(this,this.onSecureFieldRead));
+		var el = this.frameFieldElems[e.data.index].valueElem;
+		apix.common.display.ElementExtender.off(el,"focus",$bind(this,this.onSecureFieldFocus));
+		apix.common.display.ElementExtender.value(el,e.value);
+		apix.common.display.ElementExtender.placeHolder(el,this.get_fieldDataHolder() + " " + fd.field.label);
+	}
 	,removeUpdateFrameEvent: function() {
 		if(apix.common.display.ElementExtender.hasLst(this.get_bFrameCancel(),"click")) apix.common.display.ElementExtender.off(this.get_bFrameCancel(),"click",$bind(this,this.onFrameCancel));
 		if(apix.common.display.ElementExtender.hasLst(this.get_bFrameValid(),"click")) apix.common.display.ElementExtender.off(this.get_bFrameValid(),"click",$bind(this,this.onFrameValidUpdate));
 		apix.common.display.ElementExtender.clearEnterKeyToClick(this.get_bFrameValid());
-		this.removeTextAreaEvent();
+		this.removeFieldsEvent();
 	}
 	,onFrameCancel: function(e) {
 		this.removeUpdateFrameEvent();
@@ -4336,18 +4739,30 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 	}
 	,onFrameValidUpdate: function(e) {
 		var fd;
+		var b;
 		var _g = 0;
 		var _g1 = this.fieldDatas;
 		while(_g < _g1.length) {
 			var fd1 = _g1[_g];
 			++_g;
 			fd1.value = apix.common.display.ElementExtender.value(this.frameFieldElems[fd1.index].valueElem);
-			if(fd1.field.isPrimary) {
-				this.label = fd1.value;
-				apix.common.display.ElementExtender.value(this.get_labelElem(),this.label);
-			} else fd1.setup();
+			if(fd1.field.isSecure && (fd1.isUpdated || apix.common.display.ElementExtender.value(this.frameFieldElems[fd1.index].valueElem) != "")) {
+				fd1.value = apix.common.display.ElementExtender.value(this.frameFieldElems[fd1.index].valueElem);
+				fd1.length = fd1.value.length;
+			}
 		}
 		this.askUpdate();
+		var _g2 = 0;
+		var _g11 = this.fieldDatas;
+		while(_g2 < _g11.length) {
+			var fd2 = _g11[_g2];
+			++_g2;
+			b = fd2.field.isPrimary || this.checkIfprimaryExists() != "" && fd2.field.index == 0;
+			if(b) {
+				this.label = fd2.value;
+				apix.common.display.ElementExtender.value(this.get_labelElem(),this.label);
+			} else fd2.setup();
+		}
 	}
 	,askUpdate: function() {
 		this.server.serverEvent.off();
@@ -4360,6 +4775,7 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 		while(_g < _g1.length) {
 			var fd = _g1[_g];
 			++_g;
+			if(fd.field.isSecure && !fd.isUpdated && fd.value == "") continue;
 			fvList += pfx + fd.value;
 			fkList += pfx + fd.key;
 			pfx = "`~¤";
@@ -4373,6 +4789,16 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 		} else if(answ == "updateRecordOk") {
 			this.removeUpdateFrameEvent();
 			apix.common.display.ElementExtender.hide(this.get_recordFrame());
+			var _g = 0;
+			var _g1 = this.fieldDatas;
+			while(_g < _g1.length) {
+				var fd = _g1[_g];
+				++_g;
+				if(fd.field.isSecure) {
+					fd.makeHidden();
+					fd.isUpdated = false;
+				}
+			}
 			this.view.showTipBox(this.lang.updateOk,apix.common.display.ElementExtender.parent(this.get_bElem()),apix.common.display.ElementExtender.posx(this.get_bElem()),apix.common.display.ElementExtender.posy(this.get_bElem()),2);
 		} else this.g.alert(this.lang.serverFatalError);
 	}
@@ -4398,10 +4824,11 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 	}
 	,remove: function() {
 		this.clear();
-		if(this.elem == null) haxe.Log.trace("Erreur in Record.remove(). Instance : label=" + this.label + " recId=" + this.recId,{ fileName : "Record.hx", lineNumber : 282, className : "safebox.models.Record", methodName : "remove"}); else apix.common.display.ElementExtender["delete"](this.elem);
-		this.getParent().records.splice(this.index,1);
+		if(this.elem == null) haxe.Log.trace("Erreur in Record.remove(). Instance : label=" + this.label + " recId=" + this.recId,{ fileName : "Record.hx", lineNumber : 328, className : "safebox.models.Record", methodName : "remove"}); else apix.common.display.ElementExtender["delete"](this.elem);
+		this.getParent().removeFromList(this);
 	}
 	,showUpdateRecordFrame: function(frameTitle) {
+		var fdh = "";
 		apix.common.display.ElementExtender.text(this.get_recordFrameTitle(),frameTitle);
 		apix.common.display.ElementExtender.removeChildren(this.get_recordFieldCtnr());
 		this.frameFieldElems = [];
@@ -4410,7 +4837,8 @@ safebox.models.Record.prototype = $extend(safebox.models.SubModel.prototype,{
 		while(_g < _g1.length) {
 			var fd = _g1[_g];
 			++_g;
-			this.frameFieldElems.push(fd.field.displayInRecordFrame(this.get_recordFieldCtnr(),this.get_fieldDataHolder(),fd.value));
+			if(fd.field.isSecure && fd.value == "" && fd.length > 0) fdh = this.lang.securefieldDataHolder; else fdh = this.get_fieldDataHolder();
+			this.frameFieldElems.push(fd.field.displayInRecordFrame(this.get_recordFieldCtnr(),fdh,fd.value));
 		}
 		apix.common.display.ElementExtender.show(this.get_recordFrame());
 	}

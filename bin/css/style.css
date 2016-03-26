@@ -35,7 +35,9 @@ body {
 	vertical-align: top;
 	padding-bottom:.2rem;
 }
-
+#safeBox .centered {
+	text-align:center;
+}
 #safeBox #loginView {	
 	display:none;
 }
@@ -416,7 +418,7 @@ body {
 	background-color:#fff ;
 }
 /* cancel picto */
-#safeBox .cancelPicto {
+#safeBox .cancelPicto , #safeBox .rubPicto {
 	position:absolute;
 	display:block;
 }
@@ -426,13 +428,6 @@ body {
 	background-color:#faa;	
 	border-radius: 50%; 
 	text-align:center;
-	
-	/*-ms-transform-origin: 50 % 50%; 
-    -webkit-transform-origin:  50% 50%;  
-    transform-origin: 50 % 50%; ;
-	transform:rotate(45deg);	
-	-ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);  */
 }
 #safeBox .cancelPicto .hBar  ,#safeBox .removePicto .hBar {	
 	position:absolute;
@@ -452,6 +447,66 @@ body {
 	display:block;
 	background-color:#fff ;
 }
+
+ #safeBox .frame .cancelPicto ,  #safeBox .frame .rubPicto {
+	position:relative;
+	display:inline-block;
+}
+/* ok picto */
+#safeBox .frame .textPicto {
+	position:relative;
+	width:35px;
+	height:35px;
+	display:inline-block;
+	border-radius: 50%; 	
+}
+#safeBox .frame .textPicto span {
+	position:absolute;
+	top:4px;
+	left:3px;
+	display:inline-block;
+	font-weight:bold;
+	color:white;
+}
+#safeBox .frame .okPicto {
+	background-color:#9ce;
+}
+#safeBox .frame .codePicto {
+	background-color:#fff;
+	border:solid 1px #555;
+}
+#safeBox .frame .codePicto span {
+	left:11px;
+	top:2px;
+	color:#ddd;
+}
+#safeBox .rubPicto {	
+	width:15px;
+	height:33px;
+	background-color:#fff;
+}
+#safeBox .rubPicto .topRect  {	
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:15px;
+	height:18px;	
+	display:block;
+	background-color:#e76;
+}
+#safeBox .rubPicto .bottomRect  {	
+	position:absolute;
+	top:19px;
+	left:0px;
+	width:15px;
+	height:14px;	
+	display:block;
+	background-color:#6ad;
+	border-bottom-left-radius:30%;
+	border-bottom-right-radius:30%;
+	
+}
+
 .zoom70 {
 	zoom:.7;
 }
@@ -554,6 +609,9 @@ body {
 	margin-right:auto;
 	
 }
+#safeBox .secureFrame .inner {
+	width:220px;
+}
 #safeBox .frame .title  {
 	text-align:center;
 	font-weight:bold;
@@ -593,27 +651,7 @@ body {
 	display:inline-block;
 }
 
- #safeBox .frame .cancelPicto {
-	position:relative;
-	display:inline-block;
-}
-/* ok picto */
-#safeBox .frame .textPicto {
-	position:relative;
-	width:35px;
-	height:35px;	
-	background-color:#9ce;
-	display:inline-block;
-	border-radius: 50%; 	
-}
-#safeBox .frame .textPicto span {
-	position:absolute;
-	top:4px;
-	left:3px;
-	display:inline-block;
-	font-weight:bold;
-	color:white;
-}
+
 /**/
 /* alert frame */
 #safeBox .alertBox {
@@ -725,24 +763,6 @@ body {
 	padding-left: 3px;
 }
 
-/*
-<div class="apix_fieldDataProto fieldData apix_initHidden" >
-				<span class="apix_label"></span>
-				<!-- eye to see -->
-				<div class="showPicto apix_showPicto zoom80 apix_initHidden" title="Show element"  >						
-					<span class="inner">
-						<span class="reflec"></span>
-					</span>							
-				</div>	
-				<div class="hline"></div>
-				<span class="apix_value"></span>
-				<!-- copy/paste picto -->
-				<div class="copyPicto apix_initHidden" title="Copy element" id="apix_copyPicto" >						
-					<span class="page one"></span>
-					<span class="page two"></span>						
-				</div>
-			</div>
-			*/
 @media only screen and (max-width:680px) , only screen and (max-device-width:680px)  {
 	#safeBox .topText {
 		font-size:3vw;
@@ -778,10 +798,10 @@ body {
 	display:block;
 	 height:.6em;
 }
-.hline	{
+.hLine	{
 	display:block;
 	  height:.6em;
-	  border-bottom:groove 2px  #eef;
+	  /*border-bottom:groove 2px  #eef;*/
 	}
 hr {
 	

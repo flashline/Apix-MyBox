@@ -15,7 +15,7 @@ using apix.common.util.StringExtender;
 using apix.common.display.ElementExtender;
 //
 
-class Folder extends Form  {	
+class Folder extends Form implements IContent {	
 	
 	//
 	/*
@@ -81,24 +81,13 @@ class Folder extends Form  {
 			f.displayFields(shift );
 		}
 		
-	}
-	
+	}	
 	public function insertNewFolder () {	
 		insertNewElement ("folder");
 	}	
 	public function insertNewForm () {	
 		insertNewElement ("form");
-	}	
-	
-	/*model for recursive loop on folders
-	public function [function name] ([params]) { 
-		var arr = children ; var len = arr.length  ; 
-		for (i in 0...len) arr[i].[function name]([params]);
-		var arr = forms ; var len = arr.length  ; 		
-		for (i in 0...len) arr[i].[function name]([params]);
-		if (recId != 0) super.[function name]([params]);
-	}
-	*/
+	}		
 	override public function setupAdminMode () { 
 		var len = children.length  ;
 		for (i in 0...len) {
@@ -160,7 +149,21 @@ class Folder extends Form  {
 		for (i in 0...len) arr[i].remove();
 		if (recId != 0) super.remove();
 	}
-	
+	override public function removeFromList (c:IContent) {
+		if ( c.is("Folder")) {
+			children.splice(c.index, 1);
+			for (i in c.index...children.length) {
+				children[i].index = i;
+			}
+		}
+		else if ( c.is("Form")) {
+			forms.splice(c.index, 1);
+			for (i in c.index...forms.length) {
+				forms[i].index = i;
+			}
+		}
+		else trace("f:: [override] Folder.removeFromList() type error");		
+	}
 	
 	override public function setStateOfAddButtons (?opacFd:String="1",?opacFo:String="1",?opacFi:String="0") {
 		super.setStateOfAddButtons (opacFd,opacFo,opacFi) ;

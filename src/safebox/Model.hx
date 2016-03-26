@@ -182,6 +182,7 @@ class Model {
 					of.row_number = g.intVal(of.row_number.value, 1);
 					of.copy_enable = g.boolVal(of.copy_enable.value, true);
 					of.is_hidden = g.boolVal(of.is_hidden.value, false);
+					of.is_secure = g.boolVal(of.is_secure.value, false);
 					of.is_primary = g.boolVal(of.is_primary.value, false);					
 				}
 			}

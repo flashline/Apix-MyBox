@@ -167,7 +167,7 @@ class Sql {
 	* @param String:where WHERE clause
 	*/
 	public function selectWhere ($table, $where) {    	
-		$qry = "SELECT * FROM $table WHERE $where ;" ;
+		$qry = "SELECT * FROM $table WHERE $where ;" ;		
 		$this->query ($qry) ;									
 	}
 	/**

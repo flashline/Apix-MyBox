@@ -28,6 +28,7 @@
 	$isPrimary = "false";
 	$copyEnable = "true";
 	$isHidden = "false";
+	$isSecure = "false" ;
 	//
 	if (count($_GET)>0) {
 		if (isset($_GET["req"])) $req=$_GET["req"];
@@ -39,13 +40,15 @@
 		if (isset($_GET["rowNumber"])) $rowNumber = $_GET["rowNumber"];
 		if (isset($_GET["copyEnable"])) $copyEnable = $_GET["copyEnable"]; else $copyEnable = "true" ;
 		if (isset($_GET["isHidden"])) $isHidden = $_GET["isHidden"]; else $isHidden = "false" ;
+		if (isset($_GET["isSecure"])) $isSecure = $_GET["isSecure"]; else $isSecure = "false" ;
 		if (isset($_GET["isPrimary"])) $isPrimary = $_GET["isPrimary"];	else $isPrimary = "false" ;
 		if (isset($_GET["formRecId"])) $formRecId = $_GET["formRecId"];
+		if (isset($_GET["fieldRecId"])) $fieldRecId = $_GET["fieldRecId"];
 		if (isset($_GET["fieldKeys"])) $fieldKeys = $_GET["fieldKeys"];
 		if (isset($_GET["fieldValues"])) $fieldValues = $_GET["fieldValues"];
-		
-		
-	} else if (count($_POST)>0) {
+		if (isset($_GET["secureCode"])) $secureCode = $_GET["secureCode"]; else $secureCode = "";	
+	} 
+	else if (count($_POST)>0) {
 		if (isset($_POST["req"])) $req=$_POST["req"];
 		if (isset($_POST["id"])) $id=$_POST["id"];
 		if (isset($_POST["pwd"])) $pwd = $_POST["pwd"];
@@ -55,10 +58,13 @@
 		if (isset($_POST["rowNumber"])) $rowNumber = $_POST["rowNumber"];
 		if (isset($_POST["copyEnable"])) $copyEnable = $_POST["copyEnable"]; else $copyEnable = "true" ;
 		if (isset($_POST["isHidden"])) $isHidden = $_POST["isHidden"]; else $isHidden = "false" ;
+		if (isset($_POST["isSecure"])) $isSecure = $_POST["isSecure"]; else $isSecure = "false" ;
 		if (isset($_POST["isPrimary"])) $isPrimary = $_POST["isPrimary"];	else $isPrimary = "false" ;
 		if (isset($_POST["formRecId"])) $formRecId = $_POST["formRecId"];
+		if (isset($_POST["fieldRecId"])) $fieldRecId = $_POST["fieldRecId"];
 		if (isset($_POST["fieldKeys"])) $fieldKeys = $_POST["fieldKeys"];
 		if (isset($_POST["fieldValues"])) $fieldValues = $_POST["fieldValues"];
+		if (isset($_POST["secureCode"])) $secureCode = $_POST["secureCode"]; else $secureCode = "";	
 	} 
 	//
 	if ($isPrimary == "true") $isPrimary = 1;
@@ -67,6 +73,8 @@
 	if ($copyEnable == "false") $copyEnable = 0;
 	if ($isHidden == "true") $isHidden = 1;
 	if ($isHidden == "false") $isHidden = 0;
+	if ($isSecure == "true") $isSecure = 1;
+	if ($isSecure == "false") $isSecure = 0;
 	// Sql server connect
 	if (!isset($req)) outPutAndExit (sendInvalidReq());	
 	$err = doDbConnection ($myHost, $myId, $myPwd, $myDb) ;
@@ -91,14 +99,15 @@
 	else if ($req== "updateFormFolder") 	outPutAndExit (updateFormFolder($id,$recId,$label));
 	else if ($req== "insertFormFolder") 	outPutAndExit (insertFormFolder($id,$label,$recId,$type));
 	else if ($req== "deleteFormFolder") 	outPutAndExit (deleteFormFolder($id,$recId));
-	else if ($req== "updateField") 			outPutAndExit (updateField($id,$recId,$label,$rowNumber,$copyEnable,$isHidden,$isPrimary));
+	else if ($req== "updateField") 			outPutAndExit (updateField($id,$recId,$label,$rowNumber,$copyEnable,$isHidden,$isSecure,$secureCode,$isPrimary));
 	else if ($req== "deleteField") 			outPutAndExit (deleteField($id,$recId));
-	else if ($req== "insertField") 			outPutAndExit (insertField($id,$label,$recId,$rowNumber,$copyEnable,$isHidden,$isPrimary));
+	else if ($req== "insertField") 			outPutAndExit (insertField($id,$label,$recId,$rowNumber,$copyEnable,$isHidden,$isSecure,$secureCode,$isPrimary));
 	else if ($req == "readRecords") 		outPutAndExit (readRecords($id,$recId));
 	else if ($req== "updateOneRecord") 		outPutAndExit (updateOneRecord($id,$recId,$formRecId,$fieldValues,$fieldKeys));
 	else if ($req== "deleteOneRecord") 		outPutAndExit (deleteOneRecord($id,$recId,$formRecId));
 	else if ($req== "insertOneRecord") 		outPutAndExit (insertOneRecord($id,$formRecId,$fieldValues,$fieldKeys));
-	
+	else if ($req== "readFieldData") 		outPutAndExit (readFieldData($id,$formRecId,$recId,$fieldRecId,$secureCode));
+	else if ($req == "verifySecureCode") 	outPutAndExit (verifySecureCode($id, $fieldRecId, $secureCode));
 	
 	else 
 		outPutAndExit (sendInvalidReq());
@@ -115,9 +124,7 @@
 	function setPwd ($str) {
 		$_SESSION['pwd']=$str;
 	}
-
 	//
-	
 	function isConnectionOpen() {
 		if(!sessionIsOpened ()) {
 			$out="answ=connectionIsNotOpen";
@@ -125,8 +132,7 @@
 			$out = "answ=connectionIsOpen&xmlData=".readData(getId())."&id=".getId();			
 		}		
 		return $out;
-	}
-	
+	}	
 	function signIn($id,$pwd) {
 		if(sessionIsOpened () ) { 
 			$out="answ=error&msg=connectionAlreadyOpen";
@@ -259,12 +265,41 @@
 		$b = (mysql_num_rows($buf) > 0 )  ;
 		return $b;
 	}
-	function updateField($id,$recId, $label, $row_number, $copy_enable, $is_hidden, $is_primary) {
+	
+	function insertField($id,$label, $parent_id, $row_number, $copy_enable, $is_hidden,$is_secure, $secure_code, $is_primary) {
+		$out = isConnectionValid($id); 
+		if ($out == "") {
+			if ($secure_code == "") $is_secure = 0;
+			if ($is_secure) $secure_code = md5($secure_code) ;
+			else $secure_code = "";
+			
+			$sql = new Sql(); 
+			if (!$sql->isLineExistWhere("folders", " owner='$id' AND id = $parent_id AND  is_form = true ")) {
+				$out="answ=error&msg=parentFormDoesntExist";
+			}
+			else {
+				if ($is_primary) $row_order = 0; else $row_order = 1;
+				$qry = "INSERT INTO fields (form_id,row_order,label,row_number,copy_enable,is_hidden,is_secure,secure_code,is_primary) 
+				        VALUES ( $parent_id, $row_order, '".simpleEscape($label)."', '$row_number', $copy_enable, $is_hidden,$is_secure,'$secure_code', $is_primary  ) ;";
+				$sql->lockInsertAndGetId("fields", $qry);
+				if (!$sql->success) $out = "answ=error&msg=".$sql->errorMsg;
+				else {
+					$sql->selectOneLineWhere  ("fields", "id=LAST_INSERT_ID()");
+					$out = "answ=insertFieldOk&recId=".$sql->line->id;
+				}
+			}
+		}
+		return $out;
+	}
+	
+	
+	function updateField($id,$recId, $label, $row_number, $copy_enable, $is_hidden,$is_secure,$secure_code, $is_primary) {
 		$out = isConnectionValid($id); 
 		if ($out=="") {
 			$out= isFieldExists($id, $recId);
 			if ($out=="") {
 				$sql = new Sql(); 
+				if ($is_secure == 1) $is_hidden = 1;
 				if ($is_primary) $row_order = 0; else $row_order = 1;
 				$qry = "UPDATE fields SET 
 						row_order	=  ".$row_order." ,
@@ -272,11 +307,19 @@
 						row_number 	=  ".$row_number." ,
 						copy_enable =  ".$copy_enable." ,
 						is_hidden 	=  ".$is_hidden.",
-						is_primary 	=  ".$is_primary." 				
-						WHERE id = ".$recId." ; ";
+						is_secure 	=  ".$is_secure.",
+						is_primary 	=  ".$is_primary."";
+				//
+				if 			($is_secure!=1) 		$sc = "";
+				else if 	($secure_code != "") 	$sc = md5($secure_code) ;
+				if (isset($sc)) {	
+					$qry.=	", ";
+					$qry.=	"secure_code =	'".$sc."' ";
+				}		
+				$qry.=	" WHERE id = ".$recId." ; ";
 				$sql->query($qry) ;
 				if (!$sql->success) $out = "answ=error&msg=".$sql->errorMsg;
-				else $out = "answ=updateFieldOk";
+				else $out = "answ=updateFieldOk"; //&debug="";
 			}
 		}
 		return $out;
@@ -330,29 +373,6 @@
 		}
 	}
 	
-	function insertField($id,$label, $parent_id, $row_number, $copy_enable, $is_hidden, $is_primary) {
-		$out = isConnectionValid($id); 
-		if ($out=="") {
-			$sql = new Sql(); 
-			if (!$sql->isLineExistWhere("folders", " owner='$id' AND id = $parent_id AND  is_form = true ")) {
-				$out="answ=error&msg=parentFormDoesntExist";
-			}
-			else {
-				if ($is_primary) $row_order = 0; else $row_order = 1;
-				$qry = "INSERT INTO fields (form_id,row_order,label,row_number,copy_enable,is_hidden,is_primary) 
-				        VALUES ( $parent_id, $row_order, '".simpleEscape($label)."', '$row_number', $copy_enable, $is_hidden, $is_primary  ) ;";
-				$sql->lockInsertAndGetId("fields", $qry);
-				if (!$sql->success) $out = "answ=error&msg=".$sql->errorMsg;
-				else {
-					$sql->selectOneLineWhere  ("fields", "id=LAST_INSERT_ID()");
-					$out = "answ=insertFieldOk&recId=".$sql->line->id;
-				}
-			}
-		}
-		return $out;
-	}
-	
-	
 	function updateOneRecord($id,$recId,$formRecId,$fieldValues,$fieldKeys) {
 		$out = isConnectionValid($id); 
 		if ($out=="") {
@@ -399,8 +419,6 @@
 			mysql_query($qry) ;
 		}
 	}
-	
-	
 	function deleteOneRecord($id,$recId, $formRecId) {
 		$out = isConnectionValid($id); 
 		if ($out=="") {
@@ -446,6 +464,7 @@
 					for ($i = 0 ; $i < count($keys) ; $i++) {
 						$qry.= $pfx." `".$keys[$i]."`" ;
 						$pfx = ",";
+						addColumnIfNotExists($table,$keys[$i]);
 					} 
 					$qry.= ") VALUES ( "; $pfx = "";
 					for ($i = 0 ; $i < count($values) ; $i++) {
@@ -464,9 +483,47 @@
 		}
 		return $out;
 	}
-	
-	//	
-	//
+	function readFieldData($id,$formRecId,$recId,$fieldRecId,$secureCode) {
+		$out = isConnectionValid($id); 
+		if ($out=="") {
+			$out= isFieldExists($id,$fieldRecId);
+			if ($out == "") {
+				$table = "tb_".$formRecId;
+				$sql = new Sql(); 
+				$sql->selectOneLine("fields","id",$fieldRecId) ;
+				if (!$sql->success)  $out = "answ=error&msg=elemDoesntExist";
+				else if (!($sql->line->secure_code==md5($secureCode))) {
+					$out = "answ=error&msg=invalidSecureCode";
+				}
+				else {
+					$sql->selectOneLine($table,"id",$recId) ;
+					if (!$sql->success)  $out = "answ=error&msg=elemDoesntExist";
+					else {
+						$fd = "fd_".$fieldRecId;
+						if (isset($sql->line-> $fd)) $val = $sql->line->$fd; 
+						else $val = "";
+						$out = "answ=readFieldDataOk&value=".$val;
+					}
+				}
+			}
+		}
+		return $out;
+	}
+	function verifySecureCode($id,$fieldRecId,$secureCode) {
+		$out = isConnectionValid($id); 
+		if ($out=="") {
+			$out= isFieldExists($id,$fieldRecId);
+			if ($out == "") {				
+				$sql = new Sql(); 
+				$sql->selectOneLine("fields","id",$fieldRecId) ;
+				if (!$sql->success)  $out = "answ=error&msg=elemDoesntExist";
+				else if ($sql->line->secure_code=="" ) $out = "answ=secureCodeOk&msg=secureCodeIsntYetSaved";
+				else if (!($sql->line->secure_code==md5($secureCode)) && $sql->line->secure_code!="" ) $out = "answ=error&msg=invalidSecureCode";
+				else $out = "answ=secureCodeOk";
+			}
+		}
+		return $out;
+	}
 	//	
 	//
 	function readData ($id) {
@@ -518,6 +575,7 @@
 				if ($o->copy_enable) $c="true"; else $c="false";
 				if ($o->is_hidden) $h="true"; else $h="false";
 				if ($o->is_primary) $p="true"; else $p="false";
+				if ($o->is_secure) $s="true"; else $s="false";
 				$out.="  	<item>\n";
 				//$out.="    <form_id>".$o->form_id."</form_id>\n";
 				$out.="    		<id>".$o->id."</id>\n";
@@ -525,6 +583,7 @@
 				$out.="    		<row_number>".$o->row_number."</row_number>\n";
 				$out.="    		<copy_enable>".$c."</copy_enable>\n";
 				$out.="    		<is_hidden>".$h."</is_hidden>\n";
+				$out.="    		<is_secure>".$s."</is_secure>\n";
 				$out.="    		<is_primary>".$p."</is_primary>\n";
 				$out.=" 	 </item>\n";			
 			}
@@ -546,16 +605,20 @@
 			if (mysql_query("DESCRIBE `$tb`")) {
 				$primary=getPrimaryField($formId);
 				$sql=new Sql();
-				$where="true ORDER BY ".$primary ;
+				addColumnIfNotExists($tb,$primary);
+				if ($primary=="") $where="TRUE"; else $where="TRUE ORDER BY ".$primary ;
 				$sql->selectWhere ($tb, $where) ;
 				if (!$sql->success) {
-					$out.="			<error>".$sql->errorMsg."</error>\n";
+					$out.="			<error>".$sql->errorMsg."---".$sql->qry."</error>\n";
 				}
 				else {
 					while ($sql->nextLine()) {
-						$o=$sql->line; 
+						$o=$sql->line;
 						$out.="  		<item>\n";
-						foreach ($o as $key => $elem) $out.="	    		<".$key.">".$elem."</".$key.">\n"; 	
+						foreach ($o as $key => $val) {
+							$val=hideIfSecure(substr($key,3),$val);
+							$out.="	    		<".$key.">".$val."</".$key.">\n"; 	
+						}
 						$out.="  		</item>\n";
 					}				
 				}
@@ -572,6 +635,20 @@
 		$sql->selectOneLineWhere ("fields",$where) ;
 		if (!$sql->empty) $out="fd_".$sql->line->id;
 		return $out;
+	}
+	function hideIfSecure ($fieldId,$val) {
+		$sql=new Sql();
+		$sql->selectOneLine("fields", "id", $fieldId) ;
+		if ($sql->success && !$sql->empty) {
+			$fi=$sql->line; $l=strlen($val);
+			if ($fi->is_secure==1 && $l>0) $val=hideChars($l);
+		}
+		return $val;
+	}
+	function hideChars ($l) {
+		$val = ""; 
+		for ($i=0;$i<$l;$i++) $val .= "#" ;
+		return $val;
 	}
 	//
 	//

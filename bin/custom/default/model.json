@@ -12,5 +12,11 @@
 	"bAddFormColor":"#5de",
 	"bAddFieldColor":"#abc",
 	"bAddRecordColor":"#c0d7de",	
+	"secureCodeLen":"4",
+	"secureCodeClickBgColor":"#66dd66",
+	"secureCodeClickColor":"#44bb44",
+	"secureCodeBgColor":"#ffffff",
+	"secureCodeColor":"#dddddd",
+	
 	"":""
 }

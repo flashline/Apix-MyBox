@@ -42,6 +42,8 @@
   "updatePictoTitle": "Update item at left side",
   "showPictoTitle": "See field content",
   "copyPictoTitle": "Copy",
+  "rubPictoTitle":"Erase all digits",
+  "codePictoTitle":"Click on digit",
   "addFolderTitle": "Create new folder",
   "addFormTitle": "Create new form",
   "addFieldTitle": "Create a new field's description",
@@ -76,9 +78,7 @@
     "MyBox is provided as-is without warranty of any kind or contractual liability.<br/>",
 	"</div>",
 	"<br/>",	
-    "This online version should be used to test the application.<br/>",
-	"<br/>",
-	"<div style='font-size:1rem;'>",
+    "<div style='font-size:1rem;'>",
     "The used hosting server does not guarantee you that the security issues, backup or confidentiality are treated ",
 	"as they would be if you choosed yourself the server (based on the importance of the data entered).<br/>",
 	"</div>",
@@ -177,7 +177,7 @@
   "fiCreateTitle": "Field creation",
   "fdUpdateTitle": "Change the foldername",
   "foUpdateTitle": "Change the formname",
-  "fiUpdateTitle": "Change the fieldlabel",
+  "fiUpdateTitle": "Edit the field",
   "fieldDataHolder": "Enter a value for ",
   "recUpdateTitle": "Update a record",
   "recInsertTitle": "Create new record",
@@ -185,6 +185,63 @@
   "ficopyEnableLabel": "Copy/paste :",
   "fiHiddenLabel": "Hidden field :",
   "fiPrimaryLabel": "Primary field :",
+  
+  
+  
+  
+  
+  "invalidSecureCode": "The PIN code isn't correct !",    
+  "fiSecureLabel": "Secure field :",  
+  "secureCreateTitle":"PIN code creation",
+  "secureCreateComment":"Click on 4 digits or leave blank, and click OK.",
+  "secureCode":"Remember this number which will be permanently encrypted.",  
+  "secureEnterTitle":"Enter the PIN code",
+  "secureToClipBoard":"The value has been read. Confirm copy.",
+  "secureCopyConfirm":"Copy to clipboard",
+  "securefieldDataHolder":"This field is secure : ",
+  "primaryMustBeCreated":"The form must have a Primary field !",
+  "primaryMissing":
+	[
+		"This form hasn't primary field.<br/>",
+		"It's embarassing because the field used for title of records and display order is randomly choosen.<br/>",
+		"<br/>",
+		"You have to go to menu then 'Folders and forms management' to create a primary field<br/>",
+		"or choose one among no-secure and no-hidden fields.<br/>",
+		"<br/>"
+		
+	]
+	,
+  "firstFieldIsSecure":
+	[
+		"Warning !<br/>",
+		"This form hasn't primary field.<br/>",
+		"It's bad because the field used for title of records is a 'secure' or 'hidden' field <br/>",
+		"and you can loose data.<br/>",
+		"<br/>",
+		"You have to go to menu >then 'Folders and forms management' to create a primary field<br/>",
+		"or choose one among no-secure and no-hidden fields.<br/>",
+		
+		"<br/>"
+		
+	]
+	,
+    "primaryFieldIsSecure":
+	[
+		"Warning !<br/>",
+		"The  primary field of this form is a 'secure' or 'hidden' field.<br/>",
+		"It's bad and you can loose data.<br/>",
+		"<br/>",
+		"You have to go to menu >then 'Folders and forms management' to create a primary field<br/>",
+		"or choose one among no-secure and no-hidden fields.<br/>",
+		"<br/>"
+	]
+	,
+  
+  
+  
+  
+  
+  
   "formHaventData": "This form is empty ! Add records (blue button at bottom)<br/>or go to 'Folders and forms management' to Remove it.  ",
   "formTableDontExists": "This form is empty ! !<br/>Use blue/gray button at bottom  to add records.",
   "": ""

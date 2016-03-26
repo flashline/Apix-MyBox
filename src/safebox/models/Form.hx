@@ -5,6 +5,7 @@ package safebox.models;
 */
 import apix.common.display.Common ;
 import apix.common.display.Confirm;
+import apix.common.tools.math.MathX;
 import apix.common.util.Global ;
 import apix.common.util.Object;
 import apix.common.util.xml.XmlParser;
@@ -19,7 +20,7 @@ using apix.common.display.ElementExtender;
 using apix.common.util.ArrayExtender;
 //   
 
-class Form extends SubModel  {	
+class Form extends SubModel  implements IContent {	
 	
 	//
 	public var fields:Array<Field>;
@@ -27,10 +28,14 @@ class Form extends SubModel  {
 	public var forms:Array<Form>;	
 	public var records:Array<Record>;	
 	public var shiftVal:Int;	
+	public var currSecureCode:String;
+	public var secureCodes:Array<Int>;
 	//	
 	var srvTxtMsg:String;
 	var insertSrvTxtMsg:String;
 	var recordFrameFieldElems:Array<FrameFieldElem>;
+	
+	
 	/*
 	 * constructor
 	 */
@@ -107,11 +112,13 @@ class Form extends SubModel  {
 	public var rowNumberLabel(get, null):Elem; function get_rowNumberLabel() :Elem { return ("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_rowNumber .apix_label").get();}
 	public var copyEnableLabel(get, null):Elem; function get_copyEnableLabel() :Elem { return ("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_copyEnable .apix_label").get();}
 	public var isHiddenLabel(get, null):Elem; function get_isHiddenLabel() :Elem { return ("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_isHidden .apix_label").get();}
+	public var isSecureLabel(get, null):Elem; function get_isSecureLabel() :Elem { return ("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_isSecure .apix_label").get();}
 	public var isPrimaryLabel(get, null):Elem; function get_isPrimaryLabel() :Elem { return ("#safeBox #apix_nameFrame .apix_fieldElemsCtnr .apix_isPrimary .apix_label").get();}
 	//
 	public var rowNumberInput(get, null):Elem; function get_rowNumberInput() :Elem { return ("#safeBox #apix_nameFrame input[name='rowNumber']").get();}
 	public var copyEnableInput(get, null):Elem; function get_copyEnableInput() :Elem { return ("#safeBox #apix_nameFrame input[name='copyEnable']").get();}
 	public var isHiddenInput(get, null):Elem; function get_isHiddenInput() :Elem { return ("#safeBox #apix_nameFrame input[name='isHidden']").get();}
+	public var isSecureInput(get, null):Elem; function get_isSecureInput() :Elem { return ("#safeBox #apix_nameFrame input[name='isSecure']").get();}
 	public var isPrimaryInput(get, null):Elem; function get_isPrimaryInput() :Elem { return ("#safeBox #apix_nameFrame input[name='isPrimary']").get();}
 	public var primary(get, null):Field; 
 	function get_primary() :Field {
@@ -128,6 +135,13 @@ class Form extends SubModel  {
 	public var recordFieldCtnr(get, null):Elem; function get_recordFieldCtnr() :Elem { return ("#safeBox #apix_recordFrame .apix_recordFieldCtnr").get();}
 	public var bValidRecordInsert(get, null):Elem; function get_bValidRecordInsert() :Elem { return ("#safeBox #apix_recordFrame .apix_validPicto").get();}
 	public var bCancelRecordInsert(get, null):Elem; function get_bCancelRecordInsert() :Elem { return ("#safeBox #apix_recordFrame .apix_cancelPicto").get();}
+	public var secureFrame(get, null):Elem; function get_secureFrame() :Elem { return ("#safeBox #apix_secureFrame").get();}
+	public var secureFrameTitle(get, null):Elem; function get_secureFrameTitle() :Elem { return ("#safeBox #apix_secureFrame .apix_title").get();}
+	public var secureFrameCmt(get, null):Elem; function get_secureFrameCmt() :Elem { return ("#safeBox #apix_secureFrame .apix_cmt").get();}
+	public var secureFrameCode(get, null):Elem; function get_secureFrameCode() :Elem { return ("#safeBox #apix_secureFrame .apix_secureCode").get();}
+	public var bValidSecureFrame(get, null):Elem; function get_bValidSecureFrame() :Elem { return ("#safeBox #apix_secureFrame .apix_validPicto").get();}
+	public var bRubSecureFrame(get, null):Elem; function get_bRubSecureFrame() :Elem { return ("#safeBox #apix_secureFrame .apix_rubPicto").get();}
+	
 	//	
 	//
 	//
@@ -146,7 +160,7 @@ class Form extends SubModel  {
 			var o:Object = arr[i];
 			var fi = new Field(model, view);
 			fi.parent = this;
-			fi.initField( o.id, o.label,o.row_number,o.copy_enable,o.is_hidden,o.is_primary);				
+			fi.initField( o.id, o.label,o.row_number,o.copy_enable,o.is_hidden,o.is_secure,o.is_primary);			
 			fields.push(fi);
 			fi.index = fields.length - 1;
 			fi.fields = fields ;
@@ -239,12 +253,22 @@ class Form extends SubModel  {
 		else elem.delete();		
 		getParent().removeFromList(this); 
 	}
-	public function removeFromList (f:Form) {		
-		if (f.is("Field")) fields.splice(f.index,1);
-		else if ( f.is("Folder")) children.splice(f.index,1);
-		else if ( f.is("Form")) forms.splice(f.index,1);
+	public function removeFromList (c:IContent) {
+		if ( c.is("Field")) {
+			fields.splice(c.index, 1);
+			for (i in c.index...fields.length) {
+				fields[i].index = i;
+			}
+		}
+		else if ( c.is("Record")) {
+			records.splice(c.index, 1);
+			for (i in c.index...records.length) {
+				records[i].index = i;
+			}
+		}
 		else trace("f:: Form.removeFromList() type error");
 	}
+	
 	public function clear() {
 		var len = fields.length;
 		for (i in 0...len) {
@@ -265,6 +289,7 @@ class Form extends SubModel  {
 		click.dispatch(ev); // do unselect() on previous and select() on this
 	}
 	public function insertNewField () {	
+		clearSecureCode();
 		insertNewElement ("field");
 	}	
 	public function insertNewRecord() {
@@ -273,6 +298,48 @@ class Form extends SubModel  {
 		}
 		else showInsertRecordFrame(recInsertTitleTxt);
 	}
+	public function showSecureFrame (?tl:String = "", ?cmt:String = "", ?sc:String = "") {	
+		secureFrameTitle.text(tl);
+		secureFrameCmt.text(cmt);
+		secureFrameCode.text(sc);
+		secureFrame.show();			
+	}
+	public function pushSecureCode (el:Elem,?forWhat:String="") {
+		bRubSecureFrame.visible(true);
+		if (currSecureCode.length < param.secureCodeLen) {
+			currSecureCode+= el.elemByClass("apix_num").text();			
+			el.cssStyle(CssStyle.backgroundColor, param.secureCodeClickBgColor);
+			el.elemByClass("apix_num").cssStyle(CssStyle.color, param.secureCodeClickColor);
+			bValidSecureFrame.visible(false);
+		}
+		if (currSecureCode.length == param.secureCodeLen)  {
+			if (forWhat!="forEnter") secureFrameCode.text(lang.secureCode);
+			bValidSecureFrame.visible(true);
+		}
+	}	
+	public function assignSecureCode(el:Elem) {
+		el.elemByClass("apix_num").text("" + secureCodes.pop());
+	}	
+	public function clearSecureCode () {
+		currSecureCode = "";
+		secureFrameCode.text("");
+		bRubSecureFrame.visible(false);
+		bValidSecureFrame.visible(true);
+		"#apix_secureFrame .apix_codePicto".each(function (el:Elem) { 
+			el.cssStyle(CssStyle.backgroundColor, param.secureCodeBgColor);
+			el.elemByClass("apix_num").cssStyle(CssStyle.color, param.secureCodeColor);			
+		});
+	}
+	public function toHtmlString (tab:String=""):String {
+		var str = "";  var pRecId = -1 ;  if (parent!= null) pRecId = parent.recId ;
+		str+= tab + "parent=" + pRecId + "<br/>" ;
+		str+= tab + "recId=" + recId + "<br/>";
+		str+= tab + "label=" + label + "<br/>";
+		return str ;
+	}
+	/**
+	 * @private
+	 */
 	function showInsertRecordFrame (frameTitle:String) {	
 		recordFrameTitle.text(frameTitle);
 		recordFieldCtnr.removeChildren(); recordFrameFieldElems = [];
@@ -309,6 +376,7 @@ class Form extends SubModel  {
 			}
 		}
 	}
+	
 	function onTextAreaFocus (e:ElemEvent,p:Dynamic) {			
 		if (bValidRecordInsert!=null) bValidRecordInsert.clearEnterKeyToClick();
 	}
@@ -370,16 +438,7 @@ class Form extends SubModel  {
 		}
 		
 	}
-	public function toHtmlString (tab:String=""):String {
-		var str = "";  var pRecId = -1 ;  if (parent!= null) pRecId = parent.recId ;
-		str+= tab + "parent=" + pRecId + "<br/>" ;
-		str+= tab + "recId=" + recId + "<br/>";
-		str+= tab + "label=" + label + "<br/>";
-		return str ;
-	}
-	/**
-	 * @private
-	 */
+	
 	function setupView () {
 		labelElem.value(label); //labelElem.text(label);
 		labelElem.cssStyle(CssStyle.backgroundColor, color);
@@ -404,6 +463,7 @@ class Form extends SubModel  {
 			rowNumberLabel.text(lang.fiRowNumberLabel);
 			copyEnableLabel.text(lang.ficopyEnableLabel);
 			isHiddenLabel.text(lang.fiHiddenLabel);
+			isSecureLabel.text(lang.fiSecureLabel);
 			isPrimaryLabel.text(lang.fiPrimaryLabel);
 			nameFramefieldsCtnr.show();
 		}
@@ -411,6 +471,34 @@ class Form extends SubModel  {
 		nameFrame.show();
 		bNameFrameValid.joinEnterKeyToClick(null,foName);
 	}
+	function createSecureCode (?forWhat:String="") {
+		showSecureFrame(lang.secureCreateTitle,lang.secureCreateComment,"");
+		bRubSecureFrame.off();bRubSecureFrame.on(StandardEvent.CLICK, function (e:ElemEvent) {clearSecureCode () ;});
+		bValidSecureFrame.off(); bValidSecureFrame.on(StandardEvent.CLICK, onValidSecureCreate);
+		clearSecureCode () ;
+		secureCodes=MathX.randomExclusiveList(9);
+		"#apix_secureFrame .apix_codePicto".each(assignSecureCode) ;	
+		"#apix_secureFrame .apix_codePicto".off() ;	
+		"#apix_secureFrame .apix_codePicto".on(StandardEvent.CLICK, onClickSecureCode,{forWhat:forWhat}) ;
+	}	
+	
+	function onClickSecureCode (e:ElemEvent,?d:Dynamic) {
+		var el:Elem = cast(e.currentTarget, Elem);
+		pushSecureCode (el,d.forWhat);
+	}	
+	
+	function onValidSecureCreate (e:ElemEvent) {
+		if (currSecureCode == "") {
+			isSecureInput.value("false");
+			isSecureInput.selected(false);			
+		}
+		else {
+			isSecureInput.selected(true);
+			doSecureChange();
+		}
+		secureFrame.hide();	
+	}
+	
 	//
 	function createOneFolder (fd:Folder,?shift:Int=0) {
 		var folderProto = view.fButtonProto;
@@ -419,9 +507,7 @@ class Form extends SubModel  {
 		folderEl.id = "fd_" + fd.recId;
 		fd.vId = folderEl.id;
 		fd.elem = folderEl ;
-		fd.shift = shift ;
-		//"is null".trace(Common.body.querySelector("#"+folderEl.id)==null);
-		
+		fd.shift = shift ;		
 		fd.bElem.posx(fd.shift);		
 		fd.setup();
 		fd.recordsCtnr.delete(); // Element not used by Folder
@@ -463,40 +549,79 @@ class Form extends SubModel  {
 		else if (type == "form") 	{ tl = lang.foCreateTitle; hd = lang.foNameHolder ; }
 		else if (type == "field")	{ tl = lang.fiCreateTitle; hd = lang.fiNameHolder ; na = lang.fiName ;  }
 		else { tl = null;hd = null;  trace("f:: Form. insertNewElement() type error"); }
-		showNameFrame(tl, na, hd,type);
-		
+		showNameFrame(tl, na, hd,type);		
 		bNameFrameCancel.off();bNameFrameCancel.on(StandardEvent.CLICK, onFrameCancel);
 		bNameFrameValid.off(); bNameFrameValid.on(StandardEvent.CLICK, onInsertElementValid,false,{type:type});
 		foName.value("");
-		if (type == "field") {
+		if (type == "field") {			
 			nameFramefieldsCtnr.show();
-			rowNumberInput.value("1");		
-			copyEnableInput.value("true");
+			showAdminFields ();
+			enableAdminFields();isPrimaryInput.enable(true, true);	
+			rowNumberInput.value("1");	
 			copyEnableInput.selected(true);
-			isHiddenInput.value("false");
 			isHiddenInput.selected(false);	
-			lockPrimaryInput ();
+			isSecureInput.selected(false);									
+			isSecureInput.off(); isSecureInput.on(StandardEvent.CHANGE, onSecureChange);	
+			isPrimaryInput.off();
+			setupAdminFieldsInput ();
 		}
 	}
-	function lockPrimaryInput (?fi:Field=null) {
-		if (primary!=null && primary!=fi) {
-			if (fi==null) isPrimaryInput.value("false");
-			if (fi==null) isPrimaryInput.selected(false);
-			isPrimaryInput.enable(false,true);
+	function setupAdminFieldsInput () {		
+		if (primary != null) {
+			// a primary already exists
+			isPrimaryInput.selected(false);
+			isPrimaryInput.enable(false, true);
+			enableAdminFields ();				
 		} 
-		else {
-			if (fi==null) isPrimaryInput.value("true");
-			if (fi==null) isPrimaryInput.selected(true);
-			isPrimaryInput.enable(true,true);
-		}
-	}
-	function unlockPrimaryInput () {
-		isPrimaryInput.enable(true,true);
-	}
-	function clearInsertFields () {
-		trace("f::todo if Form.clearInsertFields () is called");
-		foName.value("");
+		else {	
+			// primary doesnt exist 
+			isPrimaryInput.selected(true);
+			isPrimaryInput.enable(false, true);			
+			hideAdminFields () ; view.showTipBox(lang.primaryMustBeCreated, isPrimaryInput.parent());
+			disableAdminFields ();				
+		}		
 	}	
+	function showAdminFields () {
+		rowNumberInput.parent().show();
+		isHiddenInput.parent().show();
+		copyEnableInput.parent().show();
+		isSecureInput.parent().show();		
+	}
+	function hideAdminFields () {
+		rowNumberInput.parent().hide();
+		isHiddenInput.parent().hide();
+		copyEnableInput.parent().hide();
+		isSecureInput.parent().hide();		
+	}	
+	function enableAdminFields () {		
+		isHiddenInput.enable(true, true);
+		copyEnableInput.enable(true, true);
+		isSecureInput.enable(true, true);
+	}
+	function disableAdminFields () {		
+		isHiddenInput.selected(false);
+		isHiddenInput.enable(false, true);
+		copyEnableInput.selected(false);
+		copyEnableInput.enable(false, true);
+		isSecureInput.selected(false);
+		isSecureInput.enable(false, true);	
+		currSecureCode = "";
+	}	
+	function onSecureChange (e:ElemEvent) {
+		if (isSecureInput.selected()) createSecureCode();
+		else doSecureChange ();
+	}
+	function doSecureChange () {
+		if (isSecureInput.selected()) {
+			isHiddenInput.selected(true);
+			isHiddenInput.enable(false, true);
+		} 
+		else isHiddenInput.enable(true, true);	
+	}
+	function onPrimaryChange (e:ElemEvent) {
+		if (isPrimaryInput.selected()) disableAdminFields ();
+		else enableAdminFields ();
+	}
 	function onInsertElementValid (e:ElemEvent, ?d:Dynamic) {		
 		var o:Dynamic = null;
 		server.serverEvent.off(); 
@@ -509,13 +634,13 @@ class Form extends SubModel  {
 					rowNumber:rowNumberInput.value(), 
 					copyEnable:copyEnableInput.selected(),
 					isHidden:isHiddenInput.selected(),
+					isSecure:isSecureInput.selected(),
+					secureCode:currSecureCode,
 					isPrimary:isPrimaryInput.selected()					
 				}
 		}
 		else  {
-			o = { req:"insert" + insertSrvTxtMsg, id:model.currUserId, label:foName.value(), recId:recId, type:d.type } ;
-			//var oo:Object = new Object(o);
-			//"req".trace(oo.toHtmlString());
+			o = { req:"insert" + insertSrvTxtMsg, id:model.currUserId, label:foName.value(), recId:recId, type:d.type } ;			
 		}
 		server.ask(o);
 	}
@@ -552,6 +677,7 @@ class Form extends SubModel  {
 								g.intVal(rowNumberInput.value(), 1),
 								copyEnableInput.selected(),
 								isHiddenInput.selected(),
+								isSecureInput.selected(),
 								isPrimaryInput.selected() 
 								) ;				
 				fields.push(cast(ff, Field));
@@ -569,7 +695,8 @@ class Form extends SubModel  {
 		ff.parent = this;
 	}
 	//
-	function onUpdateClick (e:ElemEvent) {			
+	function onUpdateClick (e:ElemEvent) {		
+		clearSecureCode();
 		showNameFrame(updateTitleTxt,nameTxt,nameHolderTxt);
 		bNameFrameCancel.off();bNameFrameCancel.on(StandardEvent.CLICK, onFrameCancel);
 		bNameFrameValid.off(); bNameFrameValid.on(StandardEvent.CLICK, onFrameValid);
@@ -596,6 +723,7 @@ class Form extends SubModel  {
 			else if (e.result.msg == "connectionIsNotValid") g.alert(lang.connectionIsNotValid);			
 			else g.alert(lang.serverReadError + e.result.msg);
 		} else if (answ == "update" + srvTxtMsg + "Ok")  {
+			if (e.result.debug != null) trace("debug=" + e.result.debug);
 			nameFrame.hide();
 			view.showTipBox(lang.updateOk, bElem.parent(), bElem.posx(), bElem.posy(), 2)	;
 		} else {			

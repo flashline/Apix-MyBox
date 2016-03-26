@@ -13,7 +13,7 @@ import safebox.models.Field.FrameFieldElem;
 using apix.common.util.StringExtender;
 using apix.common.display.ElementExtender;
 //
-class Record extends SubModel  {
+class Record extends SubModel  implements IContent{
 	//public var parent:Form;
 	
 	public var fieldDatas:Array<FieldData>;
@@ -90,13 +90,26 @@ class Record extends SubModel  {
 		setupEvent ();  // to see the detail or open a popup with each fields
 	}
 	public function open () {
+		var str = checkIfprimaryExists ();
+		if (str != "") g.alert(str,null,lang.alertTitle);
 		elemsCtnr.show();	
 		pictoCtnr.show();
 		labelElem.cssStyle(CssStyle.fontSize,"1.3rem");
 		isClosed = false;
 	}
+	function checkIfprimaryExists () :String {
+		var str = ""; var p:Field = fields[0];		
+		if (p.isSecure || p.isHidden) {
+			if (!p.isPrimary) str = lang.firstFieldIsSecure;
+			else str = lang.primaryFieldIsSecure;
+		} else if (!p.isPrimary) str = lang.primaryMissing;
+		return str;
+	}
 	
-	public function close () {
+	public function close () {	
+		for (fd in fieldDatas) {
+			if (fd.field.isHidden && fd.field.isSecure) fd.makeHidden();
+		}
 		elemsCtnr.hide();
 		pictoCtnr.hide();
 		labelElem.cssStyle(CssStyle.fontSize,"1.05rem");
@@ -166,9 +179,15 @@ class Record extends SubModel  {
 		else open();
 		//selectAndDispatch();
 	}	
-	function onUpdateClick (e:ElemEvent) {			
-		showUpdateRecordFrame(recUpdateTitleTxt);
-		setupUpdateFrameEvent() ;
+	function onUpdateClick (e:ElemEvent) {	
+		var str = checkIfprimaryExists ();
+		if (str != "" && str!=lang.primaryMissing) {
+			g.alert(str,null,lang.warningTitle); 
+		}
+		else {		
+			showUpdateRecordFrame(recUpdateTitleTxt);
+			setupUpdateFrameEvent() ;
+		}
 	}
 	function setupUpdateFrameEvent () {				
 		bFrameCancel.off(StandardEvent.CLICK);
@@ -176,9 +195,9 @@ class Record extends SubModel  {
 		bFrameCancel.on(StandardEvent.CLICK, onFrameCancel);
 		bFrameValid.on(StandardEvent.CLICK, onFrameValidUpdate);	
 		bFrameValid.joinEnterKeyToClick(null, frameFieldElems[0].valueElem);
-		setupTextAreaEvent () ;
+		setupFieldsEvent () ;
 	}
-	function setupTextAreaEvent () {			
+	function setupFieldsEvent () {			
 		for (fi in fields) {
 			var el = frameFieldElems[fi.index].valueElem; 
 			if (el.hasLst()) el.off();				
@@ -186,12 +205,15 @@ class Record extends SubModel  {
 				el.on(StandardEvent.FOCUS, onTextAreaFocus);
 				el.on(StandardEvent.BLUR, onTextAreaBlur);
 			}
+			else if (fi.isSecure && el.value()=="" && fieldDatas[fi.index].length>0) {
+				el.on(StandardEvent.FOCUS, onSecureFieldFocus,false,{index:fi.index});
+			}
 		}
 	}
-	function removeTextAreaEvent () {			
+	function removeFieldsEvent () {			
 		for (fi in fields) {
-			if (fi.isMultiLines) {
-				var el = frameFieldElems[fi.index].valueElem; 
+			var el = frameFieldElems[fi.index].valueElem;				
+			if (fi.isMultiLines || fi.isSecure) {
 				if (el != null && el.hasLst()) el.off();
 			}
 		}
@@ -202,32 +224,54 @@ class Record extends SubModel  {
 	function onTextAreaBlur (e:ElemEvent) {			
 		if (bFrameValid!=null) bFrameValid.joinEnterKeyToClick();
 	}
+	function onSecureFieldFocus (e:ElemEvent,d:Dynamic) {	
+		var fd:FieldData = fieldDatas[d.index];
+		fd.secureFieldRead.on(onSecureFieldRead,d);
+		fd.enterSecureCode("forRecordUpdate");
+	}
+	function onSecureFieldRead (e:StandardEvent) {	
+		var fd:FieldData = e.target; //e.data.index // e.value
+		fd.secureFieldRead.off(onSecureFieldRead);
+		var el = frameFieldElems[e.data.index].valueElem; 
+		el.off(StandardEvent.FOCUS, onSecureFieldFocus);
+		el.value(e.value);
+		//
+		el.placeHolder(fieldDataHolder + " " + fd.field.label);
+		
+	}
+	//
 	function removeUpdateFrameEvent () {			
 		if (bFrameCancel.hasLst(StandardEvent.CLICK) ) bFrameCancel.off(StandardEvent.CLICK, onFrameCancel);
 		if (bFrameValid.hasLst(StandardEvent.CLICK) ) bFrameValid.off(StandardEvent.CLICK, onFrameValidUpdate);			
 		bFrameValid.clearEnterKeyToClick();
-		removeTextAreaEvent ();
+		removeFieldsEvent ();
 	}
 	function onFrameCancel (e:ElemEvent) {
 		removeUpdateFrameEvent ();
 		recordFrame.hide();
 	}
 	function onFrameValidUpdate (e:ElemEvent) {		
-		var fd:FieldData;
+		var fd:FieldData; var b:Bool ;
 		for (fd in fieldDatas) {
 			fd.value = frameFieldElems[fd.index].valueElem.value();
-			if (fd.field.isPrimary) {
-				label = fd.value; labelElem.value(label);
-			}
-			else fd.setup();	
+			if (fd.field.isSecure && ( fd.isUpdated || frameFieldElems[fd.index].valueElem.value()!="" ) ){
+				fd.value = frameFieldElems[fd.index].valueElem.value();
+				fd.length = fd.value.length;
+			}			
 		}			
-		askUpdate ();		
+		askUpdate ();	
+		for (fd in fieldDatas) {
+			b = fd.field.isPrimary || checkIfprimaryExists()!="" && fd.field.index==0 ;
+			if (b) { label = fd.value; labelElem.value(label); }
+			else fd.setup();			
+		}
 	}
 	function askUpdate () {			
 		server.serverEvent.off(); 
 		server.serverEvent.on(onAnswerUpdate);		
 		var fvList:String="";var fkList:String="";var pfx:String="";
 		for (fd in fieldDatas) {
+			if (fd.field.isSecure && !fd.isUpdated && fd.value=="") continue ;
 			fvList += pfx +  fd.value;
 			fkList += pfx + fd.key;
 			pfx = "`~¤";
@@ -244,6 +288,9 @@ class Record extends SubModel  {
 		} else if (answ == "updateRecordOk")  {
 			removeUpdateFrameEvent ();
 			recordFrame.hide();
+			for (fd in fieldDatas) {
+				if (fd.field.isSecure) { fd.makeHidden(); fd.isUpdated = false; }
+			}
 			view.showTipBox(lang.updateOk, bElem.parent(), bElem.posx(), bElem.posy(), 2)	;
 		} else {			
 			g.alert(lang.serverFatalError);
@@ -277,18 +324,20 @@ class Record extends SubModel  {
 		}
 	}
 	function remove () {	
-		//getParent().selectAndDispatch () ;
 		clear () ;
 		if (elem == null) trace ("Erreur in Record.remove(). Instance : label=" + label + " recId=" + recId);
 		else elem.delete();		
-		getParent().records.splice(index,1); // remove from parent list
+		getParent().removeFromList(this); // remove from parent list
 	}
 	//
-	function showUpdateRecordFrame (frameTitle:String) {	
+	function showUpdateRecordFrame (frameTitle:String) {
+		var fdh = "";
 		recordFrameTitle.text(frameTitle);
 		recordFieldCtnr.removeChildren(); frameFieldElems = [];
 		for (fd in fieldDatas) {
-			frameFieldElems.push(fd.field.displayInRecordFrame(recordFieldCtnr, fieldDataHolder,fd.value));
+			if (fd.field.isSecure && fd.value=="" && fd.length > 0) fdh = lang.securefieldDataHolder ;
+			else fdh=fieldDataHolder;
+			frameFieldElems.push(fd.field.displayInRecordFrame(recordFieldCtnr,fdh ,fd.value));
 		}
 		recordFrame.show();		
 	}

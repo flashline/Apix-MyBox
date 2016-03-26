@@ -19,13 +19,13 @@ typedef FrameFieldElem = {
 	var labelElem:Elem;	
 }
 //
-class Field extends Folder {  
+class Field extends Folder implements IContent {  
 	
 	//public var change:EventSource;
 	public var rowNumber:Int;
 	public var copyEnable:Bool ;
 	public var isHidden:Bool ;
-	//public var isUnique:Bool ;
+	public var isSecure:Bool ;
 	public var isPrimary:Bool ;
 	
 	//	
@@ -73,12 +73,13 @@ class Field extends Folder {
 		else return -1 ;
 	}
 	//
-	public function initField (ri:Int,l:String,rn:Int,ce:Bool,ih:Bool,ip:Bool) {	
+	public function initField (ri:Int,l:String,rn:Int,ce:Bool,ih:Bool,is:Bool,ip:Bool) {	
 		recId = ri;
 		label = l;
 		rowNumber = rn ;
 		copyEnable = ce;
 		isHidden = ih;
+		isSecure = is;
 		isPrimary = ip;
 		
 	}
@@ -121,7 +122,6 @@ class Field extends Folder {
 		valEl.value(valInit) ; valEl.placeHolder(placeHolder + " " + label); valEl.name(dbColName);		
 		return {elem:el,labelElem:labEl,valueElem:valEl} ;
 	}
-	
 	/**
 	 * @private
 	 */
@@ -130,27 +130,121 @@ class Field extends Folder {
 		super.onUpdateClick(e);
 		showNameFrame (updateTitleTxt, nameTxt, nameHolderTxt, "field");
 		foName.value(label);
+		showAdminFields ();
+		enableAdminFields(); isPrimaryInput.enable(true, true);
 		rowNumberInput.value("" + rowNumber);		
-		copyEnableInput.value(copyEnable?"true":"false");
 		copyEnableInput.selected(copyEnable);
-		isHiddenInput.value(isHidden?"true":"false");
 		isHiddenInput.selected(isHidden);
-		isPrimaryInput.value(isPrimary?"true":"false");
-		isPrimaryInput.selected(isPrimary);
-		lockPrimaryInput (this);
-	}
+		isSecureInput.selected(isSecure);
+		isPrimaryInput.selected(isPrimary);		
+		setupAdminFieldsInput ();
+		isSecureInput.off();isSecureInput.on(StandardEvent.CHANGE, onSecureChange);		
+		isPrimaryInput.off(); isPrimaryInput.on(StandardEvent.CHANGE, onPrimaryChange);				
+	}	
+	override function setupAdminFieldsInput () {
+		if (isPrimary) {
+			disableAdminFields ();
+			//
+			hideAdminFields () ;
+		}
+		else {
+			if (primary != null) {
+				// an other Field is primary 
+				isPrimaryInput.selected(false);
+				isPrimaryInput.enable(false, true);
+				isPrimaryInput.off();
+			} 
+			else if (!isSecure)  {
+				isPrimaryInput.selected(true);	
+				isPrimaryInput.enable(false, true);
+				isPrimaryInput.off();
+				hideAdminFields () ; view.showTipBox(lang.primaryMustBeCreated,isPrimaryInput.parent());		
+			}			
+			//
+			if (isSecure) {
+				isPrimaryInput.selected(false);
+				isPrimaryInput.enable(false, true);
+				isPrimaryInput.off();
+				//
+				isHiddenInput.enable(false, true);
+				isHiddenInput.selected(true);
+			}
+			else {
+				isHiddenInput.enable(true,true);
+			}
+		}				
+	}	
 	override function onFrameValid (e:ElemEvent) {
 		rowNumber = g.intVal(rowNumberInput.value(),1);
 		copyEnable = g.boolVal(copyEnableInput.selected(), true);
 		isHidden = g.boolVal(isHiddenInput.selected(),true);
+		isSecure = g.boolVal(isSecureInput.selected(),false);
 		isPrimary = g.boolVal(isPrimaryInput.selected(),true);
 		label = foName.value();
 		labelElem.value(label);
 		//
 		server.serverEvent.off(); 
-		server.serverEvent.on(onAnswerUpdate);		
-		server.ask({ req:"updateField",id:model.currUserId,recId:recId,label:label,rowNumber:rowNumber,copyEnable:copyEnable,isHidden:isHidden,isPrimary:isPrimary});	
-	}	
-	
-	
+		server.serverEvent.on(onAnswerUpdate);	
+		server.ask({ req:"updateField",id:model.currUserId,recId:recId,label:label,rowNumber:rowNumber,copyEnable:copyEnable,isHidden:isHidden,isSecure:isSecure,secureCode:currSecureCode,isPrimary:isPrimary});	
+	}		
+	override function onSecureChange (e:ElemEvent) {
+		if (isSecureInput.selected()) createSecureCodeForUpdate();
+		else {
+			if (isSecure) {
+				setSecure (true);
+				enterSecureCode() ;
+			} else doSecureChange();
+		}
+	}
+	override function doSecureChange () {
+		super.doSecureChange();
+		if (!isSecureInput.selected() && primary == null ) {
+			isPrimaryInput.off();isPrimaryInput.on(StandardEvent.CHANGE, onPrimaryChange);	
+			isPrimaryInput.selected(true);	
+			isPrimaryInput.enable(true, true);
+			disableAdminFields ();
+			view.showTipBox(lang.primaryMustBeCreated,isPrimaryInput.parent());	
+		}
+	}
+	function setSecure (?b:Bool=true) {		
+		isSecureInput.selected(b);
+		if (!b) currSecureCode="";
+	}
+	function createSecureCodeForUpdate () {
+		createSecureCode ();			
+	}		
+	function enterSecureCode () {
+		createSecureCode ("forEnter");
+		showSecureFrame(lang.secureEnterTitle,"","");		
+		bValidSecureFrame.off(); bValidSecureFrame.on(StandardEvent.CLICK, onValidSecureEnter);		
+	}
+	/*override function onClickSecureCode (e:ElemEvent) {
+		var el:Elem = cast(e.currentTarget, Elem);
+		pushSecureCode (el);
+		secureFrameCode.text("");
+	}*/
+	function onValidSecureEnter (e:ElemEvent) {
+		if (currSecureCode!="") askVerifySecureCode ();
+		secureFrame.hide();			
+	}
+	function askVerifySecureCode () {			
+		server.serverEvent.off(); 
+		server.serverEvent.on(onAnswerVerifySecureCode);		
+		server.ask({ 	req:"verifySecureCode", id:model.currUserId,fieldRecId:recId,secureCode:currSecureCode});
+	}
+	function onAnswerVerifySecureCode (e:StandardEvent) {
+		var answ:String=e.result.answ;
+		if (answ == "error") { 
+			if (e.result.msg == "connectionHasBeenClosed") g.alert(lang.connectionHasBeenClosed);	
+			else if (e.result.msg == "connectionIsNotValid") g.alert(lang.connectionIsNotValid);				
+			else if (e.result.msg=="elemDoesntExist") g.alert(lang.elemDoesntExist);	
+			else if (e.result.msg=="invalidSecureCode") g.alert(lang.invalidSecureCode);	
+			else g.alert(lang.serverReadError + e.result.msg);
+		}
+		else if (answ != "secureCodeOk") g.alert(lang.serverFatalError);
+		else {
+			setSecure(false);
+			doSecureChange();
+		}
+	}
 }

@@ -94,27 +94,25 @@ class View {
 	public function initDisplay () {	
 		"#safeBox #loginView".get().hide();
 		"#safeBox #stdView".get().hide();
-		"#safeBox .apix_initHidden".all().forEach(function (c) { ElementExtender.hide(c); } );
-		//"#safeBox #viewBody".get().forEachChildren(function (c) { ElementExtender.hide(c); } );
+		"#safeBox .apix_initHidden".each(ElementExtender.hide);
 		rootElemsCtnr.show();
 		//
 		"#safeBox .headInfo".get().inner(lang.headInfo);
 		"#safeBox #bConnect .apix_label".get().text(lang.bConnectLabel);
-		"#safeBox #bGoSignUp .apix_label".get().text(lang.bGoSignupLabel);
-			
+		"#safeBox #bGoSignUp .apix_label".get().text(lang.bGoSignupLabel);			
 		"#safeBox #loginView .apix_goPrevious".get().tip(lang.goPreviousTitle );
 		"#safeBox #stdView .apix_goPrevious".get().tip(lang.goPreviousTitle );
 		"#safeBox .topText".get().tip(lang.topTextTitle );
 		"#safeBox .apix_goUp".get().tip(lang.goUpTitle );
 		"#safeBox .apix_openMenu".get().tip(lang.openMenuTitle );
-		//"#safeBox .cancelPicto".get().tip(lang.cancelPictoTitle );
 		"#safeBox .removePicto".get().tip(lang.removePictoTitle );
 		"#safeBox .updatePicto".get().tip(lang.updatePictoTitle );
 		"#safeBox .showPicto".get().tip(lang.showPictoTitle );
-		
-		"#safeBox .copyPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.copyPictoTitle); } );
-		"#safeBox .apix_cancelPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.cancelPictoTitle); } );
-		"#safeBox .apix_validPicto".all().forEach(function (c) { ElementExtender.tip(c,lang.validPictoTitle); } );
+		"#safeBox .rubPicto".get().tip(lang.rubPictoTitle );		
+		"#safeBox .copyPicto".each(function (c) { c.tip(lang.copyPictoTitle); } );
+		"#safeBox .apix_cancelPicto".each(function (c) { c.tip(lang.cancelPictoTitle); } );
+		"#safeBox .apix_validPicto".each(function (c) { c.tip(lang.validPictoTitle); } );		
+		"#safeBox .apix_codePicto".each(function (c) { c.tip(lang.codePictoTitle); } );
 		
 		linkLang1.text(lang.langApp1);
 		linkLang2.text(lang.langApp2);
@@ -236,7 +234,7 @@ class View {
 	public function showLoginView (?id:String,?pwd:String,?mode:String="signIn") {	
 		"#safeBox #loginView".get().show();
 		"#safeBox #stdView".get().hide();
-		"#safeBox .addPicto".all().forEach(ElementExtender.hide);
+		"#safeBox .addPicto".each(ElementExtender.hide);
 		//
 		if (mode=="signIn") {	
 			"#safeBox #confirm".get().hide();

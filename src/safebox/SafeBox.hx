@@ -38,6 +38,7 @@ import apix.ui.tools.Spinner;
 using apix.common.util.StringExtender;
 using apix.common.display.ElementExtender;
 using apix.common.event.EventTargetExtender;
+
 class SafeBox {	
 	/**
 	 * model related class
@@ -78,6 +79,7 @@ class SafeBox {
 		model.createRootFolder(view);
     	controler.initEvent();	
 		controler.start(firstLaunch);	
+		/**/
     }
 	
 	

@@ -37,7 +37,7 @@ class Controler {
 		view = v;
 		model = m; lang = model.lang;
 		server = model.server; 
-		model.version = "v 1.0.3 - r 4";
+		model.version = "v 1.0.4 - r 1";
 		//
 		g = Global.get();
 	}

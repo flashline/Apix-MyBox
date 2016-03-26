@@ -97,13 +97,13 @@
 		return $str;
 	}
 	function encodeXmlReserved ($str) {
+		// Dont replace by &amp; etc... 
 		$str=str_replace("&","~#e",$str) ;
 		$str=str_replace("<","~#{",$str) ;
 		$str=str_replace(">","~#}",$str) ;
 		$str=str_replace('"',"~#`",$str) ;
 		return $str;
-	}
-	
+	}	
 	function supprimer_les_encodages($valeur){
 	  //si magic quotes est actif, retourner
 	  // la valeur après suppression de l'encodage

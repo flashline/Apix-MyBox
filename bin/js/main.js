@@ -1104,6 +1104,37 @@ apix.common.util.Global.prototype = {
 		} else return false;
 		return true;
 	}
+	,decodeXmlReserved: function(str) {
+		str = this.strVal(str,"");
+		if(str != "") {
+			var i = str.indexOf("~#e");
+			while(i > -1) {
+				str = HxOverrides.substr(str,0,i) + "&" + HxOverrides.substr(str,i + 3,null);
+				i = str.indexOf("~#e");
+			}
+			i = str.indexOf("~#{");
+			while(i > -1) {
+				str = HxOverrides.substr(str,0,i) + "<" + HxOverrides.substr(str,i + 3,null);
+				i = str.indexOf("~#{");
+			}
+			i = str.indexOf("~#}");
+			while(i > -1) {
+				str = HxOverrides.substr(str,0,i) + ">" + HxOverrides.substr(str,i + 3,null);
+				i = str.indexOf("~#}");
+			}
+			i = str.indexOf("~#ç");
+			while(i > -1) {
+				str = HxOverrides.substr(str,0,i) + "%" + HxOverrides.substr(str,i + 3,null);
+				i = str.indexOf("~#ç");
+			}
+			i = str.indexOf("~#`");
+			while(i > -1) {
+				str = HxOverrides.substr(str,0,i) + "\"" + HxOverrides.substr(str,i + 3,null);
+				i = str.indexOf("~#`");
+			}
+		}
+		return str;
+	}
 	,open: function(url,lab,opt) {
 		if(lab == null) lab = "";
 		apix.common.display.Common.open(url,lab,opt);
@@ -1390,13 +1421,13 @@ apix.common.util.xml.XmlParser.prototype = {
 		if(xml.firstChild() != null) {
 			if(xml.firstChild().nodeType == Xml.PCData) {
 				var v = StringTools.trim(xml.firstChild().get_nodeValue());
-				if(!this.g.empty(v)) o.set("value",v);
+				if(!this.g.empty(v)) o.set("value",this.g.decodeXmlReserved(v));
 			}
 		}
 		var $it0 = xml.attributes();
 		while( $it0.hasNext() ) {
 			var i = $it0.next();
-			o.set(i,xml.get(i));
+			o.set(i,this.g.decodeXmlReserved(xml.get(i)));
 		}
 		var oo;
 		var $it1 = xml.elements();
@@ -2210,7 +2241,6 @@ safebox.Controler = function(m,v) {
 	this.model = m;
 	this.lang = this.model.lang;
 	this.server = this.model.server;
-	this.model.version = "v 1.0.3 - r 4";
 	safebox.Controler.g = apix.common.util.Global.get();
 };
 safebox.Controler.__name__ = ["safebox","Controler"];
@@ -2747,6 +2777,7 @@ safebox.Server = function(su,m) {
 	safebox.Server._instance = this;
 	this.spinner = apix.ui.tools.Spinner.get();
 	this.model = m;
+	this.g = apix.common.util.Global.get();
 };
 safebox.Server.__name__ = ["safebox","Server"];
 safebox.Server.prototype = {
@@ -2786,7 +2817,7 @@ safebox.Server.prototype = {
 		var e = new apix.common.event.StandardEvent(this);
 		e.result = { answ : "error", msg : msg};
 		this.serverEvent.dispatch(e);
-		haxe.Log.trace("f::From server:\n" + msg,{ fileName : "Server.hx", lineNumber : 109, className : "safebox.Server", methodName : "onServerError"});
+		haxe.Log.trace("f::From server:\n" + msg,{ fileName : "Server.hx", lineNumber : 112, className : "safebox.Server", methodName : "onServerError"});
 	}
 	,askAutoLogin: function() {
 		this.httpStandardRequest.onData = $bind(this,this.onAnswerAutoLogin);

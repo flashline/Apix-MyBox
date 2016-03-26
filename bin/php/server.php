@@ -549,7 +549,7 @@
 				$out.=" <item>\n";
 				$out.="   <parent_id>".$o->parent_id."</parent_id>\n";
 				$out.="   <is_form>".$b."</is_form>\n";
-				$out.="   <label>".$o->label."</label>\n";
+				$out.="   <label>".encodeXmlReserved($o->label)."</label>\n";
 				$out.="   <id>".$o->id."</id>\n";
 				//
 				if ($b=="true") $out.= readFields ($o->id);
@@ -579,7 +579,7 @@
 				$out.="  	<item>\n";
 				//$out.="    <form_id>".$o->form_id."</form_id>\n";
 				$out.="    		<id>".$o->id."</id>\n";
-				$out.="    		<label>".$o->label."</label>\n";
+				$out.="    		<label>".encodeXmlReserved($o->label)."</label>\n";
 				$out.="    		<row_number>".$o->row_number."</row_number>\n";
 				$out.="    		<copy_enable>".$c."</copy_enable>\n";
 				$out.="    		<is_hidden>".$h."</is_hidden>\n";
@@ -617,7 +617,7 @@
 						$out.="  		<item>\n";
 						foreach ($o as $key => $val) {
 							$val=hideIfSecure(substr($key,3),$val);
-							$out.="	    		<".$key.">".$val."</".$key.">\n"; 	
+							$out.="	    		<".$key.">".encodeXmlReserved($val)."</".$key.">\n"; 	
 						}
 						$out.="  		</item>\n";
 					}				

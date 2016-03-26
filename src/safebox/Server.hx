@@ -5,6 +5,7 @@ package safebox;
 */
 import apix.common.event.EventSource;
 import apix.common.event.StandardEvent;
+import apix.common.util.Global;
 import apix.common.util.Object;
 import apix.common.util.xml.XmlParser;
 import apix.ui.tools.Spinner;
@@ -29,6 +30,7 @@ class Server {
 	var spinner:Spinner;
 	var model:Model;
 	static var _instance:Server;
+	var g:Global;
 	//
 	/**
 	 * constructor
@@ -39,7 +41,8 @@ class Server {
 		serverEvent = new EventSource();
 		_instance = this;
 		spinner = Spinner.get();
-		model=m;
+		model = m;
+		g = Global.get(); 
     }		
 	
 	public static function get() : Server {	 
@@ -88,7 +91,7 @@ class Server {
 	// server return listeners
 	//
 	function onServerData (data:String)  { 		
-		data = StringTools.trim(data);
+		data = StringTools.trim(data);		
 		var e:StandardEvent = new StandardEvent(this);
 		if (data.substr(0, 5) == "<?xml") {	
 			e.result= new XmlParser().parse(Xml.parse(data));		

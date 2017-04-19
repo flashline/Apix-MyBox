@@ -33,8 +33,19 @@ import apix.common.event.timing.Delay;
 import apix.common.util.Global ;
 import apix.common.util.Cst;
 import apix.common.util.Object;
+import apix.ui.ApixCst;
+import apix.ui.input.DateField;
+import apix.ui.input.EmailField;
+import apix.ui.input.GeoField;
+import apix.ui.input.InputField;
+import apix.ui.input.LinkField;
+import apix.ui.input.PhotoField;
+import apix.ui.input.SignField;
+import apix.ui.slider.Slider;
 import apix.ui.tools.Spinner;
-import safebox.SafeBox;
+import apix.ui.UICompo;
+import haxe.Json;
+import mybox.SafeBox;
 import apix.common.io.JsonLoader;
 
 /**
@@ -51,17 +62,22 @@ class Main  {
 	var param:Object; 
 	var spinner:Spinner; 
 	var firstLaunch:Bool; 
-	static inline var version:String="1.0.1";
 	/**
 	 * constructor
 	 */
 	public function new () {
-		Common.window.on("load",chooseLanguage) ;
+		// Common.window.on("load", uiCompoInit) ;
+		// load event is already listen by www/js/index.js
+		//
+		uiCompoInit();
 	}
 
 	/**
 	 * @private
-	 */
+	 */	
+	function uiCompoInit () {
+		UICompo.loadInit(chooseLanguage);
+	}
 	function chooseLanguage () {
 		if (LocalShared.exists("safeboxLanguage")) {
 			lg = LocalShared.get("safeboxLanguage");
@@ -71,7 +87,7 @@ class Main  {
 			}
 			else {
 				"#safeBox #apix_chooseLangBox".get().delete();
-				firstLaunch = false;
+				firstLaunch = false;				
 				startSpinner ();
 			}
 		}
@@ -88,35 +104,47 @@ class Main  {
 		lg = p.lg;
 		var del = 365 * 24 * 60 * 60 * 1000;
 		LocalShared.set("safeboxLanguage", lg , del);
-		startSpinner();
+		startSpinner(); //  readLanguage (); //
 	}
-	function startSpinner () {  	
-		spinner=Spinner.get({callBack:readLanguage}) ; // {skinPath:"apix/default/Spinner/mobile/"}
+	function startSpinner () { 
+		spinner = Spinner.get( { callBack:readLanguage } ) ; // {skinPath:"apix/default/Spinner/mobile/"}
+		spinner.start();
 	}
+	
 	function readLanguage () {  
 		var ll = new JsonLoader();
 		ll.read.on(readParam);
 		ll.load(Cst.BASE_URL + Cst.LANGUAGE_PATH+lg+Cst.LANGUAGE_FILE);		
 	}
-	function readParam (e:JsonLoaderEvent) {  
-		e.target.read.off(readParam);
-		lang = e.tree;
-		//"lang".trace(lang.toString());
-		var ll = new JsonLoader();
+	function readParam (e:JsonLoaderEvent) { 
+		var ll:JsonLoader = e.target;
+		ll.read.off(readParam);
+		lang = e.tree;		
+		Lang.setLangObject(lang);
+		//var ll = new JsonLoader();
 		ll.read.on(start);
 		ll.load(Cst.BASE_URL + Cst.MODEL_SRC);		
 	}
 	function start (e:JsonLoaderEvent) {  
-		e.target.read.off(start);
+		var ll:JsonLoader = e.target;
+		ll.read.off(start);
 		param = e.tree; 
-		//"param".trace(param.toString());
-		new SafeBox(Cst.BASE_URL,Cst.SERVER_URL,lang,param,firstLaunch);
-	}
-	
+		new SafeBox(Cst.BASE_URL, Cst.SERVER_URL, lang, param, firstLaunch);
+	}	
 	// app entry point
     static function main() {  
 		g=Global.get();
-		g.setupTrace();	
+		g.setupTrace();
+		UICompo.baseUrl = ApixCst.BASE_URL;	
+		Slider.init(); 
+		InputField.init();		
+		GeoField.init();		
+		SignField.init(); 
+		PhotoField.init("mobile", "apix/default/PhotoField/png/"); 
+		DateField.init(); 
+		LinkField.init();
+		EmailField.init();
+		//		
 		new Main();
 	}
 }

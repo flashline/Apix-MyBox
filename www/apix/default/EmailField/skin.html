@@ -1,0 +1,54 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- EmailField default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+		
+		
+<style>	
+	.apixEmailField_default input {
+		display:inline-block;
+		font-size:.8rem;
+		height:1.5rem;
+	}
+	.apixEmailField_default .apix_emailId {
+		min-width:100px;
+		max-width:190px;
+		width:55%;
+	}	
+	.apixEmailField_default .apix_emailDomain {
+		min-width:80px;
+		max-width:150px;
+		width:35%;
+	}	
+	.apixEmailField_default span {
+		width:7%;
+	}	
+	
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> 	except the name of this file skin.html  -->
+<!-- 		div.apix_loader_ctnr is a tmp container, used for download or test only ; don't remove it -->
+<!-- 		names begining by apix_ are NOT editable, have behaviour meaning 		; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" style="margin:10;width:100%;">	
+	<div class="apixEmailField_default">
+		<span class="apix_label">Untitled</span><br/>		
+		<input class="apix_emailId" type="text" value="" placeholder=""/>
+		<span class="apix_at" >@</span>
+		<input class="apix_emailDomain" type="text" value="" placeholder=""/>		
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

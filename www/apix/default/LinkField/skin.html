@@ -1,0 +1,47 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- LinkField default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+
+<style>	
+	.apixLinkField_default input {
+		max-width:280px;
+	}	
+	.apixLinkField_default input.apix_linkText {
+		max-width:280px;
+		padding-bottom:0px;
+		margin-bottom:0px;
+	}	
+	.apixLinkField_default .subLabels {
+		max-width:280px;
+		font-size:.8rem;
+	}
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> 	except the name of this file skin.html  -->
+<!-- 		div.apix_loader_ctnr is a tmp container, used for download or test only ; don't remove it -->
+<!-- 		names begining by apix_ are NOT editable, have behaviour meaning 		; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" style="margin:10;width:300px;">	
+	<div class="apixLinkField_default">
+		<span class="apix_label">Untitled</span><br/>		
+		<span class="apix_linkTextLabel subLabels">Enter link text</span>
+		<input class="apix_linkText" type="text" value="" placeholder="Enter data"/>
+		<span class="apix_linkUrlLabel subLabels" >Enter link url</span>
+		<input class="apix_linkUrl" type="text" value="" placeholder="Enter data"/>		
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

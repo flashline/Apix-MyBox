@@ -1,0 +1,158 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- PhotoField default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+
+<style>
+	.apixPhotoField_default {
+		position:relative;
+		/*left:2em;*/
+		width:100%;	
+		height:100%;
+		
+	}
+	.apixPhotoField_default .cameraButton {
+		position:relative;
+		width:10em;
+		height:6em;
+		padding:0;
+		cursor:pointer;
+	}	
+
+	.apixPhotoField_default .cameraViewFinder {
+		position:absolute;
+		left:30%;
+		width:25%;
+		height:8.5%;
+		background-color:#3399dd;
+		box-shadow: 2px 2px 8px 3px rgba(0, 0, 0,0.40);
+	}
+	.apixPhotoField_default .cameraViewFinderInner {
+		position:absolute;
+		top:14%;
+		left:33%;
+		width:33%;
+		height:45%;
+		background-color:#fff;
+	}
+	.apixPhotoField_default .cameraShutter {
+		position:absolute;
+		left:80%;
+		width:10%;
+		height:8.5%;
+		background-color:#3399dd;
+		
+	}
+	.apixPhotoField_default .cameraBack {
+		position:relative;
+		top:10%;
+		width:100%;
+		height:100%;
+		border-radius: 18px;
+		background-color:#3399dd;	
+		box-shadow: 2px 2px 8px 3px rgba(0, 0, 0,0.40);
+	}
+	.apixPhotoField_default .cameraBar {
+		position:absolute;	
+		top:25%;
+		width:100%;
+		height:2%;
+		background-color:#fff;	
+	}
+	.apixPhotoField_default .cameraObjectif {
+		position:absolute;	
+		top:12%;
+		left:40%;
+		width:45%;
+		height:75%;
+		background-color:#fff;	
+		border-radius: 50%;
+	}
+	.apixPhotoField_default .cameraObjectifInner {
+		position:absolute;	
+		top:32%; 
+		left:52.5%; 
+		width:12%;
+		height:20%;
+		background-color:#c7c7c7;	
+		border:1em solid #3399dd;
+		border-radius: 50%;
+	}
+	/* .cameraPhotoDisplay size will be modified by code 		*/
+	/*  regarding real picture size				                    */
+	
+	.apixPhotoField_default .photoCtnr {
+		display:none;
+	}
+	
+	.apixPhotoField_default .cameraPhotoDisplay {
+		position:relative;	
+		padding:10px;
+		width:auto;
+		height:auto;
+		background-color:#333;	
+		border-radius: 8px;
+		text-align:center;
+		
+	}
+	.apixPhotoField_default .cameraPhotoDisplay img {
+		display:block;
+		max-width:100%;
+		height:auto;
+	}
+	.apixPhotoField_default .cameraPhotoDisplay .pictureDeleteButton {
+		margin-top:2rem;
+	}
+	
+	
+
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" >
+	<div class="apixPhotoField_default" style="">
+		<!-- text below will be replaced by code -->
+		<div class="apix_label cameraLabel" >Take a picture :</div>
+		<!-- -->
+		<div class="apix_button cameraButton">
+			<div class="cameraViewFinder"><div class="cameraViewFinderInner"></div></div>
+			<div class="cameraShutter"></div>
+			<div class="cameraBack">
+				<div class="cameraBar"></div>
+				<div class="cameraObjectif"></div>
+				<div class="cameraObjectifInner"></div>
+			</div>
+		</div>	
+		<!-- -->
+		<div class="apix_photoCtnr photoCtnr" >
+			<br/>
+			<div class="cameraPhotoDisplay">
+				<!-- don't remove row below -->
+				<img src="" alt="picture container" />	
+				<!-- --- -->
+				<button  class="apix_removeButton pictureDeleteButton small alert">Effacer</button>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- 
+	
+	
+-->
+<!-- ---  -->
+<!-- ---  -->

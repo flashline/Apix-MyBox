@@ -1,4 +1,9 @@
 joint
+hooks
+out
+platforms
+plugins
+config.xml
 bin/php/online*
 bin/php/x.php
 db.save
@@ -9,3 +14,6 @@ thumbs.db
 ehthumbs.db
 bin/web-app-manifest.json
 *.htaccess
+x*.php
+x*.html
+save.*

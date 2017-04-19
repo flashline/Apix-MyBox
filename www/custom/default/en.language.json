@@ -1,0 +1,368 @@
+{
+  "language":"en",
+  "langApp1": "Français",
+  "langApp2": "Español",
+  "langApp1Src": "fr",
+  "langApp2Src": "es",
+  "red":"Red",
+  "green":"Green",
+  "blue":"Blue",
+   "clipBoardCopyError":"Your browser isn't Html5 ou your machine doesn't accept automatic copy to the clipboard !<br> Do it your self.",
+  
+  "signInIdHolder": "Enter your email",
+  "signUpIdHolder": "Enter a valid email",
+  "signUpPwdHolder": "Enter a password with at least 6 characters.",
+  "signInPwdHolder": "Enter your password",
+  "signUpConfirmHolder": "Confirm votre password",
+  "bConnectLabel": "Signin",
+  "bGoSignupLabel": "Create a new account",
+  "headInfo": "PC/MAC &amp; Mobiles.",
+  "menuAdmin": "Folders and forms management",
+  "menuQuitAdmin": "Quit folders and forms management",
+  "menuLogOff": "Logoff / signin",
+  "menuSafeModeOn": "Switch to secure mode",
+  "menuSafeModeOff": "Switch to NO secure mode (normal) ",
+  "menuAbout": "About ",
+  "menuDoc": "Documentation",
+  "menuTip": "Tips and tricks",
+  "menuDocSrc": "./doc/help.en.html",
+  "menuAdminTitle": "Folders and forms management",
+  "menuQuitAdminTitle": "Quit folders and forms management",
+  "menuLogOffTitle": "Logoff",
+  "menuSafeModeTitle": "Switching to secure or normal mode",
+  "menuAboutTitle": "About MyBox",
+  "menuUserIdTitle": "Current user display",
+  "menuVersionTitle": "Current app version",
+  "menuTipTitle": "Tips and tricks ",
+  "menuDocTitle": "App documentation",
+  "goPreviousTitle": "Return",
+  "topTextTitle": "Folders and forms path",
+  "goUpTitle": "Go up to folders root",
+  "openMenuTitle": "Open menu",
+  "cancelPictoTitle": "Cancel",
+  "validPictoTitle": "Validate",
+  "removePictoTitle": "Remove item at left side",
+  "updatePictoTitle": "Update item at left side",
+  "showPictoTitle": "See field content",
+  "copyPictoTitle": "Copy",
+  "rubPictoTitle":"Erase all digits",
+  "codePictoTitle":"Click on digit",
+  "addFolderTitle": "Create new folder",
+  "addFormTitle": "Create new form",
+  "addFieldTitle": "Create a new field's description",
+  "addRecordTitle": "Create a new record",
+  "alertTitle": "Alert",
+  "alertValidLabel": "Continue",
+  "nextValidLabel": "Next",
+  "endValidLabel": "End",
+  "confirmTitle": "Warning !",
+  "confirmValidLabel": "Yes",
+  "confirmCancelLabel": "No",
+  "deleteConfirm": "Do you really want to delete this item ?",
+  "startAlertTitle": "Starting advice :",
+  "aboutTitle": "About",
+  "about": [
+    "<div style='text-align:center;font-weight:bold;'>Apix MyBox</div>",
+    "<br/>Available on :<br/>",
+    "<div style='padding:1rem;border:1px solid #999;font-size:1rem;' >",
+    "<a href='https://marketplace.firefox.com/app/apix-myBox' target='blank'>Firefox-marketplace</a> for Firefox-OS. <br/>",
+    "<a href='https://play.google.com/store/apps/details?id=org.apixline.mybox' target='blank'>Google Play</a> for Android. <br/>",
+    "<a href='http://www.apixline.org/pm/app/web/myBox/en.html' target='blank'>Internet</a> for other platforms.",
+    "</div>",
+    "<br/><a href='https://github.com/flashline/Apix-MyBox' target='blank'>Github</a> download exe &amp; source. <br/><br/>",
+    "<br/><div style='text-align:center;font-size:.7rem;'><a href='mailto:jm.delettre@pixaline.net?subject=About MyBox'>Jean-michel Delettre</a> - <a href='http://www.pixaline.net/' target='blank'>www.pixaline.net</a>(fr)</div>",
+    "<div style='text-align:center;font-size:.5rem;'><a href='mailto:info@pixaline.net?subject=MyBox English translation of doc'>English translation of documentation</a><br/></div>",
+    ""
+  ],
+   "warningTitle":"IMPORTANT !",
+  "warningValidText":"I read and I'm agree...",
+  "warning": [ 
+    "<div style='font-size:1.1rem;'>",
+    "MyBox is provided as-is without warranty of any kind or contractual liability.<br/>",
+	"</div>",
+	"<br/>",	
+    "<div style='font-size:1rem;'>",
+    "The used hosting server does not guarantee you that the security issues, backup or confidentiality are treated ",
+	"as they would be if you choosed yourself the server (based on the importance of the data entered).<br/>",
+	"</div>",
+	"<br/>",
+	"To have total control, you need to download (free) source or executable version ",
+	"and install it on an host server of your choice. <br/>",
+	"<br/>",
+	"For the procedure,<br/>see the <a href='http://www.apixline.org/pm/app/web/myBox/doc/help.en.html#install' target='blank'>documentation</a> ",
+	"and go to <a href='https://github.com/flashline/Apix-MyBox' target='blank'>github.com</a> .<br/>",
+	"or<br/>",
+	"contact me at <a href='mailto:info@pixaline.net?subject=help for installation MyBox'>info@pixaline.net</a>, if you don't know to do it yourself.<br/>",
+	
+	"<br/>" 
+  ], 
+  "alertBeforeFolderCreation": [
+	"You don't have yet created folder, nor form. <br/>",
+    "Click on up-right menu , then on 'Folders and forms management'.<br/>",
+    "<br/>",
+    "Then, it's recommended to create at least one folder (orange button), in which <br/>",
+    "you can create your forms (blue button). <br/>",
+    "eg: <br/>",
+    "A folder 'Confidential' in which you will put the form 'Usernames and password'  <br/>"
+  ],
+  "alertBeforeFormCreation": [
+    "You've already create one or more folders, but none form. <br/>",
+    "Vous can create your first form by clicking <br/>",
+    "on up-right menu, then on 'Folders and forms management'.<br/>"
+  ],
+  "emptyFieldDescription": "You don't have defined any field's description for this form ! Go to 'Folders and forms management' to define fields.",
+  
+  "goToSafeMode": [
+    "In 'secure' mode your password is never saved.<br/>",
+    "But you've to validate entered data before to be absent<br/>",
+    "because server will disconnect you after a short time of inactivity.<br/>",
+    "<h2 style='text-align:center;'>Do you confirm the switch to secure mode</h2>"
+	
+  ],
+   "goToNoSafeMode": [
+		"NO secure mode is more comfortable because you're never disconnected without asking it. <br/>",
+		"But it is advisable only if you are the unique user of this machine because<br/>",
+		"username and password are saved locally.<br/>",
+		"<h2 style='text-align:center;'>Do you confirm the switch to NO secure mode</h2>"
+  ],
+   "tipArray": [
+	  [
+		"When you click on a folder (orange) or a form (blue), <br/>",
+		"The 'path' of the tree appears at the top of the app. <br/>",
+		"To return to the 'root' of the tree <br/>",
+		"Click the up arrow at the top left of the screen. <br/>"	,	
+		""
+	  ]
+	  ,
+	  [
+		"Instead of opening the menu, <br/>",
+		"use the left arrow at the top left to go back.<br/>",
+		"<br/>",
+		"If you are in 'administration' you'll return to 'normal' mode. <br/>",
+		"If you are in 'normal' mode you'll back to the login page. <br/>",
+		""
+	  ]
+	  ,
+	  [
+		"MyBox is frequently updated online. <br/>",
+		"To be sure you always have the latest version and consistency of all files :<br/> <br/>",
+		"Clear occasionally the ''cache'', <br/>",
+		"either in the settings of your mobile ",
+		"or in the browser history of your PC/Mac. <br>",
+	  ""
+	  ]
+  ],  
+  "alertEmptyCtnr": "Empty folder or form.",
+  "updateOk": "Update is well done...",
+  "createOk": "Creation is well done...",
+  "deleteOk": "Removal is well done...",
+  "elemDoesntExist": "Strange ! item doesn't existe in the database !",
+  "invalidFormOwner": "Strange ! It seems you aren't the owner of this item !",
+  "parentFormDoesntExist": "Strange ! Then form doesn't exist or isn't valid !",
+  "notEmailError": "Enter a valid email !<br/>",
+  "pwdLengthError": "Password must have 6 characters at least !<br/>",
+  "confirmPwdError": "Then password and its confirmation are different !<br/>",
+  "alreadyExistError": "This username already exists !<br/>",
+  "loginDoesntExist": "Unknown username or invalid password !<br/>",
+  "noValidLoginError": "Invalid username or password !<br/>",
+  "serverReadError": "The server sent this error :  <br/>",
+  
+  
+  
+  "serverFatalError": "The server doesn't answer or your account is frozen due to too many PIN entry errors !<br/>",  
+  "loginFrozen1": "After repeated PIN entry errors, your account is frozen during<br/><b>",
+  "loginFrozen2": " minute(s) and ",
+  "loginFrozen3": [ 
+		" seconde(s)</b>.<br/>",
+		"Then, you must signin again and enter the correct PIN for <u>each field</u> that has received a wrong entry.<br/>" , 
+		"So, the number of trials before frozing will be reset.<br/>" , 
+		"If you aren't the cause of these errors, it's likely that a person ",
+		"attempted to hijack your account. This blockage protects it.<br/>" , 
+		"If this is repeated in an untimely manner, contact us at " , 
+		"<a href='mailto:info@pixaline.net?subject=MyBox Hacking risk'>info@pixaline.net</a> " , 
+		" indicating the email you use to signin."
+  ], 
+    
+  
+  "invalidSecureCode" : "Invalid PIN! There are only ",  
+  "invalidSecureCode2": " trial(s) before the account is 'frozen' !",
+  "invalidSecureCodeLogoff" : "Invalid PIN ! The account is 'frozen' during <br/><b>", 
+  "invalidSecureCodeLogoff2": " minute(s)</b>.",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  "connectAlreadyExists": "A Connection already exists. Restart application please !<br/>",
+  "connectionHasBeenClosed": "The server has disconnected you. <br/>signin again on an other tab if possible,<br/>otherwise click on menu then 'Logoff/signin'",
+  "connectionIsNotValid": "The Connection is no more valid. signin again please ! <br/>",
+  "name": "Name : ",
+  "fiName": "Label : ",
+  "fdNameHolder": "Enter foldername",
+  "foNameHolder": "Enter formname",
+  "fiNameHolder": "Enter fieldlabel",
+  "fdCreateTitle": "Folder creation",
+  "foCreateTitle": "Form creation",
+  "fiCreateTitle": "Field creation",
+  "fdUpdateTitle": "Change the foldername",
+  "foUpdateTitle": "Change the formname",
+  "fiPrimCreateTitle": "Do you want to create this field <br/>as container of record's title ?",
+  "fiPrimUpdateTitle": "Do you want to select this field <br/>as container of record's title ?",
+  "primaryMustBeCreated":"A form must have one primary field which will contain the record's title !",
+  "fiPrimDefaultLabel": "Title",
+  "fiUpdateTitle": "Edit the field",
+  "fieldDataHolder": "Enter a value for ",
+  "recUpdateTitle": "Update a record",
+  "recInsertTitle": "Create new record",
+  "fiRowNumberLabel": "Number of lines :",
+  "fiDecimalNumberLabel": "Number of decimals :",
+  "fiMinValueLabel":"Start value :",
+  "fiMaxValueLabel":"End value :",
+  "fiCopyEnableLabel": "Copy/paste :",
+  "fiHiddenLabel": "Hidden field :",
+  "fiRequiredLabel": "Required field :",  
+  "fiPrimaryLabel": "Primary field :",
+  "fiGeoDefaultLabel":"Geolocation",
+  "fiPhotoDefaultLabel":"Photography",
+  "fiSignDefaultLabel":"Signature",
+  
+  
+  "fiControlLabel": "Question type : ",
+  "fiControlTitle": "Choose question type : ",
+  "fiControlSelectLabel":  [ 
+		"Text",
+		"Number",
+		"Paragraph" ,
+		"Date" ,
+		"Email",
+		"Color",
+		"Web link",
+		"Choose from a list" ,
+		"CheckBoxe(s)",
+		"Radio button",
+		"Slider",
+		"Geolocation",
+		"Signature",
+		"Photography"
+  ],
+  "fiMultipleLabel":"Many choices :",
+  "fiSelectTextHolder":"Enter new choice or leave empty",
+  "addSelectLineTitle":"Add a choice",
+  "selectFieldDataHolder": " --- Select in the list --- ",
+  "selectFieldMulDataHolder": " Select 1 or many row(s) ",  
+  
+  "linkTextPlaceHolder": "Text...",
+  "linkTextLabel": "Enter link's text :",
+  "linkUrlLabel": "Entrer URL :",
+  
+  
+  "selectFieldDataNone" : " --- Cancel this choice --- ",
+  
+  
+  "fiSecureLabel": "Secure field :",  
+  "secureCreateTitle":"PIN code creation",
+  "secureCreateComment":"Click on 4 digits or leave blank, and click OK.",
+  "secureCode":"Remember this number which will be permanently encrypted.",  
+  "secureEnterTitle":"Enter the PIN code",
+  "secureToClipBoard":"The value has been read. Confirm copy.",
+  "secureCopyConfirm":"Copy to clipboard",
+  "securefieldDataHolder":"This field is secure : ",
+  "primaryMissing":
+	[
+		"This form hasn't primary field.<br/>",
+		"It's embarassing because the field used for title of records and display order is randomly choosen.<br/>",
+		"<br/>",
+		"You have to go to menu then 'Folders and forms management' to create a primary field<br/>",
+		"or choose one among no-secure and no-hidden fields.<br/>",
+		"<br/>"
+		
+	]
+	,
+  "firstFieldIsSecure":
+	[
+		"Warning !<br/>",
+		"This form hasn't primary field.<br/>",
+		"It's bad because the field used for title of records is a 'secure' or 'hidden' field <br/>",
+		"and you can loose data.<br/>",
+		"<br/>",
+		"You have to go to menu >then 'Folders and forms management' to create a primary field<br/>",
+		"or choose one among no-secure and no-hidden fields.<br/>",
+		
+		"<br/>"
+		
+	]
+	,
+    "primaryFieldIsSecure":
+	[
+		"Warning !<br/>",
+		"The  primary field of this form is a 'secure' or 'hidden' field.<br/>",
+		"It's bad and you can loose data.<br/>",
+		"<br/>",
+		"You have to go to menu >then 'Folders and forms management' to create a primary field<br/>",
+		"or choose one among no-secure and no-hidden fields.<br/>",
+		"<br/>"
+	]
+	,
+  
+  
+  
+  
+  
+  
+  "formHaventData": "This form is empty ! Add records (blue button at bottom)<br/>or go to 'Folders and forms management' to Remove it.  ",
+  "formTableDontExists": "This form is empty ! !<br/>Use blue/gray button at bottom  to add records.",
+ 
+  
+  
+  
+  
+  
+  "comment": "UICompo labels begin here",
+			"noInsertIfEmpty":"vous devez saisir les champs de cette ligne avant d'en insérer une autre en-dessous ou au-dessus !",
+			"lastRow":"Il me semble que vous êtes déjà sur la dernière ligne !",
+			"firstRow":"Il me semble que vous êtes déjà sur la première ligne !",
+			"noLanscape":"Cette appli. ne fonctionne pas en orientation ''paysage'' !",
+			"photoLimit":"Vous avez atteint le nombre maximum de photos autorisé par l'application !",
+			"geoLocRecord":"Save your position !",		
+			"geoLocAltitude":"Altitude : ",		
+			"geoLocLongitude":"Longitude : ",		
+			"geoLocLatitude":"Latitude : ",		
+			"geoLocAccuracy":"Accuracy : ",		
+			"geoLocDeg":"° ",		
+			"geoLocMin":"' ",		
+			"geoLocSec":"'' ",		
+			"geoLocAccUnit":"M ",		
+			"geoLocWhereIs":"You are at ",		
+			"geoLocSepar":" and ",		
+			"geoLocError":"Read error during geolocation!",
+			"geoLocTimeOut":"Geolocation timeout !",	
+			"spinnerText":"Initialisation en cours...",	
+			"photoError":"Erreur photo : ",
+			"emptyError":"The following field(s) can't be empty and/or the following action(s) must be performed : ",
+			"signIt":"Sign this document",		
+			"signClear":"Erase",		
+			"slider":"Modifier le ''Slider''",	
+			"grid":"Valider le tableau (sous-formulaire).",	
+			"unknownUserId":"Unknow Id !",	
+			"unknownPwd":"Password isn't correct for this ID !",
+			"invalidCompany":"Ce nom de société est invalide !",	
+			"signErrorHeader":"Veuillez effectuer les corrections suivantes : ",
+			"invalidEmail":"Email is invalid.",
+			"companyLen":"La longueur du nom de société doit être supérieure ou égale à ",
+			"pwdLen":"La longueur du mot de passe doit être supérieure ou égale à ",
+			"confirmError":"Le mot de passe doit être identique à sa confirmation.",
+			"signOutMsg":"<h2>Vous êtes déconnecté...</h2>",
+			"signOutTitle":"A bientôt.",		
+			"unknownServerError":"Problème inconnu de liaison avec le serveur !",
+			"errorFromServer ":"Le serveur a renvoyé ce message d'erreur: ",
+  "comment": "End of UICompo labels."
+  
+}

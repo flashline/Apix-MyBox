@@ -1,0 +1,119 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- Slider default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+
+<!-- ---  -->
+<!-- ---  -->
+<style>
+	.apixSlider_default {
+		position:relative;
+	}
+	.apixSlider_default .sliderCtnr {
+		position:relative;
+		height:42px;
+		overflow:hidden
+		background-color:rgba(150,170,255,.1);
+		border-radius: 6px;
+		box-shadow: 0 0px 10px rgba(0, 0, 0,0.5);
+	}
+	.apixSlider_default:active {
+		cursor:auto;
+		cursor:default;
+	}
+	.apixSlider_default .bounds {
+		position:absolute;
+		height:0px;
+		border-bottom:1px solid rgba(255,150,150,0);
+		/* apix_bounds is used to compute slider values											*/
+		/*  if we use % then bounds's width has to be : 										*/
+		/*   (slider total width - .apix_selector width) / slider total width  * 100 		*/
+		/*   example if slider total size is 300px 	: (300 - 40 ) / 300 x 100	= xx.xx%		*/
+		/*   										: the .bounds width will be xxxpx			*/
+		/*   the width below and the bar's width will be modified by code						*/
+		width:86.66%;
+		left:0px;
+	}
+	.apixSlider_default .bar {
+		position:absolute;
+		overflow:hidden;
+		height:2px;
+		/*   the width below and the bounds's width will be modified by code						*/
+		width:86.66%; 
+		border:1px dashed #aaa;			
+		left:20px;
+		top:19px;
+		background-color:rgba(200,200,200,0.3);	
+	}
+	
+	
+	.apixSlider_default .apix_selector:active,
+	.apixSlider_default .apix_selector:hover,
+	.apixSlider_default .apix_selector:focus {
+		background-color:rgba(0, 150, 255,.6);	
+		
+	}
+	.apixSlider_default .apix_selector div {
+		border:0px;background-color:#aaa;width:1px;height:100%;margin-left:auto;margin-right:auto;
+	}
+	.apixSlider_default .apix_selector span {
+		position:absolute;
+		transform: translate(-50%, -50%) ;		
+		top:50%;left:50%;
+		display:inline-block;
+		box-shadow: 0 0px 10px rgba(0, 0, 0,0.5);
+		width:10px;
+		height:10px;
+		border-radius: 5px;
+		background-color:rgba(0, 150, 255,0.5);	
+	}
+	.apixSlider_default .apix_selector  {
+		position:absolute;
+		top:1px;
+		display:block;
+		box-shadow: 0 0px 10px rgba(0, 0, 0,0.5);
+		width:40px;
+		height:40px;
+		border-radius: 20px;
+		background-color:rgba(0, 150, 255,0.3);	
+		cursor:ew-resize;
+	}
+	.apixSlider_default .bLeft {
+		left:0px;/*10%;*/
+	}
+	
+	
+	
+	
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" style="width:300px;">	
+	<div class="apixSlider_default">		
+		<span class="apix_label">Untitled</span>
+		<div class="sliderCtnr" >
+			<div class="bounds apix_bounds"></div>
+			<div class="bar apix_bar"></div>
+			<div class="bLeft apix_selector">
+				<div></div>
+				<span></span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

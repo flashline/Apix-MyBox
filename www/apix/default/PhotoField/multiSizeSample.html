@@ -1,0 +1,121 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- PhotoField default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+<style>
+	.apixPhotoField_default {
+		position:relative;
+		width:100%;
+		height:100%;
+		padding:0;
+	}	
+
+	.apixPhotoField_default .cameraViewFinder {
+		position:absolute;
+		left:30%;
+		width:25%;
+		height:8.5%;
+		background-color:#3399dd;
+		box-shadow: 2px 2px 8px 3px rgba(0, 0, 0,0.40);
+	}
+	.apixPhotoField_default .cameraViewFinderInner {
+		position:absolute;
+		top:14%;
+		left:33%;
+		width:33%;
+		height:45%;
+		background-color:#fff;
+	}
+	.apixPhotoField_default .cameraShutter {
+		position:absolute;
+		left:80%;
+		width:10%;
+		height:8.5%;
+		background-color:#3399dd;
+		
+	}
+	.apixPhotoField_default .cameraBack {
+		position:absolute;
+		top:10%;
+		width:100%;
+		height:100%;
+		border-radius: 18px;
+		background-color:#3399dd;	
+		box-shadow: 2px 2px 8px 3px rgba(0, 0, 0,0.40);
+	}
+	.apixPhotoField_default .cameraBar {
+		position:absolute;	
+		top:25%;
+		width:100%;
+		height:2%;
+		background-color:#fff;	
+	}
+	.apixPhotoField_default .cameraObjectif {
+		position:absolute;	
+		top:12%;
+		left:40%;
+		width:45%;
+		height:75%;
+		background-color:#fff;	
+		border-radius: 50%;
+	}
+	.apixPhotoField_default .cameraObjectifInner {
+		position:absolute;	
+		top:22%;
+		left:46.55%;
+		width:12%;
+		height:20%;
+		background-color:#c7c7c7;	
+		border:2em solid #3399dd;
+		border-radius: 50%;
+	}
+	.apix_loader_ctnr2 .cameraObjectifInner {		
+		border:1em solid #3399dd;
+	}
+
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" style="position:relative;left:2em;width:20em;height:12em;">	
+	<div class="apixPhotoField_default">
+		<div class="cameraViewFinder"><div class="cameraViewFinderInner"></div></div>
+		<div class="cameraShutter"></div>
+		<div class="cameraBack">
+			<div class="cameraBar"></div>
+			<div class="cameraObjectif"></div>
+			<div class="cameraObjectifInner"></div>
+		</div>
+	</div>	
+</div>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<div class="apix_loader_ctnr2" style="position:relative;left:2em;width:10em;height:6em;">	
+	<div class="apixPhotoField_default">
+		<div class="cameraViewFinder"><div class="cameraViewFinderInner"></div></div>
+		<div class="cameraShutter"></div>
+		<div class="cameraBack">
+			<div class="cameraBar"></div>
+			<div class="cameraObjectif"></div>
+			<div class="cameraObjectifInner"></div>
+		</div>
+	</div>
+	
+	
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

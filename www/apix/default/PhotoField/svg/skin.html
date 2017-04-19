@@ -1,0 +1,97 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- PhotoField default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+<!-- ---  -->
+<style>
+	.apixPhotoField_svg {
+		position:relative;width:10em;height:6em;
+	}
+	.apixPhotoField_svg .cameraButton {
+		position:relative;
+		width:100%;
+		height:100%;
+		padding:0;
+		cursor:pointer;
+	}	
+	/* .cameraPhotoDisplay size will be modified by code 		*/
+	/*  regarding real picture size				                    */
+	
+	.apixPhotoField_svg .photoCtnr {
+		display:none;
+	}
+	
+	.apixPhotoField_svg .cameraPhotoDisplay {
+		position:relative;	
+		padding:10px;
+		width:auto;
+		height:auto;
+		background-color:#333;	
+		border-radius: 8px;
+		text-align:center;
+		
+	}
+	.apixPhotoField_svg .cameraPhotoDisplay img {
+		display:block;
+		max-width:100%;
+		height:auto;
+	}
+	.apixPhotoField_svg .cameraPhotoDisplay .pictureDeleteButton {
+		margin-top:2rem;
+	}
+	
+	
+	
+
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" >
+	<div class="apixPhotoField_svg" style="">
+		<!-- text below will be replaced by code -->
+		<p class="apix_label cameraLabel" >Take a picture :</p>
+		<!-- -->
+		<div class="apix_button cameraButton">
+			<svg  width="100%" height="100%" viewBox="0 0 180 125"  >  					
+					<rect style="fill:#39d;" x="37" y="2" width="40" height="8"/> 
+					<rect style="fill:#fff;" x="50" y="4" width="14" height="4"/> 
+					<rect style="fill:#39d;" x="140" y="2" width="20" height="8"/> 
+					<g id="rect_01"  transform="translate(1,10)" >
+						<path style="fill:#39d;" d="M173,99.5c0,6.63-5.37,12-12,12h-149c-6.63,0-12-5.37-12-12v-87c0-6.63,5.37-12,12-12h149
+							c6.63,0,12,5.37,12,12V99.5z"/>
+						<rect style="fill:#fff;" x="0.5" y="30" width="172" height="2"/> 
+						<circle style="fill:#fff;" cx="105" cy="55" r="40"/> 						
+						<circle style="fill:#39d;" cx="105" cy="55" r="30"/> 					
+						<circle style="fill:#c7c7c7;" cx="105" cy="55" r="15"/> 			
+					</g>
+			</svg>
+		</div>	
+		<!-- -->
+		<div class="apix_photoCtnr photoCtnr" >
+			<br/>
+			<div class="cameraPhotoDisplay">
+				<!-- don't remove row below -->
+				<img  src="" alt="picture container" />	
+				<!-- --- -->
+				<button  class="apix_removeButton pictureDeleteButton small alert">Effacer</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

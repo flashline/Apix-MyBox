@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" 	 http-equiv="content-type">
+		<title>Apix-MyBox - Documentation</title>
+		<meta name="revisit-after" content="30 days"/>
+		<meta name="description" content="Documentation : form creation" />
+		<meta name="keywords" content="documentation, form, store, data ,web-app,application web,pc,mac,mobile,smartphone,large screen,html5,haxe,js,php" />
+		<meta name="author" content="Jean-michel Delettre - Pixaline.net" />
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+		<link href='help.css' media='all' rel='Stylesheet' type='text/css' />
+	</head>
+	<body>
+		<h1>Documentation Apix-MyBox</h1>		
+			<p class="langLink"> <a  href="./help.fr.html" >français </a></p>		
+		<h2>Foreword</h2>
+		<div class="hline"></div>
+		<div class="bloc" id="section_1" onclick="javascript:wm_toggle_section(1);">
+			<div class="left"><span>Apix MyBox...</span></div>
+			<div class="right">
+				<button class="bloc show"  ><img src="open.png"></button>
+				<button class="bloc hide" ><img src="close.png"></button>		
+			</div>
+		</div>
+		<div class="content_block" id="content_1">
+			<div>
+				... Is free and is available on the Internet :
+				<a href="http://www.apixline.org/pm/app/web/myBox/en.html" target="_blank">http://www.apixline.org/pm/app/web/myBox/en.html</a>
+				<br/>		
+				or at <a href="https://marketplace.firefox.com/app/Apix-MyBox" target="_blank">Firefox Marketplace</a> for <span class="tip"> Firefox-OS </span>
+				<br/>		
+				or at <a href="https://play.google.com/store/apps/details?id=org.apixline.mybox" target="_blank">Google Play</a> for <span class="tip"> Android</span>
+				<br/>	<br/>				
+				and  it is open-source and downloadable on  
+				<a href="https://github.com/flashline/Apix-MyBox" target="_blank">gitHub</a>
+				<br/>					
+				<i> Warranty: </i>
+				<br/>
+				<strong>This application is provided "as is" without warranty of any kind. </strong > <br/>
+				If, in the worst case, it's online-availability should cease, apixline.org can not be held responsible, nor required to compensate its users.
+				<br/><br/>				
+				Licence  : 
+				<br/>				
+				<a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GPL</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<br/><br/>
+				
+			</div>
+		</div>	
+		
+		<div class="hline"></div>
+		<div class="bloc" id="section_3" onclick="javascript:wm_toggle_section(3);">
+			<div class="left"><span>Presentation</span></div>
+			<div class="right">
+				<button class="bloc show"  ><img src="open.png"></button>
+				<button class="bloc hide" ><img src="close.png"></button>		
+			</div>
+		</div>
+		<div class="content_block" id="content_3">
+			<div class="paraph" >	
+				With MyBox you create : folder(s) <br/>
+				within folders - i.e other subfolders or forms.<br/><br/>	
+				In each form you can define fields.<br/>
+				<div class="tip">
+					That then allows you to enter your various data, organized as you wish, 
+					and find your data wherever an Internet connection exists.
+				</div>
+				<br/>
+				The fields may be visible or hidden (eg 'password').<br/>
+				If a field is hidden, a click on a button makes it visible temporarily.<br/>
+				<br/>
+				A single data field is "primary". <br/>
+				Which means that its content will appear 
+				as the title of the record,<br/>
+				and the records will be sorted according to the value of this field.<br/>
+				<br/>
+				Each field can be copied to the clipboard by clicking on a button. 
+				(Useful for connecting to websites, for example.)<br/>
+				
+					
+			</div>
+			<div class="paraph" >	
+				All platforms (Android or Firefox-OS mobiles ; Web on PC / Mac) access the same database.<br/>
+				<strong>Synchronization is not necessary.</strong><br/>
+				<br/>
+				The layout adapts itself to <strong>any screen size or ratio</strong> -the app is responsive.<br/>
+				<br/>	
+				The management mode (create/update/delete files, forms or fields) and 
+				operating mode (data entry/view) are in the same application, so the changes in admin are immediately reflected 
+				in the operating mode.<br/><br/><br/>
+				
+				<strong>This application is designed to work with an HTML5 browser.</strong><br/><br/><br/>
+				<div class="tip">
+					Feel free to contact me to inform me of any errors;<br/>
+					or if you want a specific development, from this application or about any other project.<br/>
+					<a href="mailto:info@pixaline.net?subject=Apix-MyBox">email</a>	<br/>				
+					<a href="https://twitter.com/intent/tweet?screen_name=flashline_net" target="_blank">Twitter</a>
+				</div>
+				<br/>
+				<br/>				
+				<div id="policy" class="tip">
+					<strong>Policy</strong><br/><br/>
+					The app ask an email as username but doesn't verify if adress exists. 
+					If it exists it will be used only to send you news about updates.
+					We will never share your email with third parties.
+					<br/>
+				</div>
+				<br/><br/>
+				<strong>If you like this application, please spread the word :-)</strong>
+				<br/>
+				<br/>
+			</div>
+		</div>
+		<div class="hline"></div>
+		<div class="bloc" id="section_2" onclick="javascript:wm_toggle_section(2);">
+			<div class="left"><span>For developers</span></div>
+			<div class="right">
+				<button class="bloc show"  ><img src="open.png"></button>
+				<button class="bloc hide" ><img src="close.png"></button>		
+			</div>
+		</div>
+		<div class="content_block" id="content_2">			
+			<div>
+				The app is 'Open Source' and installable on a server with PHP/MySql<br/>
+				<br/>
+				<a href="https://github.com/flashline/Apix-MyBox" target="_blank">Download</a>  					
+				<br/><br/>
+				MyBox doesn't use a meta-data system to store the records but generates conventional
+				mySql tables which can be read easily by other applications.<br/>
+				
+				<br/>
+			</div>
+			
+			
+		</div>
+			
+		<div class="hline"></div>
+		 <h2 >Manual</h2>
+		 <div class="hline"></div>
+		<div class="bloc" id="section_5" onclick="javascript:wm_toggle_section(5);">
+			<div class="left"><span>By example</span></div>
+			<div class="right">
+				<button class="bloc show"  ><img src="open.png"></button>
+				<button class="bloc hide" ><img src="close.png"></button>		
+			</div>
+		</div>
+		<div class="content_block" id="content_5">
+			<br/><br/>
+			<div id="manual">Follow this example exactly and you'll understand everything.</div>	
+			<div class="paraph" >	
+				<h3>Step I</h3>
+				After the first launch,
+				<div>
+					<ul>
+						<li>Click on 'Create New Account'.</li>
+						<li>Enter a valid email.</li>
+						<li>Enter a password of your choice.</li>
+						<li>Enter again the same password.</li>
+						<li>Click the connection button.</li>
+					</ul>
+					<div class="tip">
+						The app doesn't ask you to activate your account.<br/>
+						If you want to receive news about updates,
+						please provide a valid email.
+					</div>
+				</div>									
+			</div>
+			<div class="paraph" >
+				<h3>Step II</h3>
+				<div>
+					<ul>
+						<li>Confirm the 'Starting advice' pop-up. </li>
+						<li>Click on the menu (upper right vertical dots).</li>
+						<li>Click on 'Folders and forms management'.</li>
+						<li>Click the button to add a folder (orange with a plus sign) in the bottom right.</li>
+						<li>Enter '<span class="tip">Personal</span>' as folder name, then click OK.</li>
+					</ul>
+					<div class="tip">
+						So, you've now created a folder for your personal information <br/>.
+						You can create as many folders and subfolders as you want.
+					</div>
+				</div>
+			</div>
+			<div class="paraph" >
+				<h3>Step III.a - Create a form</h3>
+				<div>
+					<ul>
+						<li>Click on the folder '<span class="tip">Personal</span>' that you just created.</li>
+						<li>Click on the form add button (blue with a plus sign) in the bottom right.</li>
+						<li>Enter '<span class="tip">My login credentials</span>' as form name, then click OK.	</li>	
+					</ul>
+				</div>				
+			</div>
+			<div class="paraph" >
+				<h3>Step III.b - Then create the first field which will be the 'primary' field of the form.</h3>
+				<div>
+					<ul>
+						<li>Click on the folder to open it, if necessary.</li>
+						<li>Click on the '<span class="tip">My login credentials</span>' form that you just created.</li>
+						<li>Click the field add button (dark blue with a plus sign) in the bottom right.
+						<br/><br/></li>	
+						
+						<li>Enter '<span class="tip">Website Name</span>' as field label.</li>
+						<li>'Primary field' is checked and can't be unchecked.</li>
+						<li>Click OK.</li>
+					</ul>
+					<div class="tip">
+						You created the first field that will also be the record's title because 'primary' is checked. <br/>
+						It will be the only one in this case.<br/>
+					</div>
+				</div>
+			</div>
+			<div class="paraph" >
+				
+				<h3>Step III.c - Create the other fields in the same way </h3>
+				<div>					
+					<ul>
+						<li>Click the Add field button.</li>	
+						<li>Enter '<span class="tip">Url</span>' as field label.</li>
+						<li>1 as the number of lines.</li>
+						<li>Check 'Copy / Paste'.</li>
+						<li>Leave 'Hidden field' unchecked.</li>
+						<li>You can't check 'Primary field' because '<span class="tip">Website Name</span>' is already the primary field.</li>
+						<li>Click OK.<br/>
+						<br/>
+						</li>
+						<li>Click the Add field button.</li>	
+						<li>Enter '<span class="tip">Username</span>' as field label.</li>
+						<li>1 as the number of lines.</li>
+						<li>Check 'Copy/Paste'.</li>
+						<li>Leave 'Hidden field' unchecked.</li>
+						<li>Click OK.<br/>
+						<br/>
+						</li>
+						<li>Click the Add field button.</li>	
+						<li>Enter '<span class="tip">Password</span>' as field label.</li>
+						<li>1 as the number of lines.</li>
+						<li>Check 'Copy/Paste'.</li>
+						<b>Check</b> 'Hidden field'.</li>
+						<li>
+							Leave unchecked 'Secure field'.<br/>
+							or <span class="tip new">New !</span><br/> 
+							<div>
+								uncheck it, then enter a PIN code of 4 digits, then click OK.<br/>
+								Take care to remember the code <br/>
+								to see its content after...<br/> <br/> 
+							</div>
+						</li>
+						
+						<li>Click OK.
+						<br/>
+						<br/></li>
+						
+						<li>Click the Add field button.</li>	
+						<li>Enter '<span class="tip">Notes</span>' as field label.</li>
+						<li><b>4</b> as the number of lines.</li>
+						<li>Uncheck 'Copy/Paste'.</li>
+						<li>Leave 'Hidden field' unchecked.</li>
+						<li>Click OK.</li>
+					</ul>
+					
+					<div class="tip">
+						You have now completed the creation of the form that will allow 
+						you to store your login credentials.<br/>
+						
+					</div>
+					<br/>
+					As you see, 'Oblique pencil' or 'Cross on red foreground' buttons are to the right of each folder, form or field.<br/>	
+					They allow you to respectively edit or delete an item.<br/>	
+					Please note that the removal of an element deletes hierarchically all its  children (subfolders and forms).<br/>
+					<br/>	
+					You can create other forms (Dictionary, Address Book, etc)<br/>	
+					and create additional folders (eg. 'Professional') to separate your forms.<br/>
+					<br/>
+					Clicking on a folder or form changes the path displayed at the top middle of the screen.<br/>	
+					The up arrow (left of menu) allows you to reach the folders' root.<br/>
+					
+		
+				</div>
+			</div>
+			<div class="paraph" >
+				<h3>Step IV - Enter records in 'My login credentials' form</h3>
+				<div>
+					<ul>
+						<li>Click on menu then on 'Leave management' or directly on the left arrow on the top left of the screen.</li>
+						<li>Click on the folder '<span class="tip">Personal</span>', the form '<span class="tip">My login credentials</span>' appears.</li>	
+						<li>Click on it.</li>
+						<li>Validate the pop-up which reports that the selected form is empty.</li>
+						<li>Click on the add record button  (dark blue with a plus sign) in the bottom right.
+							<div>
+								A pop-up appears with the created labels (Website,Url,etc) and the corresponding fields empty.<br/>
+								Just fill it with your data and then validate OK.<br/>
+								Create some records in the same way.<br/>
+							</div>
+							<div>
+								
+								<span class="tip new">New !</span><br/> 
+							
+								If you have secured a field : <br/> 
+								You have to enter its PIN code of 4 digits then click OK,
+								before see or copy it.<br/>
+								<br/>
+								Note: <br/>
+								The secure field's content isn't read from the server until the PIN code is entered <br/>
+								Even in case of  robbery of your mobile or password piracy,<br/>
+								nobody can read a secure field's content without PIN code.<br/>
+								The PIN code is crypt... Only stored into your brain clearly  !<br/>							
+								<br/> 
+							</div>
+						</li>	
+					</ul>
+					
+				</div>
+			</div>
+			<div class="paraph" >
+				<h3>Step V - Access to the entered data.</h3>				
+				<div>
+					<ul>
+						<li>Click on the folder, then the form, if necessary.<br/>
+							The records list is displayed with the value of the primary field ('<span class="tip">Website name</span>') as label.<br/>
+							<br/>
+						</li>
+						<li>
+							Choose a record and click on it,<br/>
+							the other fields appear.<br/>	
+							For each of them, you can click on the 'copy' picto. <br/>
+							This will allow you to paste it elsewhere.<br/>
+							<br/>
+						</li>
+						<li>
+							The value of '<span class="tip">Password</span>' is hidden but you can see it by clicking on the 'eye' picto.<br/>
+							The fields 'Hidden' may be stay hidden to be copied.<br/>
+							<br/>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="paraph" >
+				<h3> To disconnect</h3> 
+				<div>
+					Click on menu then on 'Logoff / login' , or on the left arrow at the top left.<br/>	
+					 <br/> 
+					 <div class="tip">
+					 It's time to create and organize your favourite forms, enter and access 
+					 your useful and precious data wherever you are...<br/>
+					 
+					 </div>
+					 <br/><br/>
+				</div>
+			</div>	
+		</div>
+		<div class="hline"></div>
+		<div class="bloc" id="section_4" onclick="javascript:wm_toggle_section(4);">
+			<div class="left"><span>Notice</span></div>
+			<div class="right">
+				<button class="bloc show"  ><img src="open.png"></button>
+				<button class="bloc hide" ><img src="close.png"></button>		
+			</div>
+		</div>
+		<div class="content_block" id="content_4">			
+			<div class="paraph" >
+				<h3>WARNING</h3>
+				<div id="install">
+					The online version lets you test this app but doesn't give 
+					you any guarantee, nor the mastery of security processes<br/>
+					(i.e backups, data confidentiality, etc) <br/>
+					To have total control, you need to : <br/><br/>
+					<ul>
+						<li>Download the ZIP file on <a href="https://github.com/flashline/Apix-MyBox" >github.com</a>.</li>
+						<li>Install at least the content of folder 'bin/' on a server with PHP and mySql. </li>
+						<li>Launch the program ./php/db.create.php to create the database and tables.<br/>	
+							<br/>	
+							The other directory contains the source.
+						</li>						
+					</ul>
+							
+					
+				</div>
+			</div>
+			
+		</div>
+			
+		<div class="hline"></div>
+		
+		
+		
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<h2>Links</h2>
+		<div class="link">
+			<a href="javascript:window.location.replace('../inex.html');" >Return to app</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="help.en.html" >Doc (en) </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="help.fr.html" >Doc (fr) </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="http://www.apixline.org/" >Other open-source projects (fr).</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="http://www.pixaline.net" >Pro website - www.pixaline.net (fr).</a>
+			<br/><br/>
+		</div>		
+		<script type="text/javascript" language="javascript" src="help.js"></script>
+	 
+	</body>
+</html>

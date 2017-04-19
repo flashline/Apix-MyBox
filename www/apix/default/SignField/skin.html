@@ -1,0 +1,92 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- SignInField default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  
+		<link href="../../css/custom.foundation.css" rel="stylesheet" />
+		<link href="../../css/custom.normalize.css" rel="stylesheet" /> 	-->
+<!-- ---  -->
+<style>
+	.apixSignInField_default {
+		position:relative;
+		width:100%;	
+		height:100%;
+		max-width:30em;
+	}	
+	.apixSignInField_default .titleCtnr , .apixSignInField_default .validButDiv  {
+		position:relative;		
+		width:100%;
+		margin-left:auto;
+		margin-right:auto;
+		padding:0;
+		cursor:pointer;
+		text-align:center;
+	}		
+	.apixSignInField_default .titleCtnr img {
+		max-width:100%;
+		height:auto;		
+	}	
+	
+	.apixSignInField_default .signUpCtnr {		
+		border:1px solid #000;
+		height:130px;		
+		position:relative;
+		width:280px;
+		margin-left:auto;
+		margin-right:auto;
+		padding:0;
+		display:block;
+	}
+	
+	.apixSignInField_default .validButDiv  {
+		margin-top:1em;
+	}		
+	.apixSignInField_default .displayImg  {
+		display:none;
+		opacity:.35;
+		width:25%;
+		height:auto;
+	}	
+	.apixSignInField_default .okImg  {
+		display:none;
+		width:35%;
+		height:auto;
+	}	
+				
+</style>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> except change the name of this file skin.html  -->
+<!--   -> and keep the images location root tree into the same folder as this file skin.html. ie: img/foo/ is correct but img must be in same level than skin.html  -->
+<!-- div.apix_loader_ctnr is a tempo parent, used for download only ; don't remove it  -->
+<!-- names begining by apix_ are NOT editable, have behaviour meaning ; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" >
+	<div class="apixSignInField_default">
+		<span class="apix_label"></span>			
+		<canvas class="apix_paintCtnr signUpCtnr" >
+			
+		</canvas>
+		<img class="apix_img displayImg" src="" alt="signature image" />
+		<!-- okImg is used for old android versions -->
+		<img class="apix_imgOk okImg" src="././ok.png" alt="signature image" />
+		<!-- text below will be replaced by code -->
+		<div class="validButDiv">
+			<button type="button" class="apix_clear small secondary" >Faire une signature</button>
+			<span>&nbsp;</span><button type="button" class="apix_valid small success" >Valider</button>
+		</div>
+		<!-- used by caller to get base64 img from an element value hidden -->
+		<input class="apix_input" type="hidden" value=""/>		
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

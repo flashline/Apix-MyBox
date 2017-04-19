@@ -1,0 +1,158 @@
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- InputField default skin-->
+<!-- Even if images urls look like stupid, leave ././ even if you must change by a relative url -->
+<!-- or replace by the real runtime absolute url  -->
+<!-- @see: apix.ui.UICompo.hx  -->
+<!-- ---  --> 
+<!-- ---  -->
+
+		
+<style>
+	.apixDatePicker_default {
+		color:#ddd;
+		position:relative;
+		/*overflow:hidden; ici*/
+		width:90%; max-width:400px; /*ici 300px*/
+		height:auto;
+		background-color:#777;
+		border-radius: 8px;
+		border-color:#fff;
+		border-width:2px;
+		border-style:solid;
+		box-shadow: 0 0px 10px rgba(0, 0, 0,0.5);
+	}
+	
+	.apixDatePicker_default .apix_title {
+		display: inline-block;	
+		margin-top:5px;margin-left:5px;
+		margin-bottom:5px;
+		
+	}
+	.apixDatePicker_default .fieldCtnr , .apixDatePicker_default .buttonCtnr {
+		text-align:center;		
+		display:block;
+	}
+	
+	.apixDatePicker_default .fieldCtnr {
+		background-color:#555;		
+	}
+	.apixDatePicker_default  .fieldCtnr .textField {
+		display: inline-block;
+		width:5em;
+		margin: 0 0 0 0;
+	}
+	.apixDatePicker_default .fieldCtnr .apix_button {	
+		position:relative;
+		height:5em;
+		background-color: #eeeeff; 
+		cursor: pointer;
+		transition: background-color 400ms ease-out;
+	}
+	.apixDatePicker_default .fieldCtnr .apix_button:hover {		
+		background-color: #bde;
+	}
+	
+	.apixDatePicker_default .fieldCtnr  .apixField {		
+		position:relative;
+		border-radius: 0px;
+		height:3em;
+		-webkit-border-radius: 0px;
+		background-color: white;
+		margin-bottom:1px;	
+		margin-top:1px;	
+	}
+	
+	
+	.apixDatePicker_default .apixMore {
+		padding-top:1.5rem;	
+		
+	}	
+	
+	.apixDatePicker_default .apixLess{
+		padding-bottom:1.5rem;		
+		
+	}
+	.apixDatePicker_default  .apixLess .apix_button  {		
+		padding: 0 0 0 0;
+	}
+	
+	
+	
+	.apixDatePicker_default .buttonCtnr {
+		padding-top:1rem;
+	}	
+	.apixDatePicker_default .buttonCtnr button {		
+		padding: 0.5rem 0.5rem 0.5rem 0.5rem ;
+	}
+		
+	.apixDatePicker_default .fieldCtnr .apix_button .apixV {		
+		position:relative;
+		top:28px;
+		left:9px;
+		display:inline-block;
+		width:3px;
+		height:18px;
+		background-color: #000; 
+	}
+	.apixDatePicker_default .fieldCtnr .apix_button .apixH {		
+		position:relative;
+		display:inline-block;
+		top:20px;
+		left:-1px;
+		width:18px;
+		height:3px;
+		background-color: #000; 
+	}
+	.apixDatePicker_default .apixLess .apix_button .apixH {	
+		top:20px;
+		left:0px;
+	}
+	
+	.apixDatePicker_default .fieldCtnr .apixField .apixT {		
+		position:relative;
+		display:inline-block;
+		top:10px;
+	}
+	
+	
+</style>
+<!-- --- -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- you can change contents, names and folder locations -->
+<!--   -> 	except the name of this file skin.html  -->
+<!-- 		div.apix_loader_ctnr is a tmp container, used for download or test only ; don't remove it -->
+<!-- 		names begining by apix_ are NOT editable, have behaviour meaning 		; don't remove it -->
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->
+<div class="apix_loader_ctnr" style="padding:10;">	
+	<div class="apixDatePicker_default">
+		<span class="apix_title">Choisir une date</span><!-- text will be replaced -->
+		<div class="fieldCtnr apixMore">
+			<span  class="apix_moreDay textField apix_button"><span class="apixV"></span><span class="apixH"></span></span>
+			<span  class="apix_moreMonth textField apix_button"><span class="apixV"></span><span class="apixH"></span></span>
+			<span  class="apix_moreYear textField apix_button"><span class="apixV"></span><span class="apixH"></span></span>			
+		</div>
+		<div class="fieldCtnr">
+			<span  class="textField apixField"><span class="apix_day apixT">11</span></span>
+			<span  class="textField apixField"><span class="apix_month apixT">janv.</span></span>
+			<span  class="textField apixField"><span class="apix_year apixT">2014</span></span>			
+		</div>
+		<div class="fieldCtnr apixLess">
+			<span   class="apix_lessDay textField apix_button "><span class="apixH"></span></span>
+			<span   class="apix_lessMonth textField apix_button "><span class="apixH"></span></span>
+			<span   class="apix_lessYear textField apix_button "><span class="apixH"></span></span>			
+		</div>
+		<div class="buttonCtnr">
+			<button  class="apix_clear small secondary">Effacer</button>
+			<button   class="apix_cancel small secondary">Abandonner</button>
+			<button   class="apix_enter small secondary">Valider</button>			
+		</div>		
+	</div>
+</div>
+<!-- ---  -->
+<!-- ---  -->
+<!-- ---  -->

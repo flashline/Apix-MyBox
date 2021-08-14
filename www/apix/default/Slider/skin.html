@@ -49,7 +49,17 @@
 		top:19px;
 		background-color:rgba(200,200,200,0.3);	
 	}
-	
+	.apixSlider_default .apix_selector  {
+		position:absolute;
+		top:1px;
+		display:block;
+		box-shadow: 0 0px 10px rgba(0, 0, 0,0.5);
+		width:40px;
+		height:40px;
+		border-radius: 20px;
+		background-color:rgba(0, 150, 255,0.3);	
+		cursor:ew-resize;
+	}
 	
 	.apixSlider_default .apix_selector:active,
 	.apixSlider_default .apix_selector:hover,
@@ -71,17 +81,7 @@
 		border-radius: 5px;
 		background-color:rgba(0, 150, 255,0.5);	
 	}
-	.apixSlider_default .apix_selector  {
-		position:absolute;
-		top:1px;
-		display:block;
-		box-shadow: 0 0px 10px rgba(0, 0, 0,0.5);
-		width:40px;
-		height:40px;
-		border-radius: 20px;
-		background-color:rgba(0, 150, 255,0.3);	
-		cursor:ew-resize;
-	}
+	
 	.apixSlider_default .bLeft {
 		left:0px;/*10%;*/
 	}
@@ -107,8 +107,8 @@
 		<div class="sliderCtnr" >
 			<div class="bounds apix_bounds"></div>
 			<div class="bar apix_bar"></div>
-			<div class="bLeft apix_selector">
-				<div></div>
+			<div class="bLeft apix_selector" style="width:40px;">
+				<div style="width:1px;" ></div>
 				<span></span>
 			</div>
 		</div>

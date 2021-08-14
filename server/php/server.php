@@ -11,7 +11,7 @@
 	define('FAILURE_MAX', 8); // (FAILURE_MAX-FAILURE_MIN)*FAILURE_DELAY_UNIT = max freeze duration in sec.
 	define('ADMIN_MAIL', 'info@pixaline.net'); // MyBox admin mail
 	
-	//error_reporting (4) ;
+	error_reporting (4) ;
 	/*
 	header('Expires: '.gmdate('D, d M Y H:i:s', (time()-1)).'GMT');
 	header('Cache-Control: no-store, no-cache, must-revalidate');
@@ -46,7 +46,7 @@
 	"SignField"		=> "TEXT" , 		// normally a base64 sign drawing is < 30kb
 	"PhotoField"	=> "MEDIUMTEXT" , 	// if many photos then total size may be greater than 64kb
 	"Slider"		=> "VARCHAR (20) DEFAULT '[]'" , 	
-	"DateField"		=> "DATE" , 	
+	"DateField"		=> "DATE DEFAULT NULL" , 	
 	"ColorField"	=> "VARCHAR (7) DEFAULT '#000000'", 	
 	"LinkField"		=> "TINYTEXT", 	
 	"EmailField"	=> "TINYTEXT", 	
@@ -517,7 +517,6 @@
 				$values=$o->fvList;
 				$keys = $o->fkList;
 				$types = $o->ftList;
-				$x = "";
 				if (!$sql->isLineExist($table, "id", $recId)) {
 					$out="answ=error&msg=elemDoesntExist";
 				}
@@ -526,14 +525,14 @@
 					for ($i = 0 ; $i < count($keys) ; $i++) {
 						$qry.= $pfx.$keys[$i]." = '".simpleEscape($values[$i])."' ";
 						$pfx = ",";
-						addColumnIfNotExists($table, $keys[$i], $types[$i]) ;						
+						$xer=addColumnIfNotExists($table, $keys[$i], $types[$i]) ;						
 					} 
 					$qry.="WHERE id = ".$recId." ; ";
 					$sql->query($qry) ;
 					if (!$sql->success) {
-						$out = "answ=error&msg=".$sql->errorMsg; 
+						$out = "answ=error&msg=".$xer ; /*msg=".$sql->errorMsg; */
 					}
-					else $out = "answ=updateRecordOk&msg=$x";
+					else $out = "answ=updateRecordOk";
 				}
 				
 			}
@@ -898,12 +897,13 @@
 		$exist = (mysql_num_rows($buf) > 0 )  ;
 		$x = "exist=$exist";
 		if ($exist!=1) {		
-			$qry = "ALTER TABLE  `$table` ADD  `$col` $dt NOT NULL" ;
+			$qry = "ALTER TABLE  `$table` ADD  `$col` $dt " ;
+			if ($type!="DateField" ) $qry .= " NOT NULL" ;
 			mysql_query($qry) ;
 			//$fieldsRecId = intval(substr($col, 3));
 			//mysql_query("UPDATE fields" );
 		}
-		return $x." err=".mysql_error();
+		return "existe ?=".$x." err=".mysql_error()." qry=".$qry;
 	}
 	function alterColumnIfExists ($table, $col, $type = "InputField") {	
 		GLOBAL $dtArr;

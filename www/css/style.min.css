@@ -1,0 +1,140 @@
+html{font-size:100%;}
+*{font-family:Arial,Helvetica,sans-serif;font-size:1.05em;color:#000;}
+body{position:relative;width:100%;margin:auto;overflow-x:hidden;}
+#safeBox div{position:relative;width:100%;}
+#safeBox{position:relative;width:100%;height:inherit;max-width:800px;margin-left:auto;margin-right:auto;background-color:#fff;}
+#safeBox .tab{display:table;}
+#safeBox textarea{line-height:1rem;}
+#safeBox .col{display:table-cell;vertical-align:top;padding-bottom:.2rem;}
+#safeBox .centered{text-align:center;}
+#safeBox .borderFrame{border:1px dotted #999;}
+.zoom50{zoom:.5;}
+.zoom70{zoom:.7;}
+.zoom80{zoom:.8;}
+.zoom120{zoom:1.2;}
+.zoom150{zoom:1.5;}
+#safeBox input[type="text"],#safeBox select{margin:0 0 0 0;margin-top:3px;margin-bottom:3px;}
+#safeBox input[type="checkbox"]{margin:0 0 0 0;margin-bottom:5px;}
+#safeBox #loginView{display:none;}
+#safeBox .header{background-color:#fe9;background:linear-gradient( to right,rgba(255,150,0,.5),white);background:-webkit-linear-gradient( left,rgba(255,150,0,.5),rgba(255,255,255,.5));background:-moz-linear-gradient( left,rgba(255,150,0,.5),rgba(255,255,255,.5));background:-ms-linear-gradient( left,rgba(255,150,0,.5),rgba(255,255,255,.5));background:-o-linear-gradient( left,rgba(255,150,0,.5),rgba(255,255,255,.5));padding:5px;width:100%;}
+#safeBox .header span{display:inline-block;}
+#safeBox .header span.title{font-size:1.35em;font-weight:bold;color:#09b;width:49%;}
+#safeBox .header span.by{text-align:right;width:49%;}
+#safeBox .header span.headInfo{font-size:.6em;font-weight:bold;display:inline-block;width:100%;color:#09d;}
+#safeBox img.logo{vertical-align:-50%;}
+#safeBox .connectForm{padding:5px;text-align:center;width:100%;max-width:400px;margin-left:auto;margin-right:auto;}
+#safeBox .backToSignIn{zoom:1.5;position:relative;top:1px;left:-45px;width:28px;height:25px;display:inline-block;}
+#safeBox .backToSignIn .hBar{position:absolute;top:11px;left:18px;width:12px;height:3px;background-color:#000;display:block;}
+#safeBox .backToSignIn .arrowLeft{position:absolute;top:6px;left:5px;width:1px;height:1px;border:1px solid;border-color:transparent #000 transparent transparent;border-width:7px;display:block;}
+#safeBox #stdView{display:none;}
+#safeBox .viewTop{height:30px;background-color:#fff;}
+#safeBox .rightTop{position:absolute;top:0px;left:70%;width:30%;text-align:right;}
+#safeBox .leftTop{position:absolute;top:0px;text-align:left;}
+#safeBox .topText{vertical-align:bottom;margin-left:37px;height:2rem;font-size:.98rem;display:inline-block;text-align:left;overflow:hidden;max-width:70%;border:1px dotted #aaa;}
+#safeBox .path{font-size:.7rem;overflow:hidden;text-align:center;}
+#safeBox .vButtonPicto{width:20px;height:25px;display:inline-block;background-color:#fff;}
+#safeBox .vButtonPicto .menuDot{width:5px;height:5px;margin-top:3px;background-color:#000;display:block;border-radius:50%;margin-left:auto;margin-right:auto;}
+#safeBox .vButtonPicto .arrowUp{margin-top:-3px;width:1px;height:1px;border:1px solid;border-color:transparent transparent #000 transparent;border-width:7px;display:block;margin-left:auto;margin-right:auto;}
+#safeBox .vButtonPicto .vBar{width:3px;height:10px;background-color:#000;display:block;margin-left:auto;margin-right:auto;}
+#safeBox .hButtonPicto{position:relative;width:28px;height:25px;display:inline-block;background-color:#fff;}
+#safeBox .hButtonPicto .arrowLeft{position:relative;top:-3px;margin-left:-4px;width:1px;height:1px;border:1px solid;border-color:transparent #000 transparent transparent;border-width:7px;display:inline-block;}
+#safeBox .hButtonPicto .hBar{position:relative;top:-8.5px;left:-6px;width:10px;height:3px;background-color:#000;display:inline-block;}
+#safeBox .viewBody{padding:.5rem;}
+#safeBox .viewBody .scrollCtnr{position:relative;width:100%;overflow-y:auto;overflow-x:hidden;background-color:#f4f9ff;border-left:1px dotted #aaa;padding-bottom:60px;}
+#safeBox .viewBody .subCtnr{padding-left:0px;position:relative;width:100%;}
+#safeBox .viewBody .recordSubCtnr .subCtnr{width:98%;}
+#safeBox .folderButton{position:relative;width:100%;line-height:1.2rem;}
+#safeBox .titleCtnr{width:75%;overflow:hidden;text-align:left;}
+#safeBox .pictoCtnr{text-align:right;padding-right:4px;}
+#safeBox span.smallSpace{display:inline-block;width:10px;}
+#safeBox span.small{display:inline-block;text-align:right;font-size:.7rem;}
+#safeBox .smallerFont{font-size:1.1rem;}
+#safeBox span.apix_userId{width:30%;}
+#safeBox span.apix_version{width:70%;}
+#safeBox .links{margin-top:30%;width:320px;font-size:.7rem;margin-left:auto;margin-right:auto;}
+#safeBox .links a{text-decoration:underline;}
+#safeBox .links span{display:inline-block;width:.7rem;}
+#safeBox .folderButton input{border-color:#cde;background-color:#def;}
+#safeBox .folderButton input:focus{box-shadow:0 0 5px #cde;border-color:#abc;outline:none;outline-style:none;border-width:2px;}
+#safeBox .txtField{width:90%;vertical-align:middle;margin-right:0px;margin-left:0px;}
+#safeBox .txtField input{margin-top:0px;margin-left:0px;margin-right:0px;margin-bottom:0px;}
+#safeBox .folderButton .updatePicto{zoom:1;}
+#safeBox .folderButton .removePicto{zoom:1;}
+#safeBox .updatePicto{position:relative;display:inline-block;width:10px;height:25px;}
+#safeBox .updatePicto .bar{position:absolute;display:block;width:10px;height:20px;background-color:#000;}
+#safeBox .updatePicto .innerBar{position:absolute;top:2px;left:2px;display:block;width:6px;height:16px;background-color:#fff;}
+#safeBox .updatePicto .tip{position:absolute;top:20px;left:0px;width:1px;height:1px;border:1px solid;border-color:#000 transparent transparent transparent;border-width:5px;display:block;}
+#safeBox .removePicto{position:relative;display:inline-block;}
+#safeBox .menu{position:absolute;top:0px;width:300px;padding:5px;box-shadow:0 0 5px #333;border-color:#000;background-color:#fff;margin-left:auto;font-size:.8rem;z-index:3;font-size:1rem;}
+#safeBox .addPicto{position:absolute;width:60px;height:60px;background-color:#0ff;display:block;border-radius:50%;text-align:center;z-index:3;}
+#safeBox .addSelectLine{position:relative;top:5px;zoom:.5;margin-left:auto;}
+#safeBox .addPicto .hBar{position:absolute;top:27px;left:14px;width:32px;height:6px;display:block;background-color:#fff;}
+#safeBox .addPicto .vBar{position:absolute;top:14px;left:27px;width:6px;height:32px;display:block;background-color:#fff;}
+#safeBox .cancelPicto,#safeBox .rubPicto{position:absolute;display:block;}
+#safeBox .cancelPicto,#safeBox .removePicto{width:30px;height:30px;background-color:#faa;border-radius:50%;text-align:center;}
+#safeBox .cancelPicto .hBar,#safeBox .removePicto .hBar{position:absolute;top:13px;left:3px;width:24px;height:3px;display:block;background-color:#fff;}
+#safeBox .cancelPicto .vBar,#safeBox .removePicto .vBar{position:absolute;top:3px;left:13px;width:3px;height:24px;display:block;background-color:#fff;}
+#safeBox .frame .cancelPicto,#safeBox .frame .rubPicto{position:relative;display:inline-block;}
+#safeBox .frame .textPicto{position:relative;width:35px;height:35px;display:inline-block;border-radius:50%;}
+#safeBox .frame .textPicto span{position:absolute;top:4px;left:3px;display:inline-block;font-weight:bold;color:white;}
+#safeBox .frame .okPicto{background-color:#9ce;}
+#safeBox .frame .codePicto{background-color:#fff;border:solid 1px #555;}
+#safeBox .frame .codePicto span{left:11px;top:2px;color:#ddd;}
+#safeBox .rubPicto{width:15px;height:33px;background-color:#fff;}
+#safeBox .rubPicto .topRect{position:absolute;top:0px;left:0px;width:15px;height:18px;display:block;background-color:#e76;}
+#safeBox .rubPicto .bottomRect{position:absolute;top:19px;left:0px;width:15px;height:14px;display:block;background-color:#6ad;border-bottom-left-radius:30%;border-bottom-right-radius:30%;}
+#safeBox .tilted{-ms-transform-origin:50 % 50%;-webkit-transform-origin:50% 50%;transform-origin:50 % 50%;;transform:rotate(45deg);-ms-transform:rotate(45deg);-webkit-transform:rotate(45deg);}
+#safeBox .showPicto{position:relative;background-color:#fff;border-style:solid;border-color:#000;border-width:2px;width:30px;height:15px;border-radius:50%;}
+#safeBox .showPicto .inner{position:absolute;top:-1px;left:6px;background-color:#555;width:14px;height:14px;border-radius:50%;}
+#safeBox .showPicto .reflec{position:absolute;top:2px;left:2px;background-color:#fff;width:4px;height:4px;border-radius:50%;}
+#safeBox .copyPicto{position:relative;width:18px;height:32px;}
+#safeBox .copyPicto .page{position:absolute;width:16px;height:22px;border-color:#000;border-width:2px;border-radius:20%;border-style:solid;background-color:#eee;}
+#safeBox .copyPicto .one{}
+#safeBox .copyPicto .two{top:4px;left:4px;}
+#safeBox .frame{position:absolute;left:0px;top:0px;width:100%;height:100%;background-color:rgba(0,0,0,.2);z-index:4;}
+#safeBox .frame .inner{position:relative;top:20px;width:90%;max-width:360px;padding:1.5rem;background-color:#eee;border-radius:10px;box-shadow:4px 4px 8px #aaa;font-size:1rem;display:block;margin-left:auto;margin-right:auto;}
+#safeBox .secureFrame .inner{position:fixed;left:20px;width:220px;}
+#safeBox .frame .title{text-align:center;font-weight:bold;}
+#safeBox .frame .txtField{max-width:310px;width:100%;}
+#safeBox .frame input[name="rowNumber"]{width:3rem;display:inline;}
+#safeBox .frame input[name="decimalNumber"]{width:3rem;display:inline;}
+#safeBox .frame input[name="minValue"],#safeBox .frame input[name="maxValue"]{width:35%;display:inline;}
+#safeBox .frame .apix_minValue .apix_label,#safeBox .frame .apix_maxValue .apix_label{width:60%;}
+#safeBox .frame input[type="checkbox"]{position:relative;top:4px;zoom:2.5;}
+#safeBox .frame input[type="radio"]{position:relative;top:4px;zoom:2;}
+#safeBox .frame .multiple input[type="checkbox"]{position:relative;top:3px;zoom:2;}
+#safeBox .frame .apix_label{display:inline-block;width:80%;text-align:right;font-size:1rem;padding-right:10px;}
+#safeBox .frame .control .apix_label{text-align:left;display:block;width:100%;padding-right:0px;}
+#safeBox .frame .control select{width:100%;}
+#safeBox .selectLine input{width:88%;display:inline-block;}
+#safeBox .selectLine .apix_label{width:10%;}
+#safeBox .recordFrame .apix_label{width:90%;text-align:left;}
+#safeBox .frame .pictoCtnr{text-align:right;position:relative;top:10px;width:90%;}
+#safeBox .frame .space{width:50px;display:inline-block;}
+#safeBox .alertBox{visibility:hidden;position:absolute;left:0;top:0px;width:100%;height:100%;background-color:rgba(0,0,0,.2);z-index:10;}
+#safeBox .alertInner{position:relative;left:5%;top:20px;width:90%;min-height:260px;padding:1.5rem;padding-top:1rem;background-color:#eee;border-radius:10px;box-shadow:4px 4px 8px #aaa;font-size:1rem;display:block;}
+#safeBox .alertInner .alertLabel{font-size:1.5rem;text-align:center;padding-bottom:0.5rem;}
+#safeBox .alertInner .alertContent{border:solid 1px #bbb;box-shadow:2px 2px 8px #aaa;padding:1rem;min-height:5rem;max-height:480px;background-color:#fff;font-size:.85rem;overflow:auto;}
+#safeBox .alertInner .buttonRow{text-align:center;padding-top:1rem;}
+#safeBox .tipBox{position:absolute;background-color:#fff9ee;color:#555;padding:.2rem;max-height:46px;width:100%;overflow:hidden;font-size:.9rem;border:dashed 1px #999;}
+#safeBox .apix_initHidden{display:none;}
+#safeBox .fieldData{position:relative;padding:0px;padding-top:.5rem;padding-left:.5rem;}
+#safeBox table{border:0px;width:100%;padding:0px;margin:0px;}
+#safeBox table,#safeBox .fieldData table tr,#safeBox .fieldData table tr td{background-color:transparent;}
+#safeBox .fieldData input{margin:0px;padding:0px;padding-left:.5rem;padding-left:.5rem;background-color:#efefef;}
+#safeBox td{padding-top:0px;padding-left:0px;line-height:.5rem;}
+#safeBox .fieldData .apix_label,#safeBox .fieldData .apix_value{display:inline-block;}
+#safeBox .fieldData .showPicto,#safeBox .copyPicto{display:inline-block;}
+#safeBox .fieldData .showPicto{top:-.1px;}
+#safeBox .fieldData .apix_value{width:90%;}
+#safeBox .fieldData .apix_label{width:90%;padding-left:3px;}
+@media only screen and (max-width:680px),only screen and (max-device-width:680px){#safeBox .topText{font-size:3vw;font-weight:bold;height:8.5vw;}
+#safeBox .viewTop{height:8vw;}
+#safeBox .tipBox{width:300px;font-size:.7rem;font-weight:bold;}}
+@media only screen and (min-width:639px){}
+@media only screen and (min-width:800px){#safeBox .folderButton{max-width:795px;}}
+.line{display:block;height:.6em;}
+.hLine{display:block;height:.6em;}
+hr{}
+hr.clear{clear:both;visibility:hidden;}
+

@@ -479,7 +479,7 @@ apix.common.display.Common.__name__ = ["apix","common","display","Common"];
 apix.common.display.Common.htmlToElem = function(v) {
 	var tmp = apix.common.display.Common.createElem(null);
 	tmp.innerHTML = v;
-	if(tmp.firstElementChild == null) haxe.Log.trace("f::String '" + v + "' can't be converted to HtmlElement !'",{ fileName : "Common.hx", lineNumber : 71, className : "apix.common.display.Common", methodName : "htmlToElem"});
+	if(tmp.firstElementChild == null) haxe.Log.trace("f::String '" + v + "' can't be converted to HtmlElement !'",{ fileName : "Common.hx", lineNumber : 73, className : "apix.common.display.Common", methodName : "htmlToElem"});
 	return tmp.firstElementChild;
 };
 apix.common.display.Common.createElem = function(tag) {
@@ -534,7 +534,7 @@ apix.common.display.Common.get_userAgent = function() {
 apix.common.display.Common.get_newSingleId = function() {
 	apix.common.display.Common.__nextSingleId++;
 	var id = "apix_instance_" + apix.common.display.Common.__nextSingleId;
-	if(window.document.getElementById(id) != null) haxe.Log.trace("f::Id " + id + " already exists ! ",{ fileName : "Common.hx", lineNumber : 259, className : "apix.common.display.Common", methodName : "get_newSingleId"});
+	if(window.document.getElementById(id) != null) haxe.Log.trace("f::Id " + id + " already exists ! ",{ fileName : "Common.hx", lineNumber : 273, className : "apix.common.display.Common", methodName : "get_newSingleId"});
 	return id;
 };
 apix.common.display.Confirm = function(el,txElem,bvElem,bcElem,tEl,tTx,vTx,cTx) {
@@ -602,8 +602,8 @@ apix.common.display.Confirm.prototype = $extend(apix.common.display.Alert.protot
 apix.common.display.ElementExtender = function() { };
 apix.common.display.ElementExtender.__name__ = ["apix","common","display","ElementExtender"];
 apix.common.display.ElementExtender.toBase64Url = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 189, className : "apix.common.display.ElementExtender", methodName : "toBase64Url"});
-	if(el.toDataURL==null) haxe.Log.trace("f::Element " + el.id + " hasn't Base64 Url ",{ fileName : "ElementExtender.hx", lineNumber : 190, className : "apix.common.display.ElementExtender", methodName : "toBase64Url"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 191, className : "apix.common.display.ElementExtender", methodName : "toBase64Url"});
+	if(el.toDataURL==null) haxe.Log.trace("f::Element " + el.id + " hasn't Base64 Url ",{ fileName : "ElementExtender.hx", lineNumber : 192, className : "apix.common.display.ElementExtender", methodName : "toBase64Url"});
 	return el.toDataURL("image/png");
 };
 apix.common.display.ElementExtender.toBase64 = function(el) {
@@ -615,8 +615,8 @@ apix.common.display.ElementExtender.toBase64 = function(el) {
 	}
 };
 apix.common.display.ElementExtender.getContext2D = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 198, className : "apix.common.display.ElementExtender", methodName : "getContext2D"});
-	if(el.getContext('2d')==null) haxe.Log.trace("f::Element " + el.id + " hasn't Context",{ fileName : "ElementExtender.hx", lineNumber : 199, className : "apix.common.display.ElementExtender", methodName : "getContext2D"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 200, className : "apix.common.display.ElementExtender", methodName : "getContext2D"});
+	if(el.getContext('2d')==null) haxe.Log.trace("f::Element " + el.id + " hasn't Context",{ fileName : "ElementExtender.hx", lineNumber : 201, className : "apix.common.display.ElementExtender", methodName : "getContext2D"});
 	return el.getContext("2d");
 };
 apix.common.display.ElementExtender.getElemsByClass = function(el,v) {
@@ -627,25 +627,25 @@ apix.common.display.ElementExtender.getElemsByTag = function(el,v) {
 };
 apix.common.display.ElementExtender.elemByClass = function(el,v) {
 	var arr = apix.common.display.ElementExtender.getElemsByClass(el,v);
-	if(arr.length == 0) haxe.Log.trace("f:: class '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 211, className : "apix.common.display.ElementExtender", methodName : "elemByClass"});
+	if(arr.length == 0) haxe.Log.trace("f:: class '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 213, className : "apix.common.display.ElementExtender", methodName : "elemByClass"});
 	return arr[0];
 };
 apix.common.display.ElementExtender.elemByTag = function(el,v) {
 	var arr = apix.common.display.ElementExtender.getElemsByTag(el,v);
-	if(arr.length == 0) haxe.Log.trace("f:: tag '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 216, className : "apix.common.display.ElementExtender", methodName : "elemByTag"});
+	if(arr.length == 0) haxe.Log.trace("f:: tag '" + v + "' doesn't exist in element with id '" + el.id + "'",{ fileName : "ElementExtender.hx", lineNumber : 218, className : "apix.common.display.ElementExtender", methodName : "elemByTag"});
 	return arr[0];
 };
 apix.common.display.ElementExtender.setId = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 220, className : "apix.common.display.ElementExtender", methodName : "setId"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 222, className : "apix.common.display.ElementExtender", methodName : "setId"});
 	el.id = v;
 	return el;
 };
 apix.common.display.ElementExtender.getId = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 225, className : "apix.common.display.ElementExtender", methodName : "getId"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 227, className : "apix.common.display.ElementExtender", methodName : "getId"});
 	return el.id;
 };
 apix.common.display.ElementExtender.objClsName = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 260, className : "apix.common.display.ElementExtender", methodName : "objClsName"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 262, className : "apix.common.display.ElementExtender", methodName : "objClsName"});
 	var v = "";
 	v=el.constructor.name;
 	if(v == null) {
@@ -737,10 +737,10 @@ apix.common.display.ElementExtender.handCursor = function(el,v) {
 	if(el.style != null && el.style.cursor != null) el.style.cursor = str;
 };
 apix.common.display.ElementExtender.visible = function(el,b) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 413, className : "apix.common.display.ElementExtender", methodName : "visible"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 415, className : "apix.common.display.ElementExtender", methodName : "visible"});
 	if(b == null) {
 		if(el.style.visibility == "hidden") b = false; else b = true;
-		if(b == null) haxe.Log.trace("f::Element " + el.id + " has not valid visibility !",{ fileName : "ElementExtender.hx", lineNumber : 416, className : "apix.common.display.ElementExtender", methodName : "visible"});
+		if(b == null) haxe.Log.trace("f::Element " + el.id + " has not valid visibility !",{ fileName : "ElementExtender.hx", lineNumber : 418, className : "apix.common.display.ElementExtender", methodName : "visible"});
 	} else {
 		b = apix.common.display.ElementExtender.boolVal(b);
 		if(b) el.style.visibility = "visible"; else el.style.visibility = "hidden";
@@ -748,25 +748,25 @@ apix.common.display.ElementExtender.visible = function(el,b) {
 	return b;
 };
 apix.common.display.ElementExtender.hide = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 428, className : "apix.common.display.ElementExtender", methodName : "hide"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 430, className : "apix.common.display.ElementExtender", methodName : "hide"});
 	var before = el.style.display;
 	el.style.display = "none";
 	return before;
 };
 apix.common.display.ElementExtender.show = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 434, className : "apix.common.display.ElementExtender", methodName : "show"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 436, className : "apix.common.display.ElementExtender", methodName : "show"});
 	if(!(!(apix.common.util.Global.get().strVal(el.style.display,"none") == "none")) || v != null) if(v == null) el.style.display = "block"; else el.style.display = v;
 };
 apix.common.display.ElementExtender.isDisplay = function(el) {
 	return !(apix.common.util.Global.get().strVal(el.style.display,"none") == "none");
 };
 apix.common.display.ElementExtender.setDisplay = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 445, className : "apix.common.display.ElementExtender", methodName : "setDisplay"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 447, className : "apix.common.display.ElementExtender", methodName : "setDisplay"});
 	el.style.display = v;
 };
 apix.common.display.ElementExtender.pick = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 449, className : "apix.common.display.ElementExtender", methodName : "pick"});
-	if(!apix.common.display.ElementExtender.isInputField(el)) haxe.Log.trace("f::Element isn't an input field !",{ fileName : "ElementExtender.hx", lineNumber : 450, className : "apix.common.display.ElementExtender", methodName : "pick"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 451, className : "apix.common.display.ElementExtender", methodName : "pick"});
+	if(!apix.common.display.ElementExtender.isInputField(el)) haxe.Log.trace("f::Element isn't an input field !",{ fileName : "ElementExtender.hx", lineNumber : 452, className : "apix.common.display.ElementExtender", methodName : "pick"});
 	el.select();
 };
 apix.common.display.ElementExtender.isInputField = function(el) {
@@ -796,7 +796,7 @@ apix.common.display.ElementExtender.posx = function(el,v,bounds) {
 	var vx = apix.common.display.ElementExtender.numVal(v,null);
 	if(vx == null) {
 		if(el.offsetLeft != null) vx = el.offsetLeft; else if(el.clientLeft != null) vx = el.clientLeft; else if(el.scrollLeft != null) vx = el.scrollLeft; else vx = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.left),null);
-		if(vx == null) haxe.Log.trace("f::Element " + el.id + " has not valid left position !",{ fileName : "ElementExtender.hx", lineNumber : 530, className : "apix.common.display.ElementExtender", methodName : "posx"});
+		if(vx == null) haxe.Log.trace("f::Element " + el.id + " has not valid left position !",{ fileName : "ElementExtender.hx", lineNumber : 534, className : "apix.common.display.ElementExtender", methodName : "posx"});
 	} else {
 		if(bounds != null) {
 			if(vx < bounds.get_x()) vx = bounds.get_x(); else if(vx > bounds.get_x() + bounds.get_width()) vx = bounds.get_x() + bounds.get_width();
@@ -809,7 +809,7 @@ apix.common.display.ElementExtender.posy = function(el,v,bounds) {
 	var vy = apix.common.display.ElementExtender.numVal(v,null);
 	if(vy == null) {
 		if(el.offsetTop != null) vy = el.offsetTop; else if(el.clientTop != null) vy = el.clientTop; else if(el.scrollTop != null) vy = el.scrollTop; else vy = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.top),null);
-		if(vy == null) haxe.Log.trace("f::Element " + el.id + " has not valid top position !",{ fileName : "ElementExtender.hx", lineNumber : 551, className : "apix.common.display.ElementExtender", methodName : "posy"});
+		if(vy == null) haxe.Log.trace("f::Element " + el.id + " has not valid top position !",{ fileName : "ElementExtender.hx", lineNumber : 555, className : "apix.common.display.ElementExtender", methodName : "posy"});
 	} else {
 		if(bounds != null) {
 			if(vy < bounds.get_y()) vy = bounds.get_y(); else if(vy > bounds.get_y() + bounds.get_height()) vy = bounds.get_y() + bounds.get_height();
@@ -819,7 +819,7 @@ apix.common.display.ElementExtender.posy = function(el,v,bounds) {
 	return vy;
 };
 apix.common.display.ElementExtender.width = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 591, className : "apix.common.display.ElementExtender", methodName : "width"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 595, className : "apix.common.display.ElementExtender", methodName : "width"});
 	var w = apix.common.display.ElementExtender.numVal(v,null);
 	if(w == null) {
 		if(el.clientWidth != null) w = el.clientWidth; else w = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.width),null);
@@ -827,12 +827,12 @@ apix.common.display.ElementExtender.width = function(el,v) {
 			if(el.offsetWidth != null) w = el.offsetWidth; else if(el.scrollWidth != null) w = el.scrollWidth;
 		}
 		if(w == 0 && el.style.width != "") w = Std.parseFloat(el.style.width);
-		if(w == null) haxe.Log.trace("f::Element " + el.id + " has not valid width !",{ fileName : "ElementExtender.hx", lineNumber : 601, className : "apix.common.display.ElementExtender", methodName : "width"});
+		if(w == null) haxe.Log.trace("f::Element " + el.id + " has not valid width !",{ fileName : "ElementExtender.hx", lineNumber : 605, className : "apix.common.display.ElementExtender", methodName : "width"});
 	} else el.style.width = (w == null?"null":"" + w) + "px";
 	return w;
 };
 apix.common.display.ElementExtender.height = function(el,v,forceCss) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 610, className : "apix.common.display.ElementExtender", methodName : "height"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 614, className : "apix.common.display.ElementExtender", methodName : "height"});
 	var h = apix.common.display.ElementExtender.numVal(v,null);
 	if(h == null) {
 		if(el.clientHeight != null && (!forceCss || el.clientHeight != 0)) h = el.clientHeight; else h = apix.common.display.ElementExtender.numVal(Std.parseFloat(el.style.height),null);
@@ -840,12 +840,12 @@ apix.common.display.ElementExtender.height = function(el,v,forceCss) {
 			if(el.offsetHeight != null) h = el.offsetHeight; else if(el.scrollHeight != null) h = el.scrollHeight;
 		}
 		if(h == 0 && el.style.height != "") h = Std.parseFloat(el.style.height);
-		if(h == null) haxe.Log.trace("f::Element " + el.id + " has not valid height !",{ fileName : "ElementExtender.hx", lineNumber : 620, className : "apix.common.display.ElementExtender", methodName : "height"});
+		if(h == null) haxe.Log.trace("f::Element " + el.id + " has not valid height !",{ fileName : "ElementExtender.hx", lineNumber : 624, className : "apix.common.display.ElementExtender", methodName : "height"});
 	} else el.style.height = (h == null?"null":"" + h) + "px";
 	return h;
 };
 apix.common.display.ElementExtender.parent = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 629, className : "apix.common.display.ElementExtender", methodName : "parent"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 633, className : "apix.common.display.ElementExtender", methodName : "parent"});
 	return el.parentElement;
 };
 apix.common.display.ElementExtender.link = function(el,v,verify) {
@@ -854,39 +854,39 @@ apix.common.display.ElementExtender.link = function(el,v,verify) {
 };
 apix.common.display.ElementExtender.attr = function(el,k,v,verify) {
 	if(verify == null) verify = false;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 642, className : "apix.common.display.ElementExtender", methodName : "attr"});
-	if(verify && el.getAttribute(k) == null && el[k]==null) haxe.Log.trace("f::Element " + el.id + " has not '" + k + "' attribute !",{ fileName : "ElementExtender.hx", lineNumber : 643, className : "apix.common.display.ElementExtender", methodName : "attr"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 646, className : "apix.common.display.ElementExtender", methodName : "attr"});
+	if(verify && el.getAttribute(k) == null && el[k]==null) haxe.Log.trace("f::Element " + el.id + " has not '" + k + "' attribute !",{ fileName : "ElementExtender.hx", lineNumber : 647, className : "apix.common.display.ElementExtender", methodName : "attr"});
 	if(v == null) v = el.getAttribute(k); else el.setAttribute(k,v);
 	return v;
 };
 apix.common.display.ElementExtender.attrib = function(el,k,v,verify) {
 	if(verify == null) verify = false;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 650, className : "apix.common.display.ElementExtender", methodName : "attrib"});
-	if(el[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + Std.string(k) + "' attribute !",{ fileName : "ElementExtender.hx", lineNumber : 651, className : "apix.common.display.ElementExtender", methodName : "attrib"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 654, className : "apix.common.display.ElementExtender", methodName : "attrib"});
+	if(el[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + Std.string(k) + "' attribute !",{ fileName : "ElementExtender.hx", lineNumber : 655, className : "apix.common.display.ElementExtender", methodName : "attrib"});
 	if(v == null) v = el[k]; else {
 		el[k]=v;
 	}
 	return v;
 };
 apix.common.display.ElementExtender.prop = function(el,k,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 661, className : "apix.common.display.ElementExtender", methodName : "prop"});
-	if(el[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + k + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 662, className : "apix.common.display.ElementExtender", methodName : "prop"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 665, className : "apix.common.display.ElementExtender", methodName : "prop"});
+	if(el[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + k + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 666, className : "apix.common.display.ElementExtender", methodName : "prop"});
 	if(v == null) v = el[k]; else {
 		el[k]=v;
 	}
 	return v;
 };
 apix.common.display.ElementExtender.css = function(el,k,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 672, className : "apix.common.display.ElementExtender", methodName : "css"});
-	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + k + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 673, className : "apix.common.display.ElementExtender", methodName : "css"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 676, className : "apix.common.display.ElementExtender", methodName : "css"});
+	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + k + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 677, className : "apix.common.display.ElementExtender", methodName : "css"});
 	if(v == null) v = el.style[k]; else {
 		el.style[k]=v;
 	}
 	return v;
 };
 apix.common.display.ElementExtender.cssStyle = function(el,k,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 680, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
-	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + Std.string(k) + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 681, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 684, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
+	if(el.style[k]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + Std.string(k) + "' style property !",{ fileName : "ElementExtender.hx", lineNumber : 685, className : "apix.common.display.ElementExtender", methodName : "cssStyle"});
 	if(v == null) v = el.style[k]; else {
 		el.style[k]=v;
 	}
@@ -895,7 +895,7 @@ apix.common.display.ElementExtender.cssStyle = function(el,k,v) {
 apix.common.display.ElementExtender.enable = function(el,v,useDisabled) {
 	if(useDisabled == null) useDisabled = false;
 	var e = el;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 689, className : "apix.common.display.ElementExtender", methodName : "enable"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 702, className : "apix.common.display.ElementExtender", methodName : "enable"});
 	if(v == null) {
 		if(useDisabled) v = !e.disabled; else v = !e.readOnly;
 	} else if(useDisabled) e.disabled = !v; else e.readOnly = !v;
@@ -905,9 +905,9 @@ apix.common.display.ElementExtender.hasClass = function(el,v) {
 	return new EReg("/[\n\t\r]/g","i").replace(" " + el.className + " "," ").indexOf(" " + v + " ") > -1;
 };
 apix.common.display.ElementExtender.addClass = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 724, className : "apix.common.display.ElementExtender", methodName : "addClass"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 737, className : "apix.common.display.ElementExtender", methodName : "addClass"});
 	var prop = "classList";
-	if(el[prop]==null) haxe.Log.trace("f::Element " + el.id + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 725, className : "apix.common.display.ElementExtender", methodName : "addClass"});
+	if(el[prop]==null) haxe.Log.trace("f::Element " + el.id + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 738, className : "apix.common.display.ElementExtender", methodName : "addClass"});
 	if(apix.common.display.ElementExtender.hasClass(el,v)) return false; else {
 		el.classList.add(v);
 		return true;
@@ -915,41 +915,41 @@ apix.common.display.ElementExtender.addClass = function(el,v) {
 };
 apix.common.display.ElementExtender.inputType = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 748, className : "apix.common.display.ElementExtender", methodName : "inputType"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 761, className : "apix.common.display.ElementExtender", methodName : "inputType"});
 	var prop = "type";
-	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 749, className : "apix.common.display.ElementExtender", methodName : "inputType"});
+	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 762, className : "apix.common.display.ElementExtender", methodName : "inputType"});
 	if(v == null) v = el.type; else if(js.Boot.__instanceof(el,HTMLInputElement)) el.type = v;
 	return v;
 };
 apix.common.display.ElementExtender.type = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 758, className : "apix.common.display.ElementExtender", methodName : "type"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 771, className : "apix.common.display.ElementExtender", methodName : "type"});
 	var prop = "type";
-	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 759, className : "apix.common.display.ElementExtender", methodName : "type"});
+	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 772, className : "apix.common.display.ElementExtender", methodName : "type"});
 	if(v == null) el.type; else el.type = v;
 	return v;
 };
 apix.common.display.ElementExtender.step = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 768, className : "apix.common.display.ElementExtender", methodName : "step"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 781, className : "apix.common.display.ElementExtender", methodName : "step"});
 	var prop = "step";
-	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 769, className : "apix.common.display.ElementExtender", methodName : "step"});
+	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 782, className : "apix.common.display.ElementExtender", methodName : "step"});
 	if(v == null) v = el.step; else el.step = v;
 	return v;
 };
 apix.common.display.ElementExtender.value = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 780, className : "apix.common.display.ElementExtender", methodName : "value"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 793, className : "apix.common.display.ElementExtender", methodName : "value"});
 	var prop = "value";
-	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 781, className : "apix.common.display.ElementExtender", methodName : "value"});
+	if(el[prop]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 794, className : "apix.common.display.ElementExtender", methodName : "value"});
 	if(v == null) v = el.value; else el.value = v;
 	return v;
 };
 apix.common.display.ElementExtender.$name = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 791, className : "apix.common.display.ElementExtender", methodName : "name"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 804, className : "apix.common.display.ElementExtender", methodName : "name"});
 	var p = "name";
-	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 792, className : "apix.common.display.ElementExtender", methodName : "name"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 805, className : "apix.common.display.ElementExtender", methodName : "name"});
 	if(v == null) v = el.name; else el.name = v;
 	return v;
 };
@@ -957,25 +957,25 @@ apix.common.display.ElementExtender.tip = function(e,v) {
 	return apix.common.display.ElementExtender.attr(e,"title",v);
 };
 apix.common.display.ElementExtender.inner = function(el,v) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 807, className : "apix.common.display.ElementExtender", methodName : "inner"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 830, className : "apix.common.display.ElementExtender", methodName : "inner"});
 	if(v == null) v = el.innerHTML; else el.innerHTML = v;
 	return v;
 };
 apix.common.display.ElementExtender.text = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 822, className : "apix.common.display.ElementExtender", methodName : "text"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 845, className : "apix.common.display.ElementExtender", methodName : "text"});
 	if(v == null) {
-		if(el.value != null) v = el.value; else if(el.textContent != null) v = el.textContent; else if(el.text != null) v = el.text; else if(el.nodeValue != null) v = el.nodeValue; else if(el.innerHTML != null) v = el.innerHTML; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 829, className : "apix.common.display.ElementExtender", methodName : "text"});
-	} else if(el.value != null) el.value = v; else if(el.textContent != null) el.textContent = v; else if(el.text != null) el.text = v; else if(el.nodeValue != null) el.nodeValue = v; else if(el.innerHTML != null) el.innerHTML = v; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 837, className : "apix.common.display.ElementExtender", methodName : "text"});
+		if(el.value != null) v = el.value; else if(el.textContent != null) v = el.textContent; else if(el.text != null) v = el.text; else if(el.nodeValue != null) v = el.nodeValue; else if(el.innerHTML != null) v = el.innerHTML; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 852, className : "apix.common.display.ElementExtender", methodName : "text"});
+	} else if(el.value != null) el.value = v; else if(el.textContent != null) el.textContent = v; else if(el.text != null) el.text = v; else if(el.nodeValue != null) el.nodeValue = v; else if(el.innerHTML != null) el.innerHTML = v; else haxe.Log.trace("f::Element " + Std.string(el.id) + " has not text, nor inner property !",{ fileName : "ElementExtender.hx", lineNumber : 860, className : "apix.common.display.ElementExtender", methodName : "text"});
 	return v;
 };
 apix.common.display.ElementExtender.selected = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 851, className : "apix.common.display.ElementExtender", methodName : "selected"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 874, className : "apix.common.display.ElementExtender", methodName : "selected"});
 	var prop1 = "selected";
 	var prop2 = "checked";
 	var prop = "selected or checked";
-	if(el[prop1]==null && el[prop2]==null ) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' properties !",{ fileName : "ElementExtender.hx", lineNumber : 853, className : "apix.common.display.ElementExtender", methodName : "selected"});
+	if(el[prop1]==null && el[prop2]==null ) haxe.Log.trace("f::Element " + Std.string(el.id) + " has not '" + prop + "' properties !",{ fileName : "ElementExtender.hx", lineNumber : 876, className : "apix.common.display.ElementExtender", methodName : "selected"});
 	var b = el[prop1]==null;
 	if(v == null) {
 		if(b) v = el.checked; else v = el.selected;
@@ -983,24 +983,24 @@ apix.common.display.ElementExtender.selected = function(e,v) {
 	return v;
 };
 apix.common.display.ElementExtender.addOption = function(el) {
-	if(!js.Boot.__instanceof(el,HTMLSelectElement)) haxe.Log.trace("f::Element " + el.id + " isn't SelectElement !",{ fileName : "ElementExtender.hx", lineNumber : 869, className : "apix.common.display.ElementExtender", methodName : "addOption"});
+	if(!js.Boot.__instanceof(el,HTMLSelectElement)) haxe.Log.trace("f::Element " + el.id + " isn't SelectElement !",{ fileName : "ElementExtender.hx", lineNumber : 892, className : "apix.common.display.ElementExtender", methodName : "addOption"});
 	return apix.common.display.ElementExtender.addChild(el,window.document.createElement("option"));
 };
 apix.common.display.ElementExtender.getOption = function(el,v) {
 	if(v == null) v = 0;
-	if(!js.Boot.__instanceof(el,HTMLSelectElement)) haxe.Log.trace("f::Element " + el.id + " isn't SelectElement !",{ fileName : "ElementExtender.hx", lineNumber : 876, className : "apix.common.display.ElementExtender", methodName : "getOption"});
+	if(!js.Boot.__instanceof(el,HTMLSelectElement)) haxe.Log.trace("f::Element " + el.id + " isn't SelectElement !",{ fileName : "ElementExtender.hx", lineNumber : 899, className : "apix.common.display.ElementExtender", methodName : "getOption"});
 	var sel = el;
-	if(v < 0 || v > sel.options.length - 1) haxe.Log.trace("f::Element out of range",{ fileName : "ElementExtender.hx", lineNumber : 878, className : "apix.common.display.ElementExtender", methodName : "getOption"});
+	if(v < 0 || v > sel.options.length - 1) haxe.Log.trace("f::Element out of range",{ fileName : "ElementExtender.hx", lineNumber : 901, className : "apix.common.display.ElementExtender", methodName : "getOption"});
 	return sel.options[v];
 };
 apix.common.display.ElementExtender.getOptions = function(el) {
-	if(!js.Boot.__instanceof(el,HTMLSelectElement)) haxe.Log.trace("f::Element " + el.id + " isn't SelectElement !",{ fileName : "ElementExtender.hx", lineNumber : 882, className : "apix.common.display.ElementExtender", methodName : "getOptions"});
+	if(!js.Boot.__instanceof(el,HTMLSelectElement)) haxe.Log.trace("f::Element " + el.id + " isn't SelectElement !",{ fileName : "ElementExtender.hx", lineNumber : 905, className : "apix.common.display.ElementExtender", methodName : "getOptions"});
 	var sel = el;
 	return sel.options;
 };
 apix.common.display.ElementExtender.getOptionsByValue = function(el,arrs) {
 	var p = "options";
-	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 887, className : "apix.common.display.ElementExtender", methodName : "getOptionsByValue"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 910, className : "apix.common.display.ElementExtender", methodName : "getOptionsByValue"});
 	var sel = el;
 	var arr = [];
 	var len = sel.options.length;
@@ -1021,9 +1021,9 @@ apix.common.display.ElementExtender.getOptionsByValue = function(el,arrs) {
 };
 apix.common.display.ElementExtender.getSelectedOptions = function(el) {
 	var p = "options";
-	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 902, className : "apix.common.display.ElementExtender", methodName : "getSelectedOptions"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 925, className : "apix.common.display.ElementExtender", methodName : "getSelectedOptions"});
 	p = "multiple";
-	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 903, className : "apix.common.display.ElementExtender", methodName : "getSelectedOptions"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 926, className : "apix.common.display.ElementExtender", methodName : "getSelectedOptions"});
 	var sel = el;
 	var arr = [];
 	if(sel.multiple) {
@@ -1042,26 +1042,26 @@ apix.common.display.ElementExtender.getSelectedOptions = function(el) {
 };
 apix.common.display.ElementExtender.getSelectedOption = function(el) {
 	var p = "options";
-	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 922, className : "apix.common.display.ElementExtender", methodName : "getSelectedOption"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 945, className : "apix.common.display.ElementExtender", methodName : "getSelectedOption"});
 	p = "multiple";
-	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 923, className : "apix.common.display.ElementExtender", methodName : "getSelectedOption"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + el.id + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 946, className : "apix.common.display.ElementExtender", methodName : "getSelectedOption"});
 	var sel = el;
-	if(sel.multiple) haxe.Log.trace("f::Element " + el.id + " has multiple selected options !",{ fileName : "ElementExtender.hx", lineNumber : 925, className : "apix.common.display.ElementExtender", methodName : "getSelectedOption"});
+	if(sel.multiple) haxe.Log.trace("f::Element " + el.id + " has multiple selected options !",{ fileName : "ElementExtender.hx", lineNumber : 948, className : "apix.common.display.ElementExtender", methodName : "getSelectedOption"});
 	return apix.common.display.ElementExtender.getSelectedOptions(sel)[0];
 };
 apix.common.display.ElementExtender.placeHolder = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 933, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 956, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
 	var p = "placeholder";
-	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 934, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 957, className : "apix.common.display.ElementExtender", methodName : "placeHolder"});
 	if(v == null) v = el.placeholder; else el.placeholder = v;
 	return v;
 };
 apix.common.display.ElementExtender.multiple = function(e,v) {
 	var el = e;
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 943, className : "apix.common.display.ElementExtender", methodName : "multiple"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 966, className : "apix.common.display.ElementExtender", methodName : "multiple"});
 	var p = "multiple";
-	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 944, className : "apix.common.display.ElementExtender", methodName : "multiple"});
+	if(el[p]==null) haxe.Log.trace("f::Element " + Std.string(el.id) + " hasn't '" + p + "' property !",{ fileName : "ElementExtender.hx", lineNumber : 967, className : "apix.common.display.ElementExtender", methodName : "multiple"});
 	if(v == null) v = el.multiple; else el.multiple = v;
 	return v;
 };
@@ -1089,7 +1089,7 @@ apix.common.display.ElementExtender.clearEnterKeyToClick = function(el) {
 	window.onkeypress = null;
 };
 apix.common.display.ElementExtender.setFocus = function(el) {
-	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 978, className : "apix.common.display.ElementExtender", methodName : "setFocus"});
+	if(el == null) haxe.Log.trace("f::Element is null !",{ fileName : "ElementExtender.hx", lineNumber : 1001, className : "apix.common.display.ElementExtender", methodName : "setFocus"});
 	el.focus();
 };
 apix.common.display.ElementExtender.on = function(srcEvt,type,listenerFunction,b,data) {
@@ -1265,11 +1265,18 @@ apix.common.event.EventTargetExtender = function() { };
 apix.common.event.EventTargetExtender.__name__ = ["apix","common","event","EventTargetExtender"];
 apix.common.event.EventTargetExtender.on = function(srcEvt,type,listenerFunction,b,data) {
 	if(b == null) b = false;
+	if(apix.common.event.StandardEvent.isMouseType(type)) apix.common.event.EventTargetExtender.handCursor(srcEvt);
 	var deleguateFunction = apix.common.event.EventTargetExtender.getLst(srcEvt,listenerFunction,data);
 	var el = srcEvt;
 	if(el.listeners == null) el.listeners = [];
 	el.listeners.push({ type : type, listenerFunction : listenerFunction, deleguateFunction : deleguateFunction});
 	srcEvt.addEventListener(type,deleguateFunction,b);
+};
+apix.common.event.EventTargetExtender.handCursor = function(el,v) {
+	if(v == null) v = true;
+	var str;
+	if(v) str = "pointer"; else str = "auto";
+	if(el.style != null && el.style.cursor != null) el.style.cursor = str;
 };
 apix.common.event.EventTargetExtender.getLst = function(srcEvt,listenerFunction,data) {
 	var deleguateFunction;
@@ -1354,12 +1361,7 @@ apix.common.util.Global.prototype = {
 	}
 	,boolVal: function(b,defVal) {
 		if(defVal == null) defVal = false;
-		if(b == null) return defVal;
-		if(typeof(b) == "string") {
-			if(b == "true") return true; else if(b == "false") return false; else return defVal;
-		} else if(typeof(b) == "number") {
-			if(b == 0) return false; else if(b == 1) return true; else return defVal;
-		} else if(typeof(b) == "boolean") return b;
+		if(b == null) return defVal; else if(b == "true") return true; else if(b == "false") return false; else if(b == 0) return false; else if(b == 1) return true; else if(b == true) return b; else if(b == false) return b;
 		return defVal;
 	}
 	,strVal: function(s,defVal) {
@@ -1430,7 +1432,7 @@ apix.common.util.Global.prototype = {
 	,maxDayIn: function(m,leap) {
 		if(leap == null) leap = false;
 		m = this.intVal(m);
-		if(m < 1 || m > 12) haxe.Log.trace("f::Month must be from 1 to 12 !",{ fileName : "Global.hx", lineNumber : 284, className : "apix.common.util.Global", methodName : "maxDayIn"});
+		if(m < 1 || m > 12) haxe.Log.trace("f::Month must be from 1 to 12 !",{ fileName : "Global.hx", lineNumber : 281, className : "apix.common.util.Global", methodName : "maxDayIn"});
 		var v = [31,28,31,30,31,30,31,31,30,31,30,31][m - 1];
 		if(m == 2 && leap) v++;
 		return v;
@@ -3718,9 +3720,8 @@ apix.ui.input.SignField.prototype = $extend(apix.ui.UICompo.prototype,{
 		this.context.beginPath();
 		this.context.moveTo(from.get_x(),from.get_y());
 		this.context.lineTo(to.get_x(),to.get_y());
-		this.context.stroke();
 		this.context.closePath();
-		this.context.restore();
+		this.context.stroke();
 	}
 	,push: function(from,to) {
 		this.drawingData.push(from);
@@ -3853,7 +3854,7 @@ apix.ui.input.SignFieldLoader = function() { };
 apix.ui.input.SignFieldLoader.__name__ = ["apix","ui","input","SignFieldLoader"];
 apix.ui.input.SignFieldLoader.__init = function(skinName,pathStr) {
 	if(skinName == null) skinName = "default";
-	if(pathStr != null && skinName == "default") haxe.Log.trace("f::Invalid skinName '" + skinName + "' when a custom path is given ! ",{ fileName : "SignField.hx", lineNumber : 437, className : "apix.ui.input.SignFieldLoader", methodName : "__init"}); else true;
+	if(pathStr != null && skinName == "default") haxe.Log.trace("f::Invalid skinName '" + skinName + "' when a custom path is given ! ",{ fileName : "SignField.hx", lineNumber : 438, className : "apix.ui.input.SignFieldLoader", methodName : "__init"}); else true;
 	if(pathStr == null) pathStr = "apix/default/" + "SignField/"; else pathStr = pathStr;
 	apix.ui.UICompoLoader.__push(apix.ui.input.SignFieldLoader.__load,apix.ui.UICompoLoader.baseUrl + pathStr,skinName);
 };
@@ -6350,7 +6351,7 @@ mybox.boxes.AbstractFolderFormField.prototype = $extend(mybox.boxes.AbstractBox.
 			if(this == this.model.root) el = this.get_elemsCtnr(); else el = this.get_bElem();
 			this.view.showTipBox(this.lang.createOk,apix.common.display.ElementExtender.parent(el),apix.common.display.ElementExtender.posx(el),apix.common.display.ElementExtender.posy(el),1);
 			this.closeNameFrame();
-			if(e.result.msg != null) haxe.Log.trace(e.result.msg,{ fileName : "AbstractFolderFormField.hx", lineNumber : 239, className : "mybox.boxes.AbstractFolderFormField", methodName : "onAnswerInsertElement"});
+			if(e.result.msg != null) haxe.Log.trace(e.result.msg,{ fileName : "AbstractFolderFormField.hx", lineNumber : 270, className : "mybox.boxes.AbstractFolderFormField", methodName : "onAnswerInsertElement"});
 		}
 		return answ;
 	}
@@ -6410,14 +6411,14 @@ mybox.boxes.AbstractFolderFormField.prototype = $extend(mybox.boxes.AbstractBox.
 		} else this.g.alert(this.lang.serverFatalError);
 	}
 	,remove: function() {
-		haxe.Log.trace("f::Must be override by Folder, Form and Field !",{ fileName : "AbstractFolderFormField.hx", lineNumber : 312, className : "mybox.boxes.AbstractFolderFormField", methodName : "remove"});
+		haxe.Log.trace("f::Must be override by Folder, Form and Field !",{ fileName : "AbstractFolderFormField.hx", lineNumber : 343, className : "mybox.boxes.AbstractFolderFormField", methodName : "remove"});
 	}
 	,createFieldAfterInsert: function(rci,shift) {
 		if(shift == null) shift = 0;
-		haxe.Log.trace("f::Must be override by Form !",{ fileName : "AbstractFolderFormField.hx", lineNumber : 315, className : "mybox.boxes.AbstractFolderFormField", methodName : "createFieldAfterInsert"});
+		haxe.Log.trace("f::Must be override by Form !",{ fileName : "AbstractFolderFormField.hx", lineNumber : 346, className : "mybox.boxes.AbstractFolderFormField", methodName : "createFieldAfterInsert"});
 	}
 	,onButtonClick: function(e) {
-		haxe.Log.trace("f::Must be override by Form and Folder !",{ fileName : "AbstractFolderFormField.hx", lineNumber : 316, className : "mybox.boxes.AbstractFolderFormField", methodName : "onButtonClick"});
+		haxe.Log.trace("f::Must be override by Form and Folder !",{ fileName : "AbstractFolderFormField.hx", lineNumber : 347, className : "mybox.boxes.AbstractFolderFormField", methodName : "onButtonClick"});
 	}
 	,__class__: mybox.boxes.AbstractFolderFormField
 });
